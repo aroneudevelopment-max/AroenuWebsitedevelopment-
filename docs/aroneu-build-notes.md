@@ -17,3 +17,9 @@ Token files:
 Rules enforced:
 - no orange small text: Verified. Orange restricted to highlight/spark token.
 - body measure: Enforced max-width 66ch on body copy via token --measure-body.
+
+STEP 4 COMPONENT STATUS
+- Built 61 structural shell components mapped across `components/ui`, `components/forms`, `components/states`, and `components/sections`.
+- Created unified interface contracts for CMS data feeding at `lib/component-contracts/index.ts`.
+- Enforced component-level accessibility including semantic tags, avoid fake divs for buttons, and prepared structure for aria states.
+- Re-read all 8 required source documents and preserved token rules without injecting final copy.

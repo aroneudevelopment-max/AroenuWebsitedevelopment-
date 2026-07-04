@@ -30,3 +30,41 @@ STEP 5 GLOBAL SHELL STATUS
 - Verified route and navigation registries in `lib/routes.ts` and `lib/navigation.ts`.
 - Scaffolded route shells (`page.tsx`) for all 18 required paths (marketing and legal routes).
 - Intentionally not built: final page sections, real media, backend logic, analytics scripts.
+
+STEP 3A BRAND LOGO STATUS
+- Approved brand logo SVGs and icon PNGs integrated securely into /public/brand.
+- Favicon and touch icons wired safely to Next.js layout metadata and /public.
+- Scalable AroneuLogo component implemented and injected into Header and Footer avoiding placeholder logos.
+
+
+STEP 6 CONTENT ARCHITECTURE STATUS
+- Content model created in lib/content/types.ts.
+- Page registries initialized for all required routes.
+- Centralized global copy implemented for site strings, forms, and states.
+- Copy placement map and CMS field map documented in docs/.
+STEP 7 HOMEPAGE STATUS
+- Extracted homepage content into lib/content/pages/home.ts
+- Replaced app/page.tsx with mapped section components
+- Integrated 5 visual assets from Step 7 brief into public/images/aroneu/
+- Successfully executed build and typecheck with static routing
+- Ensured no fake client names or unauthorized proof points.
+
+## Step 8 Build Notes
+- Replaced app/capability-teams/page.tsx with app/(marketing)/capability-teams/page.tsx to resolve routing conflicts.
+- Explicitly cast \data.items as any[]\ in RetentionProof.tsx to fix TypeScript strictly-typed warnings.
+- Developed lightweight CSS/SVG diagram components for Governance and Optionality visuals as required.
+- Typechecked and built successfully.
+
+## Step 9 Build Notes
+- Extracted AI Workspace copy from `copy of aeroneu (1) (3).pdf` to `src/lib/content/pages/ai-workspace.ts`.
+- Extended `SectionContent` type in `src/lib/content/types.ts` to include `image?: string;` and `labels?: string[];` for stronger typing without `any` casts.
+- Built reusable components for AI Workspace: `WorkspaceVisibilityPanel`, `GovernanceControlsPanel`, `AIInsightPanel`, `DataResponsibilityDiagram`, and `WorkspacePreviewLabels`.
+- Integrated 4 visual assets from Step 9 brief into `public/images/aroneu/`.
+- Successfully executed build and typecheck with static routing.
+- Step 10: Implemented the /how-it-works page. Extended SectionContent types to support custom steps, features, and outcome properties for Discover/Build/Run sections. Addressed TS type errors. Build passed.
+- Step 11: Implemented the /about page. Created custom components for Hero, Story, Name Meaning, Values, Society, Leadership, and Locations. Ensured motion and spacing requirements are met. Build passed.
+
+## Step 12: Contact Page Build
+- Completed exact copy alignment and schema verification from Step 12.pdf.
+- Created ContactHero, ContactWhatToInclude, ContactReassurance, ContactForm, ContactScheduler, ContactOffice components.
+- Form is fully functional with native state handling (validation, mock loading, success, failure state), no backend wired since none provided, adhering strictly to constraints.

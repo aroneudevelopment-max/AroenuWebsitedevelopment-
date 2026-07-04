@@ -1,0 +1,276 @@
+const fs = require('fs');
+const path = require('path');
+
+const srcDir = path.join(__dirname, '..', 'src');
+const libContentPagesDir = path.join(srcDir, 'lib', 'content', 'pages');
+const publicImagesDir = path.join(__dirname, '..', 'public', 'images', 'aroneu');
+const appDir = path.join(srcDir, 'app');
+
+if (!fs.existsSync(publicImagesDir)) {
+  fs.mkdirSync(publicImagesDir, { recursive: true });
+}
+
+// 1. Copy Assets
+const assetsDir = path.join(__dirname, '..', '..', '07_STEP_07_HOMEPAGE');
+const assetsToCopy = [
+  { src: 'F1_ai-workspace-governance-overview (1).png', dest: 'ai-workspace-governance-overview.png' },
+  { src: 'F3_governance-controls-panel (1).png', dest: 'governance-controls-panel.png' },
+  { src: 'F2_leadership-card-system (1).png', dest: 'leadership-card-system.png' },
+  { src: 'F4_ai-workspace-visibility-panels (1).png', dest: 'ai-workspace-visibility-panels.png' },
+  { src: 'F5_ai-supported-insight-panel (1).png', dest: 'ai-supported-insight-panel.png' }
+];
+
+assetsToCopy.forEach(asset => {
+  const srcPath = path.join(assetsDir, asset.src);
+  const destPath = path.join(publicImagesDir, asset.dest);
+  if (fs.existsSync(srcPath)) {
+    fs.copyFileSync(srcPath, destPath);
+    console.log(`Copied ${asset.src} to ${asset.dest}`);
+  }
+});
+
+// 2. Update home.ts content
+const homeTsContent = `
+import { PageContent } from '../types';
+
+export const homePage: PageContent = {
+  route: "/",
+  slug: "home",
+  pageJob: "Explain Aroneu and make the model believable fast.",
+  audience: ["CTO", "VP Engineering", "COO", "CFO", "delivery leader"],
+  beliefShift: "India teams are risky -> India capability can be governed.",
+  primaryCta: { label: "Book a call", href: "/contact", variant: "primary" },
+  secondaryCta: { label: "See the workspace", href: "/ai-workspace", variant: "secondary" },
+  seo: {
+    metaTitle: "Aroneu — Governable India capability teams",
+    metaDescription: "Senior India teams European companies can govern, supported by an AI Workspace that makes work, decisions, and controls visible. Book a call.",
+    ogTitle: "Make India capability governable.",
+    ogDescription: "Aroneu builds senior India capability teams for European companies, with the governance, visibility, and accountability needed to trust work at distance.",
+    canonicalPath: "/",
+  },
+  sections: [
+    {
+      id: "hero",
+      component: "Hero",
+      eyebrow: "India capability, European governance",
+      heading: "Make India capability governable.",
+      subcopy: "Aroneu builds dedicated, senior India teams for European companies — run as an extension of your business and supported by an AI Workspace that makes work, decisions, and controls visible.",
+      ctas: [
+        { label: "Book a call", href: "/contact", variant: "primary" }
+      ],
+      visualSlot: {
+        id: "workspace-governance-preview",
+        purpose: "make-governance-visible",
+        recommendedAssetType: "static-mockup",
+        placementNote: "AI Workspace hero or visual split section",
+        required: true,
+        doNotUse: ["neon AI", "robot hands", "fake dashboards"]
+      },
+      internalNotes: ["Status: final-copy-provided"]
+    },
+    {
+      id: "proof-strip",
+      component: "ProofStrip",
+      items: [
+        { value: "45M+", label: "connected vehicles served" },
+        { value: "<4%", label: "attrition across governed teams" },
+        { value: "150+", label: "FTE built and governed" }
+      ],
+      internalNotes: ["Status: final-copy-provided"]
+    },
+    {
+      id: "problem",
+      component: "ProblemList",
+      eyebrow: "The problem",
+      heading: "Talent was never the problem. Governance was.",
+      body: "India has serious capability. Europe needs capacity. The risk begins when distance turns into opacity — slow onboarding, weak context, silent misunderstanding, knowledge loss, and unclear accountability.",
+      items: [
+        { title: "Slow onboarding", description: "Teams start without enough business context." },
+        { title: "Hidden drift", description: "Misunderstanding stays quiet until it costs time." },
+        { title: "Knowledge loss", description: "Decisions live in chats, people, and handovers." },
+        { title: "Weak accountability", description: "Leaders receive updates, but not the full operating picture." },
+        { title: "Informal control", description: "Work moves forward, but governance stays scattered." }
+      ],
+      internalNotes: ["Status: final-copy-provided"]
+    },
+    {
+      id: "two-capabilities",
+      component: "CapabilityCards",
+      eyebrow: "The Aroneu model",
+      heading: "One model. Two connected capabilities.",
+      body: "Aroneu combines Capability Teams and the AI Workspace so people, rhythm, controls, and visibility are designed together.",
+      items: [
+        { 
+          title: "Capability Teams", 
+          description: "Senior India teams built and run as an extension of your business — with role fit, local leadership, shared standards, and continuity planning.",
+          href: "/capability-teams",
+          ctaLabel: "Explore Capability Teams"
+        },
+        { 
+          title: "AI Workspace", 
+          description: "The governance layer around every team, making work, decisions, controls, and team health easier to see and improve.",
+          href: "/ai-workspace",
+          ctaLabel: "See the workspace"
+        }
+      ],
+      internalNotes: ["Status: final-copy-provided"]
+    },
+    {
+      id: "how-it-works-preview",
+      component: "StepRow",
+      eyebrow: "Operating model",
+      heading: "Start lean. Build with confidence.",
+      body: "Aroneu moves from the team you need to the rhythm that keeps it governed.",
+      items: [
+        { title: "Discover", description: "Define the capability, risks, role mix, and governance needs before the team is built." },
+        { title: "Build", description: "Select senior India talent, onboard business context, and establish the operating rhythm." },
+        { title: "Run", description: "Keep work visible through leadership routines, documentation, controls, and the AI Workspace." }
+      ],
+      ctas: [
+        { label: "See how it works", href: "/how-it-works", variant: "secondary" }
+      ],
+      internalNotes: ["Status: final-copy-provided"]
+    },
+    {
+      id: "proof-at-scale",
+      component: "StatQuad",
+      eyebrow: "Proof at scale",
+      heading: "Built for serious operating environments.",
+      body: "In a European automotive programme, Aroneu supported governed capability around a connected-car ecosystem serving 45M+ vehicles.",
+      items: [
+        { title: "Scale is not only headcount.", description: "It is the ability to keep work visible as complexity grows." },
+        { title: "Governance is not only reporting.", description: "It is the rhythm, ownership, and controls around delivery." },
+        { title: "Continuity is not only retention.", description: "It is the way knowledge, context, and decisions stay usable over time." }
+      ],
+      ctas: [
+        { label: "Read the case study", href: "/case-studies", variant: "secondary" }
+      ],
+      internalNotes: ["Status: final-copy-provided"]
+    },
+    {
+      id: "leadership",
+      component: "LeadershipPreview",
+      eyebrow: "Named accountability",
+      heading: "Governance needs visible ownership.",
+      body: "Aroneu does not leave accountability to status calls. The model is built around named leadership, local operating responsibility, shared routines, and a workspace that keeps decisions and controls visible.",
+      items: [
+        { title: "Nilesh Chauhan" },
+        { title: "Mary Monika" },
+        { title: "Bapi Chakraborty" }
+      ],
+      ctas: [
+        { label: "About Aroneu", href: "/about", variant: "secondary" }
+      ],
+      internalNotes: ["Status: final-copy-provided"]
+    },
+    {
+      id: "careers-bridge",
+      component: "ClosingCTA",
+      eyebrow: "For senior India talent",
+      heading: "Serious work, taken seriously.",
+      body: "Aroneu is built for people who want their work to be visible, trusted, and connected to critical European business outcomes.",
+      ctas: [
+        { label: "View open roles", href: "/careers", variant: "secondary" }
+      ],
+      internalNotes: ["Status: final-copy-provided"]
+    },
+    {
+      id: "closing-cta",
+      component: "ClosingCTA",
+      heading: "Build the team you can see, govern, and trust.",
+      body: "Tell us what capability you need, where governance matters, and what level of ownership you want to preserve.",
+      ctas: [
+        { label: "Book a call", href: "/contact", variant: "primary" },
+        { label: "See how it works", href: "/how-it-works", variant: "secondary" }
+      ],
+      internalNotes: ["Status: final-copy-provided"]
+    },
+    {
+      id: "homepage-faq",
+      component: "FAQSection",
+      faqs: [
+        { question: "What does Aroneu do?", answer: "Aroneu builds governable India capability teams for European companies. Each team is designed around senior talent, operating rhythm, visibility, controls, and an AI Workspace that supports governance." },
+        { question: "Who is Aroneu for?", answer: "Aroneu is for European companies that need senior India capability but do not want a distant team they cannot see, govern, or trust. It is designed for leaders who care about accountability, continuity, and control." },
+        { question: "What is a Capability Team?", answer: "A Capability Team is a dedicated India-based team built and run as an extension of your business. It is shaped around role fit, senior talent, local leadership, shared standards, and continuity planning." },
+        { question: "What is the AI Workspace?", answer: "The AI Workspace is the governance layer around every Aroneu team. It helps make work, decisions, controls, documentation, team health, and AI-supported insights visible in one operating space." },
+        { question: "How is Aroneu different from a traditional vendor team?", answer: "Aroneu is built around long-term capability, not disconnected task delivery. The model combines senior team design, local leadership, shared routines, governance controls, and visibility through the AI Workspace." }
+      ],
+      internalNotes: ["Status: final-copy-provided"]
+    }
+  ]
+};
+`;
+
+fs.writeFileSync(path.join(libContentPagesDir, 'home.ts'), homeTsContent.trim() + '\n', 'utf8');
+console.log('Updated lib/content/pages/home.ts');
+
+// 3. Assemble app/page.tsx
+const pageTsxContent = `
+import { Metadata } from 'next';
+import { homePage } from '@/lib/content/pages/home';
+import { Hero } from '@/components/sections/Hero';
+import { ProofStrip } from '@/components/sections/ProofStrip';
+import { ProblemList } from '@/components/sections/ProblemList';
+import { CapabilityCards } from '@/components/sections/CapabilityCards';
+import { StepRow } from '@/components/sections/StepRow';
+import { StatQuad } from '@/components/sections/StatQuad';
+import { LeadershipPreview } from '@/components/sections/LeadershipPreview';
+import { ClosingCTA } from '@/components/sections/ClosingCTA';
+import { FAQSection } from '@/components/sections/FAQSection';
+
+export const metadata: Metadata = {
+  title: homePage.seo?.metaTitle || "Aroneu",
+  description: homePage.seo?.metaDescription,
+  openGraph: {
+    title: homePage.seo?.ogTitle,
+    description: homePage.seo?.ogDescription,
+  },
+};
+
+export default function Home() {
+  const sections = homePage.sections;
+  
+  return (
+    <div className="page-home flex flex-col w-full">
+      {/* 1. Hero */}
+      <Hero data={sections.find(s => s.id === 'hero')} />
+      
+      {/* 2. Proof strip */}
+      <ProofStrip data={sections.find(s => s.id === 'proof-strip')} />
+      
+      {/* 3. Problem section */}
+      <ProblemList data={sections.find(s => s.id === 'problem')} />
+      
+      {/* 4. Two capabilities */}
+      <CapabilityCards data={sections.find(s => s.id === 'two-capabilities')} />
+      
+      {/* 5. How it works preview */}
+      <StepRow data={sections.find(s => s.id === 'how-it-works-preview')} />
+      
+      {/* 6. Proof at scale */}
+      <StatQuad data={sections.find(s => s.id === 'proof-at-scale')} />
+      
+      {/* 7. Leadership / named accountability */}
+      <LeadershipPreview data={sections.find(s => s.id === 'leadership')} />
+      
+      {/* 8. Careers bridge */}
+      <div className="bg-zinc-50 border-y py-16 dark:bg-zinc-900 dark:border-zinc-800">
+         <ClosingCTA data={sections.find(s => s.id === 'careers-bridge')} />
+      </div>
+      
+      {/* 9. Closing CTA */}
+      <ClosingCTA data={sections.find(s => s.id === 'closing-cta')} />
+      
+      {/* 10. FAQ */}
+      <div className="bg-white py-16 dark:bg-black">
+        <FAQSection data={sections.find(s => s.id === 'homepage-faq')} />
+      </div>
+    </div>
+  );
+}
+`;
+
+fs.writeFileSync(path.join(appDir, 'page.tsx'), pageTsxContent.trim() + '\n', 'utf8');
+console.log('Updated app/page.tsx');
+
+console.log('Step 7 Scaffolding complete.');

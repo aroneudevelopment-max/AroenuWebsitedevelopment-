@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { footerNavigation } from '@/lib/navigation';
 import { routes } from '@/lib/routes';
+import { AroneuLogo } from '@/components/brand/AroneuLogo';
 
 export function Footer() {
   return (
@@ -10,7 +11,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           
           <div className="brand-col">
-            <Link href="/" className="font-bold text-2xl mb-4 block">Aroneu</Link>
+            <Link href="/" className="brand-link mb-6 block" aria-label="Aroneu Home">
+              <AroneuLogo variant="horizontal" tone="ink" />
+            </Link>
             <p className="source-line text-sm mb-4">
               Governable capability, made <em className="font-newsreader italic">new</em>.
             </p>

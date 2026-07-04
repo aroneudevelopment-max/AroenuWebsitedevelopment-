@@ -1,16 +1,22 @@
 import React from 'react';
+import { SectionContent } from '@/lib/content/types';
 
-export interface FAQSectionProps {
-  eyebrow?: string;
-  heading?: string;
-  subcopy?: string;
-}
-
-export function FAQSection(props: FAQSectionProps) {
+export function FAQSection({ data }: { data?: SectionContent }) {
+  if (!data || !data.faqs || data.faqs.length === 0) return null;
   return (
-    <section className="section-aroneu">
-      <div className="container-aroneu">
-        {props.heading && <h2 className="text-h2">{props.heading}</h2>}
+    <section className="section-aroneu py-24">
+      <div className="container-aroneu max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-h2 text-black dark:text-white">Frequently Asked Questions</h2>
+        </div>
+        <div className="space-y-6">
+          {data.faqs.map((faq, i) => (
+            <div key={i} className="border-b border-zinc-200 dark:border-zinc-800 pb-6">
+              <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
+              <p className="text-zinc-600 dark:text-zinc-400">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

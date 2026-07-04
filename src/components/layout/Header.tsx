@@ -2,12 +2,15 @@ import React from 'react';
 import Link from 'next/link';
 import { primaryNavigation } from '@/lib/navigation';
 import { routes } from '@/lib/routes';
+import { AroneuLogo } from '@/components/brand/AroneuLogo';
 
 export function Header() {
   return (
     <header className="header-aroneu flex items-center justify-between p-4 border-b">
       <div className="logo-container">
-        <Link href={routes.home} className="font-bold text-xl">Aroneu</Link>
+        <Link href={routes.home} className="brand-link" aria-label="Aroneu Home">
+          <AroneuLogo variant="horizontal" tone="ink" />
+        </Link>
       </div>
       
       <nav className="desktop-nav hidden md:flex space-x-6" aria-label="Primary Navigation">

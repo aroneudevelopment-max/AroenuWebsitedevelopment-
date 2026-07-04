@@ -1,0 +1,49 @@
+{
+  "sources": {
+    "horizontal": "E:\\Burhan\\Downloads\\Avalora_Content_Agent_FIXED\\Avalora_Content_Agent_FIXED\\asset_library\\aroneu_source_extract\\Aroneu_Brand_Book_Extended_html_90c8e061-2437-429f-9629-2e58f43db4d6_1540x273.png",
+    "stacked": "E:\\Burhan\\Downloads\\Avalora_Content_Agent_FIXED\\Avalora_Content_Agent_FIXED\\asset_library\\aroneu_source_extract\\Aroneu_Brand_Book_Extended_html_caf1ea66-2687-4dc7-9d09-474147a97c53_2000x2000.png"
+  },
+  "masks": {
+    "horizontal": {
+      "file": "E:\\Burhan\\Downloads\\Avalora_Content_Agent_FIXED\\Avalora_Content_Agent_FIXED\\scratch\\aroneu_vector_tmp\\horizontal.png",
+      "w": 1469,
+      "h": 202,
+      "bbox": {
+        "x": 36,
+        "y": 36,
+        "w": 1469,
+        "h": 202
+      }
+    },
+    "stacked": {
+      "file": "E:\\Burhan\\Downloads\\Avalora_Content_Agent_FIXED\\Avalora_Content_Agent_FIXED\\scratch\\aroneu_vector_tmp\\stacked.png",
+      "w": 1263,
+      "h": 875,
+      "bbox": {
+        "x": 364,
+        "y": 562,
+        "w": 1263,
+        "h": 875
+      }
+    },
+    "monogram": {
+      "file": "E:\\Burhan\\Downloads\\Avalora_Content_Agent_FIXED\\Avalora_Content_Agent_FIXED\\scratch\\aroneu_vector_tmp\\monogram_a.png",
+      "w": 199,
+      "h": 197,
+      "bbox": {
+        "x": 36,
+        "y": 40,
+        "w": 199,
+        "h": 197
+      }
+    }
+  },
+  "colors": {
+    "ink": "#0C0C0C",
+    "paper": "#FAFAF8",
+    "sand": "#F4F1EA",
+    "navy": "#1C3B54",
+    "orange": "#E07B10"
+  },
+  "generatedAt": "2026-07-03T22:19:08.540Z"
+}

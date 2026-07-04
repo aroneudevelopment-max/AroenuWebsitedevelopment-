@@ -41,7 +41,7 @@ export const caseStudiesPage: PageContent = {
           cta: "Read the case study",
           href: "/case-studies/european-automotive-programme",
           image: {
-            src: "/images/Abstract_visual_for_Aroneu_202607030333 (1).jpeg",
+            src: "/images/aroneu/abstract-visual.jpeg",
             alt: "Abstract automotive programme visual showing governed India capability and connected systems."
           }
         }

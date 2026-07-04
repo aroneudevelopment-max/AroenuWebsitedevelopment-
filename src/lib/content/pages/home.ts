@@ -28,11 +28,12 @@ export const homePage: PageContent = {
       visualSlot: {
         id: "workspace-governance-preview",
         purpose: "make-governance-visible",
-        recommendedAssetType: "static-mockup",
+        recommendedAssetType: "video",
         placementNote: "AI Workspace hero or visual split section",
         required: true,
         doNotUse: ["neon AI", "robot hands", "fake dashboards"]
       },
+      video: "/videos/aroneu-overview.mp4",
       internalNotes: ["Status: final-copy-provided"]
     },
     {

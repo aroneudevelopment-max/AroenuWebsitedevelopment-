@@ -63,7 +63,8 @@ export const aiWorkspacePage: PageContent = {
       component: "GovernanceControlsPanel",
       heading: "Control what matters.",
       body: "The workspace is built to surface the controls, access, approvals, and quality gates that keep work safe.",
-      image: "/images/aroneu/ai-workspace-governance-controls.png",
+      image: "/images/aroneu/governance-controls-panel.png",
+      video: "/videos/governance-explainer.mp4",
       items: [
         { title: "Access and identity" },
         { title: "Quality gates" },
@@ -77,7 +78,7 @@ export const aiWorkspacePage: PageContent = {
       component: "AIInsightPanel",
       heading: "AI supports the operating rhythm. It does not replace it.",
       body: "AI is a support layer for summaries, patterns, documentation, risks, and next-step signals, while human accountability stays inside the model.",
-      image: "/images/aroneu/ai-workspace-ai-insights.png",
+      image: "/images/aroneu/ai-supported-insight-panel.png",
       items: [
         { title: "Summaries" },
         { title: "Signals" },

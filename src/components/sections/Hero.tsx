@@ -21,7 +21,18 @@ export function Hero({ data }: { data?: SectionContent }) {
         )}
       </div>
       <div className="w-full md:w-1/2 mt-8 md:mt-0 relative">
-        <Image src="/images/aroneu/ai-workspace-governance-overview.png" alt="AI Workspace overview" width={600} height={400} className="w-full h-auto object-cover rounded-xl" priority />
+        {data.video ? (
+          <video
+            src={data.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-auto object-cover rounded-xl"
+          />
+        ) : (
+          <Image src={data.image || "/images/aroneu/ai-workspace-governance-overview.png"} alt={data.heading || "AI Workspace overview"} width={600} height={400} className="w-full h-auto object-cover rounded-xl" priority />
+        )}
         {data.visualSlot?.placementNote && (
           <p className="sr-only">Representative visual, not live product screenshot</p>
         )}

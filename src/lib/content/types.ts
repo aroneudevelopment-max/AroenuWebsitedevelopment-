@@ -71,6 +71,7 @@ export type SectionContent = {
   faqs?: FAQItem[];
   outcome?: string;
   image?: string;
+  video?: string;
   visualSlot?: VisualSlot;
   internalNotes?: string[];
   labels?: string[];

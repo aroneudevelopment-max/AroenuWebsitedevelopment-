@@ -19,7 +19,7 @@ export const aboutPage: PageContent = {
       subcopy: "Aroneu exists to make India capability governable for European companies. We build senior teams with the structure, leadership, rhythm, and AI Workspace needed to keep work visible and accountable.",
       primaryCTA: { label: "Book a call", href: "/contact" },
       secondaryCTA: { label: "Explore the model", href: "/how-it-works" },
-      image: "/assets/images/about/abstract-visual.jpeg"
+      image: "/images/aroneu/abstract-visual.jpeg"
     },
     {
       id: "answer-block",
@@ -103,7 +103,7 @@ export const aboutPage: PageContent = {
       heading: "A governed model needs visible owners.",
       body: "Aroneu is designed around named accountability. Clients should know who owns the model, who leads the operating rhythm, and how decisions are governed.\n\nLeadership profiles will show the people responsible for Aroneu’s operating standard, team model, and client trust.",
       primaryCTA: { label: "Talk to the team", href: "/contact" },
-      image: "/assets/images/about/leadership-placeholder.png",
+      image: "/images/aroneu/senior-professionals.jpeg",
       features: [
         { heading: "Nilesh Chauhan" },
         { heading: "Mary Monika" },

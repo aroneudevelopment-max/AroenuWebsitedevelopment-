@@ -20,7 +20,16 @@ export function GovernanceControlsPanel({ data }: { data?: SectionContent }) {
           </div>
         </div>
         <div className="flex-1 flex justify-center relative w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-black shadow-sm transition-opacity duration-500 group">
-          {panelData.image ? (
+          {panelData.video ? (
+            <video
+              src={panelData.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto object-cover max-h-[500px]"
+            />
+          ) : panelData.image ? (
             <img src={panelData.image} alt="Governance Controls" className="w-full h-auto object-cover max-h-[500px]" loading="lazy" />
           ) : (
             <div className="w-full h-[400px] flex items-center justify-center text-zinc-400">Representative Governance Panel</div>

@@ -1,1 +1,16 @@
-export const routes = {}
+export const routes = {
+  home: "/",
+  capabilityTeams: "/capability-teams",
+  aiWorkspace: "/ai-workspace",
+  howItWorks: "/how-it-works",
+  about: "/about",
+  caseStudies: "/case-studies",
+  insights: "/insights",
+  careers: "/careers",
+  contact: "/contact",
+  resources: "/resources",
+  privacy: "/privacy",
+  imprint: "/imprint",
+  terms: "/terms",
+  cookiePolicy: "/cookie-policy",
+};

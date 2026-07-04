@@ -23,3 +23,10 @@ STEP 4 COMPONENT STATUS
 - Created unified interface contracts for CMS data feeding at `lib/component-contracts/index.ts`.
 - Enforced component-level accessibility including semantic tags, avoid fake divs for buttons, and prepared structure for aria states.
 - Re-read all 8 required source documents and preserved token rules without injecting final copy.
+
+STEP 5 GLOBAL SHELL STATUS
+- Built global layout shell: `app/layout.tsx`, `components/layout/SiteShell.tsx`, Header, Footer, MobileNav, SkipLink.
+- Implemented accessible cookie consent shell with no premature analytics loading.
+- Verified route and navigation registries in `lib/routes.ts` and `lib/navigation.ts`.
+- Scaffolded route shells (`page.tsx`) for all 18 required paths (marketing and legal routes).
+- Intentionally not built: final page sections, real media, backend logic, analytics scripts.

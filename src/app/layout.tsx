@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SiteShell } from "@/components/layout/SiteShell";
 
 export const metadata: Metadata = {
   title: "Aroneu",
@@ -13,11 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB" className="antialiased">
-      <body className="min-h-screen flex flex-col">
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-black">
-          Skip to content
-        </a>
-        {children}
+      <body className="min-h-screen flex flex-col font-maven-pro text-gray-900 bg-white">
+        <SiteShell>
+          {children}
+        </SiteShell>
       </body>
     </html>
   );

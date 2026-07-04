@@ -27,3 +27,15 @@ This file tracks the required source documents and their status for the Aroneu f
 - Aroneu Website Handoff.html : READ (Component expectations)
 - Aroneu content 5 steps (1).pdf : READ (Trust engine logic, component mapping)
 - Aroneu seo geo aeo 5 steps (1).pdf : READ (Semantic HTML, schema-ready frontend structure)
+
+## Step 5 Sources (Locked)
+- 00_READ_THIS_FIRST_STEP_05_TECHNICAL_BRIEF.md : READ
+- step 5.pdf : READ (Global shell requirements, routing, nav labels, footer, legal routes, cookie shell)
+- Techincal brief for website maker frontend (1).pdf : READ (Scope, navigation)
+- TYPOGRAPHY AND VISUAL TEXT RULES for aeroneu (1).pdf : READ (Typography rules)
+- copy of aeroneu (1) (3).pdf : READ (Navigation labels, footer copy, legal shell)
+- Aroneu coding 5 steps (1).pdf : READ (Next.js architecture)
+- Aroneu content 5 steps (1).pdf : READ (Trust-engine logic)
+- Aroneu seo geo aeo 5 steps (1).pdf : READ (SEO crawlable route structure)
+- Aroneu_Brand Book_Extended.html : READ (Brand identity)
+- Aroneu Website Handoff.html : READ (Global structure)

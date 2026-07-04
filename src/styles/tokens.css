@@ -1,0 +1,10 @@
+:root {
+  --color-ink: #0C0C0C;
+  --color-paper: #FAFAF8;
+  --color-sand: #F4F1EA;
+  --color-slate: #6B6862;
+  --color-orange: #E07B10;
+  --color-navy: #1C3B54;
+  --color-plum: #6B4F62;
+  --gradient-signature: linear-gradient(90deg, #E07B10 0%, #1C3B54 100%);
+}

@@ -1,0 +1,1 @@
+// Safe placeholders for SEO

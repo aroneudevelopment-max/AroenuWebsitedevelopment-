@@ -3,6 +3,7 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { SkipLink } from "./SkipLink";
 import { CookieConsentShell } from "./CookieConsentShell";
+import { BackToTopButton } from "./BackToTopButton";
 
 /**
  * SiteShell
@@ -24,6 +25,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <Footer />
+      <BackToTopButton />
       <CookieConsentShell />
     </>
   );

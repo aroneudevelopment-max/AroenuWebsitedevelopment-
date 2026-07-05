@@ -28,43 +28,28 @@ export function GovernanceControlsPanel({ data }: { data?: SectionContent }) {
         </div>
 
         <div className="flex-1 flex flex-col items-stretch relative w-full">
-          {panelData.image && (
+          {panelData.video ? (
+            <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 shadow-sm">
+              <video
+                src={panelData.video}
+                poster={panelData.image}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          ) : panelData.image ? (
             <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 shadow-sm">
               <img
                 src={panelData.image}
-                alt="Governance controls panel — representative"
+                alt="Governance controls panel"
                 className="w-full h-auto object-cover"
                 loading="lazy"
               />
-              <div className="absolute bottom-3 right-3 surface-paper/80 backdrop-blur-sm px-2 py-1 rounded text-[10px] opacity-70 tracking-wider">
-                REPRESENTATIVE VISUAL
-              </div>
             </div>
-          )}
-
-          {panelData.video && (
-            <div className="mt-6 flex flex-col items-start gap-2">
-              <a
-                href={panelData.video}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-ink text-paper text-base font-medium hover:opacity-90 transition-opacity"
-                aria-label="Watch the governance explainer video in a new tab"
-              >
-                <span
-                  aria-hidden="true"
-                  className="inline-flex w-7 h-7 items-center justify-center rounded-full bg-paper text-ink text-sm"
-                >
-                  &#9654;
-                </span>
-                <span>Watch the explainer</span>
-              </a>
-              <p className="text-caption opacity-70">
-                Manual play. No sound. Representative explainer for the
-                governance layer, not a live product demo.
-              </p>
-            </div>
-          )}
+          ) : null}
         </div>
       </div>
     </section>

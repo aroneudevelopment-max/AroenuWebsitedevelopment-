@@ -22,8 +22,8 @@ export function AboutLocations({ data }: { data?: SectionContent }) {
  </div>
  
  {i === 0 && (
- <div className="hidden md:flex w-24 items-center justify-center relative z-10">
- <div className="px-3 py-1 bg-zinc-100 rounded-full border border-zinc-200 text-xs font-semibold opacity-70 uppercase tracking-widest whitespace-nowrap shadow-sm">
+ <div className="hidden md:flex w-40 items-center justify-center relative z-10">
+ <div className="px-4 py-1.5 bg-zinc-100 rounded-full border border-zinc-200 text-xs font-semibold opacity-80 uppercase tracking-widest whitespace-nowrap shadow-sm">
  One Standard
  </div>
  </div>

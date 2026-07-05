@@ -10,19 +10,25 @@ export function LeadershipPreview({ data }: { data?: SectionContent }) {
   return (
     <section className="section-aroneu">
       <div className="container-aroneu grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        
           <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200 surface-sand flex items-center justify-center">
-            <div className="text-center max-w-xs px-6">
-              <div className="text-label uppercase tracking-widest opacity-70 mb-3">
-                Leadership
+            {data.image ? (
+              <img
+                src={data.image}
+                alt="Leadership"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="text-center max-w-xs px-6">
+                <div className="text-label uppercase tracking-widest opacity-70 mb-3">
+                  Leadership
+                </div>
+                <p className="text-body opacity-80">
+                  Named accountability, not a portrait gallery. Real leadership
+                  profiles appear once approved by Aroneu.
+                </p>
               </div>
-              <p className="text-body opacity-80">
-                Named accountability, not a portrait gallery. Real leadership
-                profiles appear once approved by Aroneu.
-              </p>
-            </div>
+            )}
           </div>
-        
 
         
           {data.eyebrow && (

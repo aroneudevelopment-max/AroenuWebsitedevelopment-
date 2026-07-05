@@ -133,6 +133,7 @@ export const homePage: PageContent = {
       eyebrow: "Named accountability",
       heading: "Governance needs visible ownership.",
       body: "Aroneu does not leave accountability to status calls. The model is built around named leadership, local operating responsibility, shared routines, and a workspace that keeps decisions and controls visible.",
+      image: "/images/aroneu/leadership-card-system.png",
       items: [
         { title: "Nilesh Chauhan" },
         { title: "Mary Monika" },

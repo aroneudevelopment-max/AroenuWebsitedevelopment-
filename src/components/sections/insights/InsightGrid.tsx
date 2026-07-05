@@ -113,8 +113,18 @@ export function InsightGrid({
                   href={`/insights/${article.slug}`}
                   className="group min-w-0 flex flex-col border border-zinc-200 rounded-2xl overflow-hidden surface-paper hover:border-zinc-300 hover:shadow-soft transition-all h-full"
                 >
-                  <div className="relative w-full aspect-video bg-zinc-100 overflow-hidden p-6 flex items-end">
-                    <h3 className="text-lg font-medium text-ink group-hover:opacity-80 transition-opacity z-10 relative">
+                  <div className="relative w-full aspect-video bg-zinc-100 overflow-hidden p-6 flex justify-center items-center text-center">
+                    {article.image && (
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    )}
+                    {article.image && (
+                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+                    )}
+                    <h3 className={`text-lg font-medium transition-opacity group-hover:opacity-90 z-10 relative ${article.image ? 'text-white' : 'text-ink'}`}>
                       {article.title}
                     </h3>
                   </div>

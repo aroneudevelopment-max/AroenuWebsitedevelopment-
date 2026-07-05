@@ -25,7 +25,7 @@ export function FeatureGrid({ data }: { data?: SectionContent }) {
           <p className="text-body opacity-80">{data.body}</p>
         )}
       </div>
-      <div className="container-aroneu grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className={`container-aroneu grid grid-cols-1 md:grid-cols-2 ${items.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-6`}>
         {items.map((item, i) => (
           <div
             key={i}

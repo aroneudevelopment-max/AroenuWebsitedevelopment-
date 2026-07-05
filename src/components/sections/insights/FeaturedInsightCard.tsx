@@ -30,17 +30,28 @@ export function FeaturedInsightCard({ data }: { data: any }) {
                   : `Read the insight: ${data.heading}`
               }
             >
-              <div className="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden flex flex-col justify-end p-8">
-                <div className="mt-auto">
-                  <h3 className="text-h3 text-ink group-hover:opacity-80 transition-opacity">
+              <div className="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden flex flex-col justify-center items-center text-center p-8">
+                {data.image && (
+                  <img
+                    src={data.image}
+                    alt={data.heading}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                )}
+                {/* Gradient overlay to make text readable if image exists */}
+                {data.image && (
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+                )}
+                <div className="relative z-10 flex flex-col items-center">
+                  <h3 className={`text-h3 transition-opacity group-hover:opacity-80 ${data.image ? 'text-white' : 'text-ink'}`}>
                     {data.heading}
                   </h3>
+                  {/* Accent line — brand gradient signature, restrained */}
+                  <div
+                    aria-hidden="true"
+                    className={`w-12 h-1 mt-6 mb-2 ${data.image ? 'bg-white' : 'surface-ink'}`}
+                  />
                 </div>
-                {/* Accent line — brand gradient signature, restrained */}
-                <div
-                  aria-hidden="true"
-                  className="w-12 h-1 surface-ink mt-6 mb-2"
-                />
               </div>
               <div className="p-8 flex flex-col space-y-4 surface-paper">
                 <div className="flex flex-wrap gap-2">

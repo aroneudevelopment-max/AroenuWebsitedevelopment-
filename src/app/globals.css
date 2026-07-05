@@ -25,6 +25,21 @@
   --color-plum: var(--color-plum);
   --color-gradient-signature: var(--gradient-signature);
 
+  /* Primary = brand orange (accent for eyebrows, focus rings, checkmarks).
+     Aroneu tokens above are the locked design system. This alias makes
+     existing `primary-*` Tailwind classes resolve to the brand orange
+     instead of producing empty CSS. */
+  --color-primary-50:  #FFF4E5;
+  --color-primary-100: #FBE6CC;
+  --color-primary-200: #F5CD9A;
+  --color-primary-300: #E7A35C;
+  --color-primary-400: #DC8B33;
+  --color-primary-500: #E07B10;
+  --color-primary-600: #C56800;
+  --color-primary-700: #9C5100;
+  --color-primary-800: #6F3900;
+  --color-primary-900: #4A2700;
+
   /* Typography / Type Scale */
   --text-display: var(--text-display-size);
   --text-display--line-height: var(--text-display-line-height);
@@ -119,6 +134,11 @@
     line-height: var(--text-h3-line-height);
     font-weight: var(--text-h3-weight);
   }
+  .text-h4 {
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 500;
+  }
   .text-body {
     font-size: var(--text-body-size);
     line-height: var(--text-body-line-height);
@@ -148,6 +168,86 @@
   }
   .text-metric {
     font-family: var(--font-mono);
+  }
+
+  /* Heading / body / label presets (explicit light-text tokens) */
+  .heading-aroneu {
+    font-size: var(--text-h2-size);
+    line-height: var(--text-h2-line-height);
+    font-weight: var(--text-h2-weight);
+    color: var(--color-ink);
+  }
+  .body-aroneu {
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    font-weight: var(--text-body-weight);
+    color: var(--color-ink);
+  }
+  .label-aroneu {
+    font-size: var(--text-label-size);
+    line-height: 1.2;
+    letter-spacing: var(--text-label-letter-spacing);
+    font-weight: var(--text-label-weight);
+    text-transform: uppercase;
+    color: var(--color-slate);
+  }
+  .btn-primary-aroneu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+    transition: opacity 220ms cubic-bezier(.2, 0, 0, 1);
+    text-decoration: none;
+  }
+  .btn-primary-aroneu:hover {
+    opacity: 0.9;
+  }
+  .btn-primary-aroneu:focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 2px;
+  }
+  .btn-primary-aroneu:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .btn-secondary-aroneu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: transparent;
+    color: var(--color-ink);
+    border: 1px solid var(--color-zinc-300, #d4d4d8);
+    transition: background-color 220ms cubic-bezier(.2, 0, 0, 1);
+    text-decoration: none;
+  }
+  .btn-secondary-aroneu:hover {
+    background-color: var(--color-zinc-100, #f4f4f5);
+  }
+  .btn-secondary-aroneu:focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 2px;
+  }
+  .btn-ghost-aroneu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: transparent;
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
   /* Layout Foundation */

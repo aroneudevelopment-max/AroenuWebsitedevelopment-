@@ -62,9 +62,6 @@ export function LeadershipPreview({ data }: { data?: SectionContent }) {
                 </div>
                 <div>
                   <p className="text-base font-semibold">{item.title}</p>
-                  <p className="mt-3 text-[11px] uppercase tracking-[0.2em] opacity-60">
-                    Named accountability
-                  </p>
                 </div>
               </div>
             ))}

@@ -7,6 +7,9 @@ export function ContactHero({ data }: { data?: SectionContent }) {
   const primaryBtn = "btn-primary-aroneu";
   const secondaryBtn =
     "inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium border border-zinc-300 text-ink hover:bg-zinc-100 transition-colors";
+  const imageSrc =
+    data.image ?? "/images/aroneu/home-governable-capability-poster.jpg";
+  const imageAlt = data.imageAlt ?? "";
 
   return (
     <section className="section-aroneu relative overflow-hidden surface-paper">
@@ -35,8 +38,8 @@ export function ContactHero({ data }: { data?: SectionContent }) {
 
         <div className="relative z-10 w-full aspect-[4/3] surface-sand rounded-3xl overflow-hidden border border-zinc-200">
           <Image
-            src="/images/aroneu/home-governable-capability-poster.jpg"
-            alt=""
+            src={imageSrc}
+            alt={imageAlt}
             fill
             className="object-cover"
             priority

@@ -48,9 +48,6 @@ export function AboutLeadership({ data }: { data?: SectionContent }) {
                 </div>
                 <div>
                   <p className="text-base font-semibold">{feature.heading}</p>
-                  <p className="mt-3 text-[11px] uppercase tracking-[0.2em] opacity-60">
-                    Visible owner
-                  </p>
                 </div>
               </div>
             ))}

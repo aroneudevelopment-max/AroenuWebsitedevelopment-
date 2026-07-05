@@ -26,6 +26,9 @@ export const contactPage: PageContent = {
         { label: "Book a call", href: "#scheduler" },
         { label: "Submit enquiry", href: "#contact-form", variant: "secondary" },
       ],
+      image: "/images/aroneu/contact-hero-concept.jpeg",
+      imageAlt:
+        "Abstract contact-page visual showing connected interface panels and devices across a clean white workspace.",
       visualSlot: {
         id: "hero-visual",
         purpose: "support-trust-or-action",

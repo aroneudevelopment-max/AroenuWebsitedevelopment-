@@ -22,8 +22,8 @@ export const aboutPage: PageContent = {
         "Aroneu exists to make India capability governable for European companies. We build senior teams with the structure, leadership, rhythm, and AI Workspace needed to keep work visible and accountable.",
       primaryCTA: { label: "Book a call", href: "/contact" },
       secondaryCTA: { label: "Explore the model", href: "/how-it-works" },
-      image: "/images/aroneu/abstract-visual.jpeg",
-      imageAlt: "",
+      image: "/images/aroneu/about-hero-lines.jpeg",
+      imageAlt: "Abstract Aroneu about-page composition with layered linework and a centered orange focal point.",
     },
     {
       id: "answer-block",

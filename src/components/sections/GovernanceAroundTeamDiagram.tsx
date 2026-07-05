@@ -35,36 +35,20 @@ export function GovernanceAroundTeamDiagram({
         <div className="flex justify-center relative w-full">
           <div className="relative w-full aspect-[5/4] rounded-3xl overflow-hidden border border-zinc-200 shadow-soft surface-paper">
             {data.video ? (
-              <>
-                <video
-                  src={data.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  poster={data.videoPoster || data.image}
-                  className="w-full h-full object-cover motion-reduce:hidden"
-                  aria-label={
-                    data.videoAlt ||
-                    "Diagram showing senior India team, local leadership, client rhythm, and AI Workspace governance"
-                  }
-                />
-                {data.image && (
-                  <div className="hidden motion-reduce:block relative w-full h-full">
-                    <Image
-                      src={data.image}
-                      alt={
-                        data.imageAlt ||
-                        "Diagram showing senior India team, local leadership, client rhythm, and AI Workspace governance"
-                      }
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                  </div>
-                )}
-              </>
+              <video
+                src={data.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                poster={data.videoPoster || data.image}
+                className="w-full h-full object-cover"
+                aria-label={
+                  data.videoAlt ||
+                  "Diagram showing senior India team, local leadership, client rhythm, and AI Workspace governance"
+                }
+              />
             ) : data.image ? (
               <Image
                 src={data.image}

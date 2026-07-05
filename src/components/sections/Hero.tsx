@@ -111,33 +111,19 @@ export function Hero({
             <Tilt3D>
               <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
                 {data.video ? (
-                  <>
-                    <video
-                      src={data.video}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      poster={poster}
-                      className={`w-full h-full ${videoFitClass} motion-reduce:hidden`}
-                      aria-label={
-                        data.videoAlt || data.heading || "Hero overview video"
-                      }
-                    />
-                    {poster && (
-                      <div className="hidden motion-reduce:block relative w-full h-full">
-                        <Image
-                          src={poster}
-                          alt={visualAlt}
-                          fill
-                          className={imageFitClass}
-                          priority
-                          sizes="(max-width: 1024px) 100vw, 50vw"
-                        />
-                      </div>
-                    )}
-                  </>
+                  <video
+                    src={data.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    poster={poster}
+                    className={`w-full h-full ${videoFitClass}`}
+                    aria-label={
+                      data.videoAlt || data.heading || "Hero overview video"
+                    }
+                  />
                 ) : (
                   <Image
                     src={data.image!}
@@ -158,23 +144,11 @@ export function Hero({
                 loop
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
                 poster={poster}
-                className={`w-full h-full ${videoFitClass} motion-reduce:hidden`}
+                className={`w-full h-full ${videoFitClass}`}
                 aria-label={data.videoAlt || data.heading || "Hero overview video"}
               />
-              {poster && (
-                <div className="hidden motion-reduce:block relative w-full h-full">
-                  <Image
-                    src={poster}
-                    alt={visualAlt}
-                    fill
-                    className={imageFitClass}
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              )}
             </div>
           ) : (
             <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">

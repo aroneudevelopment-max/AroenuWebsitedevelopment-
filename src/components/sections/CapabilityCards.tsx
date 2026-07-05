@@ -12,6 +12,8 @@ import { Tilt3D } from "@/components/ui/Tilt3D";
 export function CapabilityCards({ data }: { data?: SectionContent }) {
   if (!data) return null;
   const items = (data.items as any[]) || [];
+  const intro =
+    data.body ?? (typeof data.subcopy === "string" ? data.subcopy : undefined);
 
   return (
     <section className="section-aroneu surface-sand">
@@ -23,8 +25,8 @@ export function CapabilityCards({ data }: { data?: SectionContent }) {
             </span>
           )}
           {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
-          {data.body && (
-            <p className="text-body opacity-80">{data.body}</p>
+          {intro && (
+            <p className="text-body opacity-80">{intro}</p>
           )}
         </div>
       </ScrollReveal>
@@ -37,10 +39,10 @@ export function CapabilityCards({ data }: { data?: SectionContent }) {
                 className="group flex flex-col h-full p-8 md:p-12 border border-zinc-200 rounded-3xl surface-paper transition-all hover:border-zinc-300 hover:shadow-soft"
               >
                 <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-ink">
-                  {item.title}
+                  {item.title || item.heading}
                 </h3>
                 <p className="text-body opacity-80 mb-8 flex-grow">
-                  {item.description}
+                  {item.description || item.body}
                 </p>
                 {item.href && (
                   <a

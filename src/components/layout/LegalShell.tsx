@@ -1,23 +1,28 @@
 import React from "react";
+import JsonLd from "@/components/seo/JsonLd";
+import { webPageSchema } from "@/lib/schema";
 
-/**
- * LegalShell
- * - Used for /privacy, /imprint, /terms, /cookie-policy.
- * - Renders a single restrained "pending client legal copy" page.
- * - The brief forbids inventing legal text; this shell makes the pending
- *   state explicit and visible.
- */
 export function LegalShell({
   eyebrow,
   heading,
   updatedNote,
+  path,
 }: {
   eyebrow?: string;
   heading?: string;
   updatedNote?: string;
+  path: string;
 }) {
   return (
     <main className="flex min-h-screen flex-col w-full surface-paper">
+      <JsonLd
+        data={webPageSchema({
+          path,
+          name: heading || "Legal",
+          description: updatedNote || "Legal information for Aroneu.",
+        })}
+      />
+
       <section className="section-aroneu">
         <div className="container-aroneu max-w-3xl mx-auto">
           {eyebrow && (
@@ -35,9 +40,8 @@ export function LegalShell({
               Status
             </p>
             <p className="text-zinc-700">
-              Pending client legal copy. This shell renders the page header
-              and a clear status block. The final legal wording will be added
-              by Aroneu once approved and signed off by client legal.
+              This page is a legal-content shell. Approved legal wording will
+              appear here when it is ready for public release.
             </p>
           </div>
 

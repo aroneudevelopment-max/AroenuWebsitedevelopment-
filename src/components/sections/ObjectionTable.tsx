@@ -19,17 +19,23 @@ export function ObjectionTable({ data }: { data?: SectionContent }) {
           {data.items?.map((item: any, i: number) => (
             <div
               key={i}
-              className="py-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8"
+              className="py-6 grid grid-cols-1 md:grid-cols-[minmax(0,1.05fr)_minmax(0,1.95fr)] gap-5 md:gap-10"
             >
-              <div className="md:col-span-1 font-semibold flex gap-3 text-ink">
-                <span className="opacity-60 shrink-0" aria-hidden="true">
-                  ?
+              <div className="font-semibold flex gap-4 text-ink">
+                <span
+                  className="w-8 h-8 rounded-full border border-zinc-200 surface-sand text-[11px] uppercase tracking-[0.18em] text-zinc-500 flex items-center justify-center shrink-0"
+                  aria-hidden="true"
+                >
+                  Q
                 </span>
                 <span>{item.question}</span>
               </div>
-              <div className="md:col-span-2 opacity-80 flex gap-3">
-                <span className="opacity-60 shrink-0" aria-hidden="true">
-                  &rarr;
+              <div className="opacity-80 flex gap-4">
+                <span
+                  className="w-8 h-8 rounded-full border border-zinc-200 surface-paper text-[11px] uppercase tracking-[0.18em] text-zinc-500 flex items-center justify-center shrink-0"
+                  aria-hidden="true"
+                >
+                  A
                 </span>
                 <p>{item.answer}</p>
               </div>

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Maven_Pro, Newsreader } from "next/font/google";
 import "./globals.css";
 import { SiteShell } from "@/components/layout/SiteShell";
+import JsonLd from "@/components/seo/JsonLd";
+import { buildPageMetadata } from "@/lib/seo";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 const mavenPro = Maven_Pro({
   subsets: ["latin"],
@@ -15,16 +18,23 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  title: "Aroneu",
-  description: "Aroneu builds governable India capability teams for European companies, run on an AI workspace.",
+  ...buildPageMetadata({
+    title: "Aroneu - Governable India capability teams",
+    description:
+      "Senior India teams European companies can govern, supported by an AI Workspace that makes work, decisions, and controls visible.",
+    path: "/",
+    ogTitle: "Make India capability governable.",
+    ogDescription:
+      "Aroneu builds senior India capability teams for European companies, with the governance, visibility, and accountability needed to trust work at distance.",
+  }),
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-16.png', type: 'image/png', sizes: '16x16' },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16.png", type: "image/png", sizes: "16x16" },
     ],
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
 };
@@ -37,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={`antialiased ${mavenPro.variable} ${newsreader.variable}`}>
       <body className="min-h-screen flex flex-col">
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <SiteShell>
           {children}
         </SiteShell>

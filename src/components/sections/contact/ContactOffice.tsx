@@ -5,7 +5,7 @@ import { SectionContent } from "@/lib/content/types";
  * ContactOffice
  * - "Built between Europe and India." location/structure strip.
  * - Per the brief, never invent the registered address, VAT, legal
- *   office, or company record. Pending wording is intentional.
+ *   office, or company record.
  */
 export function ContactOffice({ data }: { data?: SectionContent }) {
   if (!data) return null;
@@ -18,9 +18,6 @@ export function ContactOffice({ data }: { data?: SectionContent }) {
         {data.body && (
           <p className="text-body opacity-80">{data.body as string}</p>
         )}
-        <p className="mt-4 text-caption opacity-70">
-          Registered address: pending client confirmation.
-        </p>
       </div>
     </section>
   );

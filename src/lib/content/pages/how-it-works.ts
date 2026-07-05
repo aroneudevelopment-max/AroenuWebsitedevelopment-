@@ -13,6 +13,7 @@ export const howitworksPage: PageContent = {
          governance-gate-flow asset (the operating-path / Discover-Build-Run
          supporting visual) instead of the F1 AI-workspace panel. */
       image: "/images/aroneu/governance-gate-flow.jpeg",
+      imageFit: "contain",
       primaryCTA: {
         label: "Book a call",
         href: "/contact"
@@ -45,7 +46,8 @@ export const howitworksPage: PageContent = {
           body: "Operate the team through visibility, controls, documentation, and leadership rhythm."
         }
       ],
-      image: "/images/aroneu/Aroneu_Discover_Build_Run_process_202607030450 (1).jpeg"
+      image: "/images/aroneu/discover-build-run-process.jpeg",
+      imageAlt: "Three-step process showing Discover, Build, and Run for a governed India team"
     },
     {
       type: "discover",

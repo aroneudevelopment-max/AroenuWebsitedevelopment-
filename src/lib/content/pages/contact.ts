@@ -3,12 +3,15 @@ import { PageContent } from "../types";
 export const contactPage: PageContent = {
   route: "/contact",
   slug: "contact",
-  pageJob: "Convert serious buyers into qualified conversations without pressure, hype, or a generic sales feel.",
+  pageJob:
+    "Convert serious buyers into qualified conversations without pressure, hype, or a generic sales feel.",
   seo: {
     metaTitle: "Book a call | Aroneu",
-    metaDescription: "Talk to Aroneu about the India capability team you need, the governance risks you want to control, and the visibility your leaders need.",
-    ogTitle: "Let’s talk about the team you need.",
-    ogDescription: "Share what you are trying to build. Aroneu will respond within one business day.",
+    metaDescription:
+      "Talk to Aroneu about the India capability team you need, the governance risks you want to control, and the visibility your leaders need.",
+    ogTitle: "Let's talk about the team you need.",
+    ogDescription:
+      "Share what you are trying to build. Aroneu will respond within one business day.",
   },
   sections: [
     {
@@ -16,8 +19,9 @@ export const contactPage: PageContent = {
       type: "contact-hero",
       component: "ContactHero",
       eyebrow: "Contact Aroneu",
-      heading: "Let’s talk about the team you need.",
-      subcopy: "Tell us what you are trying to build, where capability is constrained, and what level of governance your leaders need.",
+      heading: "Let's talk about the team you need.",
+      subcopy:
+        "Tell us what you are trying to build, where capability is constrained, and what level of governance your leaders need.",
       ctas: [
         { label: "Book a call", href: "#scheduler" },
         { label: "Submit enquiry", href: "#contact-form", variant: "secondary" },
@@ -26,7 +30,8 @@ export const contactPage: PageContent = {
         id: "hero-visual",
         purpose: "support-trust-or-action",
         recommendedAssetType: "photo",
-        placementNote: "restrained hero/support visual, do not put behind live body copy",
+        placementNote:
+          "restrained hero/support visual, do not put behind live body copy",
         required: false,
         doNotUse: ["decorative wallpaper", "heavy animation"],
       },
@@ -35,7 +40,8 @@ export const contactPage: PageContent = {
       id: "answer-block",
       type: "contact-answer-block",
       component: "ContactAnswerBlock",
-      body: "Use this page to speak with Aroneu about Capability Teams, the AI Workspace, a smaller pilot, or a governance problem inside an existing distributed team model.",
+      body:
+        "Use this page to speak with Aroneu about Capability Teams, the AI Workspace, a smaller pilot, or a governance problem inside an existing distributed team model.",
     },
     {
       id: "what-to-include",
@@ -43,7 +49,8 @@ export const contactPage: PageContent = {
       component: "ContactWhatToInclude",
       label: "What helps",
       heading: "A useful first note is enough.",
-      body: "You do not need a complete brief. A few clear details help us understand whether Aroneu is the right fit.",
+      body:
+        "You do not need a complete brief. A few clear details help us understand whether Aroneu is the right fit.",
       items: [
         "The capability you need.",
         "The work or function the team would support.",
@@ -55,9 +62,10 @@ export const contactPage: PageContent = {
         id: "what-to-include-support",
         purpose: "support-trust-or-action",
         recommendedAssetType: "photo",
-        placementNote: "small trust/support image if it feels serious and human (e.g. Senior_Indian_professionals... jpeg)",
+        placementNote:
+          "small trust/support image if it feels serious and human.",
         required: false,
-      }
+      },
     },
     {
       id: "reassurance",
@@ -65,7 +73,8 @@ export const contactPage: PageContent = {
       component: "ContactReassurance",
       label: "How we handle it",
       heading: "Low pressure. Clear next step.",
-      body: "We will review your note and come back within one business day. There is no obligation. Your details are handled according to our privacy policy and used to respond to this enquiry.",
+      body:
+        "We will review your note and come back within one business day. There is no obligation. Your details are handled according to our privacy policy and used to respond to this enquiry.",
     },
     {
       id: "contact-form",
@@ -133,37 +142,34 @@ export const contactPage: PageContent = {
         "Submit button: Submit enquiry",
         "Loading state: Sending your enquiry.",
         "Top-of-form error summary: Please check the highlighted fields.",
-        "Success heading: Thank you. We have received your enquiry.",
-        "Success body: We will review your note and come back within one business day. If you want to choose a time now, you can book a call below.",
-        "Success CTA: Book a call",
-        "Failure heading: Something went wrong.",
-        "Failure body: Your enquiry was not sent. Please try again, or contact Aroneu through the scheduler.",
-        "Failure CTA: Try again",
-      ]
+      ],
     },
     {
       id: "scheduler",
       type: "contact-scheduler",
       component: "ContactScheduler",
       heading: "Prefer to choose a time?",
-      body: "Book a conversation with Aroneu and tell us what you want to discuss. We will use the call to understand your team need, governance risk, and next best step.",
-      primaryCTA: { label: "Book a call", href: "#" },
+      body:
+        "Book a conversation with Aroneu and tell us what you want to discuss. We will use the call to understand your team need, governance risk, and next best step.",
+      primaryCTA: { label: "Book a call", href: "#contact-form" },
     },
     {
       id: "office-context",
       type: "contact-office",
       component: "ContactOffice",
       heading: "Built between Europe and India.",
-      body: "Aroneu works with European companies building senior India capability. Exact office and legal details should match the approved company records.",
+      body:
+        "Aroneu works with European companies building senior India capability. Exact office and legal details should match the approved company records.",
     },
     {
       id: "closing-cta",
       type: "contact-closing-cta",
       component: "ContactClosingCTA",
       heading: "Start with the governance question.",
-      body: "Tell us what your team needs to do, what your leaders need to see, and what you cannot afford to lose control of.",
+      body:
+        "Tell us what your team needs to do, what your leaders need to see, and what you cannot afford to lose control of.",
       primaryCTA: { label: "Book a call", href: "#scheduler" },
       secondaryCTA: { label: "Submit enquiry", href: "#contact-form", variant: "secondary" },
-    }
+    },
   ],
 };

@@ -19,15 +19,15 @@ export function ScrollReveal({
   const getHidden = () => {
     switch (direction) {
       case "up":
-        return { opacity: 0, y: 30 };
+        return { opacity: 1, y: 18 };
       case "down":
-        return { opacity: 0, y: -30 };
+        return { opacity: 1, y: -18 };
       case "left":
-        return { opacity: 0, x: 30 };
+        return { opacity: 1, x: 18 };
       case "right":
-        return { opacity: 0, x: -30 };
+        return { opacity: 1, x: -18 };
       default:
-        return { opacity: 0 };
+        return { opacity: 1 };
     }
   };
   

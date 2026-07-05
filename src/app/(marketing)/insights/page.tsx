@@ -1,37 +1,46 @@
 import { Metadata } from "next";
-import { insightsIndexContent } from "@/lib/content/pages/insights";
-import { insights } from "@/lib/content/insights";
+import JsonLd from "@/components/seo/JsonLd";
 import { Hero } from "@/components/sections/Hero";
 import { AnswerBlock } from "@/components/sections/AnswerBlock";
 import { FeaturedInsightCard } from "@/components/sections/insights/FeaturedInsightCard";
 import { InsightGrid } from "@/components/sections/insights/InsightGrid";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { ClosingCTA } from "@/components/sections/ClosingCTA";
+import { insightsIndexContent } from "@/lib/content/pages/insights";
+import { insights } from "@/lib/content/insights";
+import { buildPageMetadata } from "@/lib/seo";
+import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: insightsIndexContent.seo?.metaTitle,
-  description: insightsIndexContent.seo?.metaDescription,
-  openGraph: {
-    title: insightsIndexContent.seo?.ogTitle,
-    description: insightsIndexContent.seo?.ogDescription,
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: insightsIndexContent.seo?.metaTitle || "Insights - the brief | Aroneu",
+  description: insightsIndexContent.seo?.metaDescription || "",
+  path: "/insights",
+  ogTitle: insightsIndexContent.seo?.ogTitle,
+  ogDescription: insightsIndexContent.seo?.ogDescription,
+});
 
 export default function InsightsIndex() {
   const sections = insightsIndexContent.sections;
 
   return (
     <div className="page-insights flex flex-col w-full">
-      {/* 1. Hero */}
-      <Hero data={sections.find((s: any) => s.id === "hero")} />
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            path: "/insights",
+            name: insightsIndexContent.seo?.metaTitle || "Insights",
+            description: insightsIndexContent.seo?.metaDescription || "",
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Insights", path: "/insights" },
+          ]),
+        ]}
+      />
 
-      {/* 2. Answer block */}
+      <Hero data={sections.find((s: any) => s.id === "hero")} withTilt3D={false} />
       <AnswerBlock data={sections.find((s: any) => s.id === "answer")} />
-
-      {/* 3. Featured article (renders on light surface) */}
       <FeaturedInsightCard data={sections.find((s: any) => s.id === "featured-article")} />
-
-      {/* 4-7. InsightGrid handles categories, article cards, suggested themes, empty state */}
       <InsightGrid
         filterData={sections.find((s: any) => s.id === "categories")}
         articles={insights}
@@ -39,14 +48,12 @@ export default function InsightsIndex() {
         emptyStateData={sections.find((s: any) => s.id === "empty-state")}
       />
 
-      {/* 8. FAQ - on sand surface, light theme */}
       <div className="py-16 surface-sand border-t border-zinc-200">
         <div className="container-aroneu max-w-4xl mx-auto">
           <FAQSection data={sections.find((s: any) => s.id === "faq")} />
         </div>
       </div>
 
-      {/* 9. Closing CTA - on paper */}
       <div className="py-16 surface-paper">
         <ClosingCTA data={sections.find((s: any) => s.id === "closing-cta")} />
       </div>

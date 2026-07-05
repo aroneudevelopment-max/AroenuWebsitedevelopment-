@@ -1,16 +1,21 @@
+import { Metadata } from "next";
 import { LegalShell } from "@/components/layout/LegalShell";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Cookie Policy | Aroneu",
-  description: "Cookie policy — pending client legal copy."
-};
+  description: "Cookie policy information for Aroneu.",
+  path: "/cookie-policy",
+  noIndex: true,
+});
 
 export default function CookiePolicyPage() {
   return (
     <LegalShell
       eyebrow="Legal"
       heading="Cookie Policy"
-      updatedNote="This page is a legal-content shell. Final wording will be added once the Aroneu cookie policy is approved by client legal."
+      path="/cookie-policy"
+      updatedNote="This page is a legal-content shell. Final wording will be added once the Aroneu cookie policy is approved for public release."
     />
   );
 }

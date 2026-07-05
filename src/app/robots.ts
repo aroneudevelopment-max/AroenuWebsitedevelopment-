@@ -1,12 +1,13 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
+import { buildAbsoluteUrl } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/', '/preview/', '/staging/', '/*/success'],
+      userAgent: "*",
+      allow: ["/", "/images/", "/videos/", "/fonts/"],
+      disallow: ["/api/", "/preview/", "/staging/", "/*/success"],
     },
-    sitemap: 'https://aroneu.de/sitemap.xml',
-  }
+    sitemap: buildAbsoluteUrl("/sitemap.xml"),
+  };
 }

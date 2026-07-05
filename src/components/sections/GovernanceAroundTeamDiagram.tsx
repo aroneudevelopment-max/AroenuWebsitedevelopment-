@@ -1,10 +1,7 @@
 import React from "react";
+import Image from "next/image";
 import { SectionContent } from "@/lib/content/types";
-/**
- * GovernanceAroundTeamDiagram
- * - Team in center, four surrounding governance layers.
- * - Hairline rings, no heavy animations, no 3D.
- */
+
 export function GovernanceAroundTeamDiagram({
   data,
 }: {
@@ -23,56 +20,63 @@ export function GovernanceAroundTeamDiagram({
             </span>
           )}
           {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
-          {data.body && (
-            <p className="text-body opacity-80 mb-10">{data.body}</p>
-          )}
+          {data.body && <p className="text-body opacity-80 mb-10">{data.body}</p>}
 
           <div className="space-y-6">
             {items.map((item, i) => (
               <div key={i} className="pl-5 border-l-2 border-zinc-300">
-                <h3 className="text-base font-semibold mb-2 text-ink">
-                  {item.title}
-                </h3>
+                <h3 className="text-base font-semibold mb-2 text-ink">{item.title}</h3>
                 <p className="text-sm opacity-80">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="flex justify-center relative min-h-[420px]">
-          <div className="absolute inset-0 flex items-center justify-center">
-            {/* Concentric hairline rings */}
-            <div className="w-80 h-80 rounded-full border border-zinc-200" />
-            <div className="absolute w-64 h-64 rounded-full border border-zinc-300 surface-sand" />
-            <div className="absolute w-48 h-48 rounded-full border border-zinc-400" />
-            <div className="absolute w-32 h-32 rounded-full border-2 border-ink surface-ink text-paper flex flex-col items-center justify-center font-semibold text-center leading-tight shadow-soft">
-              <span className="text-[10px] uppercase tracking-widest opacity-80">
-                Aroneu
-              </span>
-              <span>
-                Capability
-                <br />
-                Team
-              </span>
-            </div>
-
-            {/* Layer labels mapped to the four rings */}
-            {items.slice(0, 4).map((item, i) => {
-              const positions = [
-                "top-4 left-1/2 -translate-x-1/2",
-                "top-1/2 -translate-y-1/2 left-2",
-                "top-1/2 -translate-y-1/2 right-2",
-                "bottom-4 left-1/2 -translate-x-1/2",
-              ];
-              return (
-                <span
-                  key={i}
-                  className={`absolute text-[11px] font-medium opacity-70 px-2 py-1 rounded-md border border-zinc-200 surface-paper whitespace-nowrap ${positions[i]}`}
-                >
-                  {item.title}
-                </span>
-              );
-            })}
+        <div className="flex justify-center relative w-full">
+          <div className="relative w-full aspect-[5/4] rounded-3xl overflow-hidden border border-zinc-200 shadow-soft surface-paper">
+            {data.video ? (
+              <>
+                <video
+                  src={data.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  poster={data.videoPoster || data.image}
+                  className="w-full h-full object-cover motion-reduce:hidden"
+                  aria-label={
+                    data.videoAlt ||
+                    "Diagram showing senior India team, local leadership, client rhythm, and AI Workspace governance"
+                  }
+                />
+                {data.image && (
+                  <div className="hidden motion-reduce:block relative w-full h-full">
+                    <Image
+                      src={data.image}
+                      alt={
+                        data.imageAlt ||
+                        "Diagram showing senior India team, local leadership, client rhythm, and AI Workspace governance"
+                      }
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                )}
+              </>
+            ) : data.image ? (
+              <Image
+                src={data.image}
+                alt={
+                  data.imageAlt ||
+                  "Diagram showing senior India team, local leadership, client rhythm, and AI Workspace governance"
+                }
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            ) : null}
           </div>
         </div>
       </div>

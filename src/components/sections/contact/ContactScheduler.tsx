@@ -28,12 +28,6 @@ export function ContactScheduler({ data }: { data?: SectionContent }) {
             {data.primaryCTA.label}
           </a>
         )}
-        <p className="mt-6 text-caption opacity-70 max-w-xl mx-auto">
-          Scheduler integration is intentionally pending. Until the
-          approved scheduler (Cal.com or HubSpot Meetings) is connected, the
-          &ldquo;Book a call&rdquo; button links to the contact form below so the
-          enquiry is captured honestly without a fake booking.
-        </p>
       </div>
     </section>
   );

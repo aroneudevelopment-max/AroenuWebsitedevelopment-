@@ -71,7 +71,12 @@ export type SectionContent = {
   faqs?: FAQItem[];
   outcome?: string;
   image?: string;
+  imageAlt?: string;
+  imageFit?: "cover" | "contain";
   video?: string;
+  videoAlt?: string;
+  videoPoster?: string;
+  videoFit?: "cover" | "contain";
   visualSlot?: VisualSlot;
   pendingProof?: boolean;
   sourceStatus?: "approved" | "provided" | "needs-verification" | "pending";

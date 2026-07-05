@@ -1,18 +1,23 @@
 import { Metadata } from "next";
-import { howitworksPage } from "../../../lib/content/pages/how-it-works";
-import { Hero } from "../../../components/sections/Hero";
-import { AnswerBlock } from "../../../components/sections/AnswerBlock";
-import { ProcessOverview } from "../../../components/sections/ProcessOverview";
-import { DiscoverPlanningCards } from "../../../components/sections/DiscoverPlanningCards";
-import { BuildSetupCards } from "../../../components/sections/BuildSetupCards";
-import { RunGovernanceRhythm } from "../../../components/sections/RunGovernanceRhythm";
-import { HandoverContinuityPath } from "../../../components/sections/HandoverContinuityPath";
-import { ClosingCTA } from "../../../components/sections/ClosingCTA";
+import JsonLd from "@/components/seo/JsonLd";
+import { Hero } from "@/components/sections/Hero";
+import { AnswerBlock } from "@/components/sections/AnswerBlock";
+import { ProcessOverview } from "@/components/sections/ProcessOverview";
+import { DiscoverPlanningCards } from "@/components/sections/DiscoverPlanningCards";
+import { BuildSetupCards } from "@/components/sections/BuildSetupCards";
+import { RunGovernanceRhythm } from "@/components/sections/RunGovernanceRhythm";
+import { HandoverContinuityPath } from "@/components/sections/HandoverContinuityPath";
+import { ClosingCTA } from "@/components/sections/ClosingCTA";
+import { howitworksPage } from "@/lib/content/pages/how-it-works";
+import { buildPageMetadata } from "@/lib/seo";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "Start lean. Build with confidence. | Aroneu",
-  description: "Aroneu starts with the capability you need, then builds the team, context, rhythm, and controls around it.",
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: "How it works - Discover, Build, Run | Aroneu",
+  description:
+    "Start lean and build with confidence: how Aroneu stands up and governs a dedicated India team.",
+  path: "/how-it-works",
+});
 
 export default function HowItWorksPage() {
   const { sections } = howitworksPage;
@@ -28,6 +33,21 @@ export default function HowItWorksPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between w-full">
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: "/how-it-works",
+            name: "How it works - Discover, Build, Run | Aroneu",
+            description:
+              "Start lean and build with confidence: how Aroneu stands up and governs a dedicated India team.",
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "How it works", path: "/how-it-works" },
+          ]),
+        ]}
+      />
+
       <Hero data={heroData} withTilt3D={false} />
       <AnswerBlock data={answerBlockData} />
       <ProcessOverview data={processOverviewData} />

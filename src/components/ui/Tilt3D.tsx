@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface Tilt3DProps {
@@ -19,7 +19,6 @@ interface Tilt3DProps {
  */
 export function Tilt3D({ children, className = "" }: Tilt3DProps) {
   const ref = useRef(null);
-  const [mounted, setMounted] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -27,18 +26,6 @@ export function Tilt3D({ children, className = "" }: Tilt3DProps) {
 
   const rotateX = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <div ref={ref} className={className}>
-        {children}
-      </div>
-    );
-  }
 
   return (
     <div ref={ref} style={{ perspective: 1200 }} className={className}>

@@ -2,13 +2,6 @@ import React from "react";
 import { SectionContent } from "@/lib/content/types";
 import Image from "next/image";
 
-/**
- * ContactWhatToInclude
- * - "A useful first note is enough" list of 5 helpful items.
- * - Right column: approved senior-professionals image used as a general
- *   people/team-support visual (per Burhan decision 8 — not a fake
- *   leadership portrait). Loads from the clean /images/aroneu/ path.
- */
 export function ContactWhatToInclude({ data }: { data?: SectionContent }) {
   if (!data) return null;
   return (
@@ -20,14 +13,8 @@ export function ContactWhatToInclude({ data }: { data?: SectionContent }) {
               {data.label}
             </span>
           )}
-          {data.heading && (
-            <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>
-          )}
-          {data.body && (
-            <p className="text-body opacity-80 mb-8 max-w-lg">
-              {data.body as string}
-            </p>
-          )}
+          {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
+          {data.body && <p className="text-body opacity-80 mb-8 max-w-lg">{data.body as string}</p>}
 
           {data.items && data.items.length > 0 && (
             <ul className="space-y-4">
@@ -51,9 +38,7 @@ export function ContactWhatToInclude({ data }: { data?: SectionContent }) {
                       />
                     </svg>
                   </span>
-                  <span className="text-body opacity-80">
-                    {item as string}
-                  </span>
+                  <span className="text-body opacity-80">{item as string}</span>
                 </li>
               ))}
             </ul>
@@ -62,8 +47,8 @@ export function ContactWhatToInclude({ data }: { data?: SectionContent }) {
 
         <div className="relative w-full aspect-[4/3] lg:aspect-auto lg:h-[520px] rounded-3xl overflow-hidden border border-zinc-200 surface-paper">
           <Image
-            src="/images/aroneu/senior-professionals.jpeg"
-            alt="Aroneu team — general people and team-support visual"
+            src="/images/aroneu/senior-professionals-general.jpeg"
+            alt="Senior professionals reviewing governance and operating rhythm"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"

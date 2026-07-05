@@ -1,7 +1,5 @@
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-
 export function AboutLeadership({ data }: { data?: SectionContent }) {
   if (!data) return null;
 
@@ -12,7 +10,7 @@ export function AboutLeadership({ data }: { data?: SectionContent }) {
   return (
     <section className="section-aroneu">
       <div className="container-aroneu grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <ScrollReveal direction="up">
+        
           {data.label && (
             <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
               {data.label}
@@ -51,12 +49,12 @@ export function AboutLeadership({ data }: { data?: SectionContent }) {
               {data.primaryCTA.label}
             </a>
           )}
-        </ScrollReveal>
+        
 
         {/* Restrained visual placeholder area. Per the placement doc: no fake
            people photos on the named-leadership card. Use a sand panel with
            a calm typographic mark. */}
-        <ScrollReveal direction="left" delay={0.15}>
+        
           <div className="relative rounded-2xl overflow-hidden border border-zinc-200 surface-sand aspect-[4/3] flex items-center justify-center">
             <div className="text-center max-w-xs px-6">
               <div
@@ -71,7 +69,7 @@ export function AboutLeadership({ data }: { data?: SectionContent }) {
               </p>
             </div>
           </div>
-        </ScrollReveal>
+        
       </div>
     </section>
   );

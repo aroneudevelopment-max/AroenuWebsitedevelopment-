@@ -7,6 +7,7 @@ import { CapabilityCards } from "@/components/sections/CapabilityCards";
 import { StepRow } from "@/components/sections/StepRow";
 import { StatQuad } from "@/components/sections/StatQuad";
 import { LeadershipPreview } from "@/components/sections/LeadershipPreview";
+import { CareersBridge } from "@/components/sections/CareersBridge";
 import { ClosingCTA } from "@/components/sections/ClosingCTA";
 import { FAQSection } from "@/components/sections/FAQSection";
 
@@ -45,44 +46,16 @@ export default function Home() {
       {/* 7. Leadership / named accountability */}
       <LeadershipPreview data={sections.find((s) => s.id === "leadership")} />
 
-      {/* 8. Careers bridge */}
-      <section className="section-aroneu surface-ink text-center">
-        <div className="container-aroneu max-w-3xl mx-auto">
-          {(() => {
-            const data = sections.find((s) => s.id === "careers-bridge") as any;
-            if (!data) return null;
-            return (
-              <>
-                {data.eyebrow && (
-                  <span className="text-label uppercase tracking-widest block mb-4 text-zinc-400">
-                    {data.eyebrow}
-                  </span>
-                )}
-                {data.heading && (
-                  <h2 className="text-h2 mb-6 text-paper">{data.heading}</h2>
-                )}
-                {data.body && (
-                  <p className="text-body text-zinc-300 mb-10">{data.body}</p>
-                )}
-                {data.ctas?.[0] && (
-                  <a
-                    href={data.ctas[0].href}
-                    className="inline-block px-8 py-4 rounded-full text-base font-medium border border-zinc-500 text-paper hover:bg-zinc-900 transition-colors"
-                  >
-                    {data.ctas[0].label} &rarr;
-                  </a>
-                )}
-              </>
-            );
-          })()}
-        </div>
-      </section>
+      {/* 8. Careers bridge (dark surface) */}
+      <CareersBridge data={sections.find((s) => s.id === "careers-bridge")} />
 
       {/* 9. Closing CTA */}
-      <ClosingCTA data={sections.find((s) => s.id === "closing-cta")} />
+      <div className="surface-paper">
+        <ClosingCTA data={sections.find((s) => s.id === "closing-cta")} />
+      </div>
 
-      {/* 10. FAQ */}
-      <section className="section-aroneu surface-sand border-t border-zinc-200">
+      {/* 10. FAQ (on light surface, no dark-on-dark) */}
+      <section className="section-aroneu surface-paper border-t border-zinc-200">
         <div className="container-aroneu max-w-4xl mx-auto">
           <FAQSection data={sections.find((s) => s.id === "homepage-faq")} />
         </div>

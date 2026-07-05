@@ -1,7 +1,5 @@
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-
 export function InternaliseTransferDiagram({ data }: { data?: SectionContent }) {
   if (!data) return null;
   const steps = ["Governed team", "Documented knowledge", "Continuity / Optional transfer"];
@@ -30,12 +28,7 @@ export function InternaliseTransferDiagram({ data }: { data?: SectionContent }) 
         />
 
         {steps.map((label, i) => (
-          <ScrollReveal
-            key={i}
-            direction="up"
-            delay={i * 0.1}
-            className="z-10"
-          >
+          
             <div className="min-w-0 flex flex-col items-center p-6 rounded-2xl border border-zinc-200 surface-paper shadow-sm w-full md:w-auto">
               <span className="w-10 h-10 rounded-full border border-zinc-300 surface-paper text-ink flex items-center justify-center font-mono text-sm mb-3">
                 {String(i + 1).padStart(2, "0")}
@@ -44,7 +37,7 @@ export function InternaliseTransferDiagram({ data }: { data?: SectionContent }) 
                 {label}
               </span>
             </div>
-          </ScrollReveal>
+          
         ))}
       </div>
 

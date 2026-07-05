@@ -1,7 +1,5 @@
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-
 /**
  * DataResponsibilityDiagram
  * - 5-step source -> access -> approval -> owner -> output.
@@ -53,12 +51,7 @@ export function DataResponsibilityDiagram({
 
         <div className="z-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-2 relative">
           {diagramSteps.map((step, i) => (
-            <ScrollReveal
-              key={step.id}
-              direction="up"
-              delay={i * 0.08}
-              className="min-w-0 w-full md:w-44"
-            >
+            
               <div className="flex flex-col items-center p-4 rounded-xl border border-zinc-200 surface-paper shadow-sm transition-transform hover:-translate-y-px">
                 <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-500 mb-1">
                   0{i + 1}
@@ -67,7 +60,7 @@ export function DataResponsibilityDiagram({
                   {step.label}
                 </span>
               </div>
-            </ScrollReveal>
+            
           ))}
         </div>
       </div>

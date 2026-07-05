@@ -3,8 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import { SectionContent } from "@/lib/content/types";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-
 export function LeadershipPreview({ data }: { data?: SectionContent }) {
   if (!data) return null;
   const items = (data.items as any[]) || [];
@@ -12,7 +10,7 @@ export function LeadershipPreview({ data }: { data?: SectionContent }) {
   return (
     <section className="section-aroneu">
       <div className="container-aroneu grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <ScrollReveal direction="up" className="order-2 md:order-1">
+        
           <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-200 surface-sand flex items-center justify-center">
             <div className="text-center max-w-xs px-6">
               <div className="text-label uppercase tracking-widest text-zinc-500 mb-3">
@@ -24,13 +22,9 @@ export function LeadershipPreview({ data }: { data?: SectionContent }) {
               </p>
             </div>
           </div>
-        </ScrollReveal>
+        
 
-        <ScrollReveal
-          direction="left"
-          delay={0.15}
-          className="order-1 md:order-2"
-        >
+        
           {data.eyebrow && (
             <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
               {data.eyebrow}
@@ -63,7 +57,7 @@ export function LeadershipPreview({ data }: { data?: SectionContent }) {
               {data.ctas[0].label}
             </a>
           )}
-        </ScrollReveal>
+        
       </div>
     </section>
   );

@@ -1,11 +1,8 @@
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-
 /**
  * GovernanceAroundTeamDiagram
  * - Team in center, four surrounding governance layers.
- * - Restrained reveal via ScrollReveal per layer (per the motion brief).
  * - Hairline rings, no heavy animations, no 3D.
  */
 export function GovernanceAroundTeamDiagram({
@@ -25,33 +22,24 @@ export function GovernanceAroundTeamDiagram({
               {data.eyebrow}
             </span>
           )}
-          {data.heading && <h2 className="text-h2 mb-6">{data.heading}</h2>}
+          {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
           {data.body && (
             <p className="text-body text-zinc-600 mb-10">{data.body}</p>
           )}
 
           <div className="space-y-6">
             {items.map((item, i) => (
-              <ScrollReveal
-                key={i}
-                direction="up"
-                delay={i * 0.1}
-                className="pl-5 border-l-2 border-zinc-300"
-              >
+              <div key={i} className="pl-5 border-l-2 border-zinc-300">
                 <h3 className="text-base font-semibold mb-2 text-ink">
                   {item.title}
                 </h3>
                 <p className="text-sm text-zinc-600">{item.description}</p>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
         </div>
 
-        <ScrollReveal
-          direction="left"
-          delay={0.15}
-          className="flex justify-center relative min-h-[420px]"
-        >
+        <div className="flex justify-center relative min-h-[420px]">
           <div className="absolute inset-0 flex items-center justify-center">
             {/* Concentric hairline rings */}
             <div className="w-80 h-80 rounded-full border border-zinc-200" />
@@ -86,7 +74,7 @@ export function GovernanceAroundTeamDiagram({
               );
             })}
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );

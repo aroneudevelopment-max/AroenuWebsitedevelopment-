@@ -1,7 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
-
 export function FeaturedInsightCard({ data }: { data: any }) {
   if (!data) return null;
 
@@ -14,22 +12,15 @@ export function FeaturedInsightCard({ data }: { data: any }) {
     <section className="py-24 border-y border-zinc-200 surface-paper">
       <div className="container-aroneu">
         <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-center">
-          <ScrollReveal
-            direction="up"
-            className="w-full md:w-1/2 flex flex-col items-start space-y-6"
-          >
+          
             <span className="text-label uppercase tracking-widest text-zinc-500">
               {data.label}
             </span>
             <h2 className="text-h2 text-ink">{data.heading}</h2>
             <p className="text-body text-zinc-600">{data.body}</p>
-          </ScrollReveal>
+          
 
-          <ScrollReveal
-            direction="left"
-            delay={0.15}
-            className="w-full md:w-1/2"
-          >
+          
             <Link
               href={href}
               className="group min-w-0 block rounded-2xl overflow-hidden border border-zinc-200 surface-sand transition-all hover:border-zinc-300 hover:shadow-soft"
@@ -78,7 +69,7 @@ export function FeaturedInsightCard({ data }: { data: any }) {
                 )}
               </div>
             </Link>
-          </ScrollReveal>
+          
         </div>
       </div>
     </section>

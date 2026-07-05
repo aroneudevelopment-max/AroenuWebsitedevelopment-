@@ -124,6 +124,12 @@
    Base Layer — Global defaults
    ═══════════════════════════════════════════════════════════════════ */
 @layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
   html, body {
     background-color: var(--color-paper);
     color: var(--color-ink);
@@ -149,6 +155,11 @@
     overflow-x: hidden;
   }
 
+  img,
+  video {
+    max-width: 100%;
+  }
+
   *:focus-visible {
     outline: 2px solid var(--color-orange);
     outline-offset: 2px;
@@ -168,12 +179,12 @@
     font-weight: var(--text-display-weight);
   }
   .text-h1 {
-    font-size: var(--text-h1-size);
+    font-size: clamp(2.5rem, 2rem + 1.6vw, var(--text-h1-size));
     line-height: var(--text-h1-line-height);
     font-weight: var(--text-h1-weight);
   }
   .text-h2 {
-    font-size: var(--text-h2-size);
+    font-size: clamp(2rem, 1.6rem + 1vw, var(--text-h2-size));
     line-height: var(--text-h2-line-height);
     font-weight: var(--text-h2-weight);
   }
@@ -308,6 +319,10 @@
     margin-right: auto;
     padding-left: var(--container-padding-mobile);
     padding-right: var(--container-padding-mobile);
+  }
+
+  .container-aroneu > * {
+    min-width: 0;
   }
   @media (min-width: 1024px) {
     .container-aroneu {

@@ -21,11 +21,9 @@ type SubmitStatus = "idle" | "submitting" | "pending" | "error";
  *
  * Honest behaviour, per the brief:
  * - Validates client-side only.
- * - On submit, sets status to "pending" and tells the user the enquiry
- *   is queued locally and will be delivered once the email/CRM
- *   integration is connected. NO fake success animation.
- * - The submit button always reflects the current status (Sending,
- *   Pending backend).
+ * - On submit, sets status to "pending" and explains that the form is
+ *   not sending yet. No fake success animation or delivery claim.
+ * - The submit button always reflects the current status.
  * - Form fields, labels, errors, and helper text are styled with
  *   explicit light-text tokens (no dark-on-dark anywhere).
  */
@@ -78,10 +76,6 @@ export function ContactForm({ data }: { data?: SectionContent }) {
       return;
     }
     setStatus("submitting");
-    // Honest: there is no real backend yet. We do NOT fake a success
-    // state. We tell the user the enquiry is queued locally and that a
-    // real delivery will be wired once the email/CRM integration is
-    // connected.
     setTimeout(() => {
       setStatus("pending");
     }, 600);
@@ -95,9 +89,7 @@ export function ContactForm({ data }: { data?: SectionContent }) {
       <div className="container-aroneu max-w-3xl mx-auto">
         <div className="mb-12 text-center">
           {data.heading && <h2 className="text-h2 mb-4 text-ink">{data.heading}</h2>}
-          {data.subcopy && (
-            <p className="text-body opacity-80">{data.subcopy}</p>
-          )}
+          {data.subcopy && <p className="text-body opacity-80">{data.subcopy}</p>}
         </div>
 
         <form
@@ -152,8 +144,9 @@ export function ContactForm({ data }: { data?: SectionContent }) {
                   value={formData[field.name] || ""}
                   onChange={(e) => {
                     setFormData({ ...formData, [field.name]: e.target.value });
-                    if (errors[field.name])
+                    if (errors[field.name]) {
                       setErrors({ ...errors, [field.name]: "" });
+                    }
                   }}
                   aria-invalid={errors[field.name] ? "true" : "false"}
                   aria-describedby={`${field.name}-helper`}
@@ -178,8 +171,9 @@ export function ContactForm({ data }: { data?: SectionContent }) {
                   value={formData[field.name] || ""}
                   onChange={(e) => {
                     setFormData({ ...formData, [field.name]: e.target.value });
-                    if (errors[field.name])
+                    if (errors[field.name]) {
                       setErrors({ ...errors, [field.name]: "" });
+                    }
                   }}
                   aria-invalid={errors[field.name] ? "true" : "false"}
                   aria-describedby={`${field.name}-helper`}
@@ -195,8 +189,9 @@ export function ContactForm({ data }: { data?: SectionContent }) {
                   value={formData[field.name] || ""}
                   onChange={(e) => {
                     setFormData({ ...formData, [field.name]: e.target.value });
-                    if (errors[field.name])
+                    if (errors[field.name]) {
                       setErrors({ ...errors, [field.name]: "" });
+                    }
                   }}
                   aria-invalid={errors[field.name] ? "true" : "false"}
                   aria-describedby={`${field.name}-helper`}
@@ -204,17 +199,11 @@ export function ContactForm({ data }: { data?: SectionContent }) {
               )}
 
               <div className="mt-1.5 flex items-center justify-between gap-2">
-                <p
-                  id={`${field.name}-helper`}
-                  className="text-xs opacity-70"
-                >
+                <p id={`${field.name}-helper`} className="text-xs opacity-70">
                   {field.helperText}
                 </p>
                 {errors[field.name] && (
-                  <p
-                    className="text-xs font-medium text-red-600"
-                    role="alert"
-                  >
+                  <p className="text-xs font-medium text-red-600" role="alert">
                     {errors[field.name]}
                   </p>
                 )}
@@ -237,8 +226,9 @@ export function ContactForm({ data }: { data?: SectionContent }) {
                       ...formData,
                       consent: e.target.checked ? "true" : "",
                     });
-                    if (errors["consent"])
+                    if (errors["consent"]) {
                       setErrors({ ...errors, consent: "" });
+                    }
                   }}
                   aria-invalid={errors["consent"] ? "true" : "false"}
                   aria-describedby="consent-helper"
@@ -255,10 +245,7 @@ export function ContactForm({ data }: { data?: SectionContent }) {
               {getNote("Consent helper")}
             </p>
             {errors["consent"] && (
-              <p
-                className="text-xs font-medium text-red-600 ml-7"
-                role="alert"
-              >
+              <p className="text-xs font-medium text-red-600 ml-7" role="alert">
                 {errors["consent"]}
               </p>
             )}
@@ -271,7 +258,7 @@ export function ContactForm({ data }: { data?: SectionContent }) {
               className="btn-primary-aroneu w-full sm:w-auto"
             >
               {status === "submitting"
-                ? getNote("Loading state") || "Sending…"
+                ? getNote("Loading state") || "Sending..."
                 : getNote("Submit button") || "Submit enquiry"}
             </button>
           </div>
@@ -287,19 +274,12 @@ export function ContactForm({ data }: { data?: SectionContent }) {
               }}
             >
               <p className="text-sm font-semibold mb-1">
-                Your enquiry is queued locally.
+                Enquiry sending is not active yet.
               </p>
               <p className="text-sm">
-                No email/CRM integration is connected yet. Your details are
-                stored only in this browser session and will be delivered
-                once the backend is wired. You can also email{" "}
-                <a
-                  href="mailto:hello@aroneu.com"
-                  className="underline underline-offset-2 font-medium"
-                >
-                  hello@aroneu.com
-                </a>{" "}
-                directly in the meantime.
+                This form is not submitting to a live inbox yet. Please use
+                the Book a call option on this page to continue the
+                conversation safely.
               </p>
             </div>
           )}

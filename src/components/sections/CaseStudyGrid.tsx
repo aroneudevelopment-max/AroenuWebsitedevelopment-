@@ -74,7 +74,7 @@ export function CaseStudyGrid({
             {filteredCases.map((caseStudy) => (
               <Link
                 key={caseStudy.slug}
-                href={`/case-studies/${caseStudy.slug}`}
+                href="/contact"
                 className="group min-w-0 flex flex-col border border-zinc-200 rounded-2xl surface-paper overflow-hidden hover:border-zinc-300 hover:shadow-soft transition-all h-full"
               >
                 <div className="p-6 md:p-8 flex flex-col h-full">
@@ -108,7 +108,7 @@ export function CaseStudyGrid({
                   </div>
 
                   <div className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-ink group-hover:opacity-80 transition-opacity">
-                    Read the case study{" "}
+                    Discuss relevant proof{" "}
                     <span
                       aria-hidden="true"
                       className="group-hover:translate-x-1 transition-transform"

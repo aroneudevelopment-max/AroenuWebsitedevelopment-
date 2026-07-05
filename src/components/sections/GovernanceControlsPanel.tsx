@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { SectionContent } from "@/lib/content/types";
 
 export function GovernanceControlsPanel({ data }: { data?: SectionContent }) {
@@ -15,9 +16,7 @@ export function GovernanceControlsPanel({ data }: { data?: SectionContent }) {
             </span>
           )}
           {data.heading && <h2 className="text-h2 mb-6">{data.heading}</h2>}
-          {data.body && (
-            <p className="text-body opacity-80 mb-10">{data.body}</p>
-          )}
+          {data.body && <p className="text-body opacity-80 mb-10">{data.body}</p>}
           <div className="grid grid-cols-2 gap-4">
             {data.items?.map((item: any, i: number) => (
               <div key={i} className="p-4 border border-zinc-200 rounded-lg surface-paper">
@@ -28,25 +27,17 @@ export function GovernanceControlsPanel({ data }: { data?: SectionContent }) {
         </div>
 
         <div className="flex-1 flex flex-col items-stretch relative w-full">
-          {panelData.video ? (
-            <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 shadow-sm">
-              <video
-                src={panelData.video}
-                poster={panelData.image}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          ) : panelData.image ? (
-            <div className="relative w-full rounded-2xl overflow-hidden border border-zinc-200 shadow-sm">
-              <img
+          {panelData.image ? (
+            <div className="relative w-full aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-sm">
+              <Image
                 src={panelData.image}
-                alt="Governance controls panel"
-                className="w-full h-auto object-cover"
-                loading="lazy"
+                alt={
+                  panelData.imageAlt ||
+                  "AI Workspace preview showing team health, governance controls, decisions, and AI-supported insight"
+                }
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           ) : null}

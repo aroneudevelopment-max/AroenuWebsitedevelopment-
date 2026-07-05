@@ -3,6 +3,7 @@ import Link from "next/link";
 import { primaryNavigation } from "@/lib/navigation";
 import { routes } from "@/lib/routes";
 import { AroneuLogo } from "@/components/brand/AroneuLogo";
+import { MobileNav } from "./MobileNav";
 
 /**
  * Header
@@ -13,7 +14,7 @@ import { AroneuLogo } from "@/components/brand/AroneuLogo";
  */
 export function Header() {
   return (
-    <header className="header-aroneu surface-paper flex items-center justify-between gap-4 px-6 py-4 border-b border-zinc-200 md:px-12">
+    <header className="header-aroneu min-w-0 flex flex-1 items-center justify-between gap-4">
       <div className="logo-container shrink-0">
         <Link
           href={routes.home}
@@ -25,7 +26,7 @@ export function Header() {
       </div>
 
       <nav
-        className="desktop-nav hidden md:flex items-center gap-6 lg:gap-8"
+        className="desktop-nav hidden min-w-0 md:flex items-center gap-6 lg:gap-8"
         aria-label="Primary Navigation"
       >
         {primaryNavigation.map((item) => (
@@ -48,7 +49,7 @@ export function Header() {
         </Link>
       </div>
 
-      {/* Mobile nav button rendered by MobileNav, placed via the layout */}
+      <MobileNav />
     </header>
   );
 }

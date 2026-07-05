@@ -1,122 +1,105 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { careerRoleTemplateContent, careerApplicationFormContent } from '@/lib/content/pages/careers';
-import { approvedCareers } from '@/lib/content/careers';
-import { CareerApplicationForm } from '@/components/sections/CareerApplicationForm';
-import Link from 'next/link';
+import { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { careerRoleTemplateContent, careerApplicationFormContent } from "@/lib/content/pages/careers";
+import { approvedCareers } from "@/lib/content/careers";
+import { CareerApplicationForm } from "@/components/sections/CareerApplicationForm";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
-  // If there are no public roles, we still need to return at least an empty array for SSG
   return approvedCareers
-    .filter(role => role.isApprovedForPublic)
-    .map(role => ({
-      slug: role.slug
+    .filter((role) => role.isApprovedForPublic)
+    .map((role) => ({
+      slug: role.slug,
     }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const role = approvedCareers.find(r => r.slug === params.slug && r.isApprovedForPublic);
+export function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Metadata {
+  const role = approvedCareers.find(
+    (r) => r.slug === params.slug && r.isApprovedForPublic,
+  );
 
   if (!role) {
-    return {
-      title: 'Role Pending | Aroneu',
-      description: 'This role is pending approved hiring details.'
-    };
+    return buildPageMetadata({
+      title: "Careers | Aroneu",
+      description: careersIndexFallbackDescription,
+      path: `/careers/${params.slug}`,
+      noIndex: true,
+    });
   }
 
-  const metaTitle = role.seo?.metaTitle || careerRoleTemplateContent.seo.metaTitle.replace('[Role title]', role.title);
-  const metaDescription = role.seo?.metaDescription || careerRoleTemplateContent.seo.metaDescription.replace('[role title]', role.title);
-  const ogTitle = role.seo?.ogTitle || careerRoleTemplateContent.seo.ogTitle.replace('[Role title]', role.title);
-  const ogDescription = role.seo?.ogDescription || careerRoleTemplateContent.seo.ogDescription;
-
-  return {
-    title: metaTitle,
-    description: metaDescription,
-    openGraph: {
-      title: ogTitle,
-      description: ogDescription,
-      url: `/careers/${params.slug}`
-    },
-    alternates: {
-      canonical: `/careers/${params.slug}`
-    }
-  };
+  return buildPageMetadata({
+    title:
+      role.seo?.metaTitle ||
+      careerRoleTemplateContent.seo.metaTitle.replace("[Role title]", role.title),
+    description:
+      role.seo?.metaDescription ||
+      careerRoleTemplateContent.seo.metaDescription.replace("[role title]", role.title),
+    path: `/careers/${params.slug}`,
+    ogTitle:
+      role.seo?.ogTitle ||
+      careerRoleTemplateContent.seo.ogTitle.replace("[Role title]", role.title),
+    ogDescription:
+      role.seo?.ogDescription || careerRoleTemplateContent.seo.ogDescription,
+  });
 }
 
-export default function CareerRolePage({ params }: { params: { slug: string } }) {
-  const role = approvedCareers.find(r => r.slug === params.slug && r.isApprovedForPublic);
+const careersIndexFallbackDescription =
+  "Approved role details are published only when a live opening is ready for public release.";
+
+export default function CareerRolePage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const role = approvedCareers.find(
+    (r) => r.slug === params.slug && r.isApprovedForPublic,
+  );
 
   if (!role) {
-    // Return safe pending state
-    return (
-      <section className="section-aroneu flex min-h-[60vh] flex-col items-center justify-center text-center">
-        <div className="container-aroneu max-w-2xl">
-          <h1 className="text-h2 text-aroneu-neutral-900">Role Pending</h1>
-          <p className="mt-4 text-body text-aroneu-neutral-600">This role is pending approved hiring details.</p>
-          <div className="mt-8">
-            <Link 
-              href="/careers"
-              className="inline-flex items-center text-label font-medium text-aroneu-core-600 hover:text-aroneu-core-700"
-            >
-              <svg className="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-              Back to Careers
-            </Link>
-          </div>
-        </div>
-      </section>
-    );
+    notFound();
   }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "JobPosting",
-            "title": role.title,
-            "description": role.summary || role.responsibilities || '',
-            "employmentType": role.employmentType || "FULL_TIME",
-            "hiringOrganization": {
-              "@type": "Organization",
-              "name": "Aroneu",
-              "sameAs": "https://www.aroneu.com"
-            }
-          })
-        }}
-      />
-
       <section className="section-aroneu bg-white pt-24 lg:pt-32">
         <div className="container-aroneu">
           <div className="mx-auto max-w-3xl">
             <div className="mb-8">
-              <Link 
+              <Link
                 href="/careers"
                 className="inline-flex items-center text-label font-medium text-aroneu-neutral-500 hover:text-aroneu-neutral-900 transition-colors"
               >
-                <svg className="mr-1.5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg
+                  className="mr-1.5 h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
                 {careerRoleTemplateContent.hero.eyebrow}
               </Link>
             </div>
-            
+
             <h1 className="text-h1 text-aroneu-neutral-900">{role.title}</h1>
             <p className="mt-6 text-lead text-aroneu-neutral-600 max-w-prose">
               {careerRoleTemplateContent.hero.subcopy}
             </p>
-            
+
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link 
+              <Link
                 href={careerRoleTemplateContent.hero.primaryCta.href}
                 className="inline-flex items-center rounded-full bg-aroneu-core-600 px-6 py-3 text-label text-white transition-colors hover:bg-aroneu-core-700"
               >
                 {careerRoleTemplateContent.hero.primaryCta.label}
               </Link>
-              <Link 
+              <Link
                 href={careerRoleTemplateContent.hero.secondaryCta.href}
                 className="inline-flex items-center rounded-full bg-aroneu-neutral-100 px-6 py-3 text-label text-aroneu-neutral-900 transition-colors hover:bg-aroneu-neutral-200"
               >
@@ -167,23 +150,34 @@ export default function CareerRolePage({ params }: { params: { slug: string } })
       <section className="section-aroneu bg-white">
         <div className="container-aroneu">
           <div className="mx-auto max-w-3xl space-y-16">
-            
             {role.responsibilities && (
               <div>
-                <h2 className="text-h3 text-aroneu-neutral-900">{careerRoleTemplateContent.whatYouWillWorkOn.heading}</h2>
-                <div className="mt-6 text-body text-aroneu-neutral-600 max-w-prose space-y-4" dangerouslySetInnerHTML={{ __html: role.responsibilities }} />
+                <h2 className="text-h3 text-aroneu-neutral-900">
+                  {careerRoleTemplateContent.whatYouWillWorkOn.heading}
+                </h2>
+                <div
+                  className="mt-6 text-body text-aroneu-neutral-600 max-w-prose space-y-4"
+                  dangerouslySetInnerHTML={{ __html: role.responsibilities }}
+                />
               </div>
             )}
 
             {role.expectations && (
               <div>
-                <h2 className="text-h3 text-aroneu-neutral-900">{careerRoleTemplateContent.whatWeExpect.heading}</h2>
-                <div className="mt-6 text-body text-aroneu-neutral-600 max-w-prose space-y-4" dangerouslySetInnerHTML={{ __html: role.expectations }} />
+                <h2 className="text-h3 text-aroneu-neutral-900">
+                  {careerRoleTemplateContent.whatWeExpect.heading}
+                </h2>
+                <div
+                  className="mt-6 text-body text-aroneu-neutral-600 max-w-prose space-y-4"
+                  dangerouslySetInnerHTML={{ __html: role.expectations }}
+                />
               </div>
             )}
 
             <div>
-              <h2 className="text-h3 text-aroneu-neutral-900">{careerRoleTemplateContent.howTheTeamOperates.heading}</h2>
+              <h2 className="text-h3 text-aroneu-neutral-900">
+                {careerRoleTemplateContent.howTheTeamOperates.heading}
+              </h2>
               <div className="mt-6 text-body text-aroneu-neutral-600 max-w-prose space-y-4">
                 <p>{careerRoleTemplateContent.howTheTeamOperates.body}</p>
                 {role.howTeamOperates && (
@@ -193,14 +187,15 @@ export default function CareerRolePage({ params }: { params: { slug: string } })
             </div>
 
             <div id="apply" className="scroll-mt-24">
-              <h2 className="text-h3 text-aroneu-neutral-900">{careerRoleTemplateContent.applicationFlow.heading}</h2>
+              <h2 className="text-h3 text-aroneu-neutral-900">
+                {careerRoleTemplateContent.applicationFlow.heading}
+              </h2>
               <p className="mt-4 mb-8 text-body text-aroneu-neutral-600 max-w-prose">
                 {careerRoleTemplateContent.applicationFlow.body}
               </p>
-              
+
               <CareerApplicationForm content={careerApplicationFormContent} roleSlug={role.slug} />
             </div>
-
           </div>
         </div>
       </section>

@@ -1,9 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { footerNavigation } from "@/lib/navigation";
-import { routes } from "@/lib/routes";
 import { AroneuLogo } from "@/components/brand/AroneuLogo";
-import { FooterNewsletter } from "./FooterNewsletter";
 
 /**
  * Footer
@@ -34,8 +32,6 @@ export function Footer() {
             <p className="text-sm text-zinc-500 mb-6">
               Two places, one standard of work.
             </p>
-
-            <FooterNewsletter />
           </div>
 
           {/* Nav columns */}
@@ -97,15 +93,7 @@ export function Footer() {
         {/* Registered address placeholder + legal links */}
         <div className="border-t border-zinc-200 pt-8 flex flex-col md:flex-row justify-between gap-6 text-caption text-zinc-500">
           <div>
-            <p className="mb-1">
-              &copy; {new Date().getFullYear()} Aroneu GmbH. All rights reserved.
-            </p>
-            <p>
-              Registered address:{" "}
-              <span className="text-zinc-400">
-                pending client confirmation
-              </span>
-            </p>
+            <p>&copy; {new Date().getFullYear()} Aroneu GmbH. All rights reserved.</p>
           </div>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {footerNavigation.legal.map((item) => (

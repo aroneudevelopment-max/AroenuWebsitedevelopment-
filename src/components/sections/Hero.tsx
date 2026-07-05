@@ -26,6 +26,16 @@ export function Hero({
 }) {
   if (!data) return null;
   const isInk = tone === "ink";
+  const subcopy =
+    data.subcopy ?? (typeof data.body === "string" ? data.body : undefined);
+  const hasVisual = Boolean(data.image || data.video);
+  const imageFitClass =
+    data.imageFit === "contain" ? "object-contain p-4 md:p-6" : "object-cover";
+  const videoFitClass =
+    data.videoFit === "contain" ? "object-contain p-4 md:p-6" : "object-cover";
+  const visualAlt =
+    data.imageAlt ?? (data.video ? "" : data.heading || "Hero visual");
+  const poster = data.videoPoster || data.image || undefined;
 
   const headingClass = isInk ? "text-paper" : "text-ink";
   const subcopyClass = isInk ? "opacity-80" : "opacity-80";
@@ -42,8 +52,12 @@ export function Hero({
         isInk ? "surface-ink" : "surface-paper"
       }`}
     >
-      <div className="container-aroneu grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="flex flex-col items-start justify-center z-10">
+      <div
+        className={`container-aroneu grid grid-cols-1 ${
+          hasVisual ? "lg:grid-cols-2" : ""
+        } gap-12 items-center`}
+      >
+        <div className="min-w-0 flex flex-col items-start justify-center z-10">
           {data.eyebrow && (
             <span
               className={`text-label uppercase tracking-widest block mb-4 ${eyebrowClass}`}
@@ -54,9 +68,9 @@ export function Hero({
           {data.heading && (
             <h1 className={`text-h1 mb-6 ${headingClass}`}>{data.heading}</h1>
           )}
-          {data.subcopy && (
+          {subcopy && (
             <p className={`text-body mb-8 max-w-xl ${subcopyClass}`}>
-              {data.subcopy}
+              {subcopy}
             </p>
           )}
 
@@ -92,36 +106,49 @@ export function Hero({
           )}
         </div>
 
-        <div className="relative z-10">
+        {hasVisual && <div className="relative min-w-0 z-10">
           {withTilt3D ? (
             <Tilt3D>
-              {data.video ? (
-                <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
-                  <video
-                    src={data.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    poster={data.image || undefined}
-                    className="w-full h-full object-cover"
-                    aria-label={data.heading || "Hero overview video"}
-                  />
-                </div>
-              ) : data.image ? (
-                <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
+              <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
+                {data.video ? (
+                  <>
+                    <video
+                      src={data.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      poster={poster}
+                      className={`w-full h-full ${videoFitClass} motion-reduce:hidden`}
+                      aria-label={
+                        data.videoAlt || data.heading || "Hero overview video"
+                      }
+                    />
+                    {poster && (
+                      <div className="hidden motion-reduce:block relative w-full h-full">
+                        <Image
+                          src={poster}
+                          alt={visualAlt}
+                          fill
+                          className={imageFitClass}
+                          priority
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                        />
+                      </div>
+                    )}
+                  </>
+                ) : (
                   <Image
-                    src={data.image}
-                    alt={data.heading || "Hero visual"}
+                    src={data.image!}
+                    alt={visualAlt}
                     fill
-                    className="object-cover"
+                    className={imageFitClass}
                     priority
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                </div>
-              ) : (
-                <div className="w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl surface-sand border border-zinc-200" />
-              )}
+                )}
+              </div>
             </Tilt3D>
           ) : data.video ? (
             <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
@@ -131,26 +158,37 @@ export function Hero({
                 loop
                 muted
                 playsInline
-                poster={data.image || undefined}
-                className="w-full h-full object-cover"
-                aria-label={data.heading || "Hero overview video"}
+                preload="metadata"
+                poster={poster}
+                className={`w-full h-full ${videoFitClass} motion-reduce:hidden`}
+                aria-label={data.videoAlt || data.heading || "Hero overview video"}
               />
+              {poster && (
+                <div className="hidden motion-reduce:block relative w-full h-full">
+                  <Image
+                    src={poster}
+                    alt={visualAlt}
+                    fill
+                    className={imageFitClass}
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+              )}
             </div>
-          ) : data.image ? (
+          ) : (
             <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
               <Image
-                src={data.image}
-                alt={data.heading || "Hero visual"}
+                src={data.image!}
+                alt={visualAlt}
                 fill
-                className="object-cover"
+                className={imageFitClass}
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-          ) : (
-            <div className="w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl surface-sand border border-zinc-200" />
           )}
-        </div>
+        </div>}
       </div>
     </section>
   );

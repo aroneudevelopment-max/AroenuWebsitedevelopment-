@@ -11,6 +11,8 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 export function FeatureGrid({ data }: { data?: SectionContent }) {
   if (!data) return null;
   const items = (data.items as any[]) || [];
+  const intro =
+    data.body ?? (typeof data.subcopy === "string" ? data.subcopy : undefined);
 
   return (
     <section className="section-aroneu surface-sand border-y border-zinc-200">
@@ -22,8 +24,8 @@ export function FeatureGrid({ data }: { data?: SectionContent }) {
             </span>
           )}
           {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
-          {data.body && (
-            <p className="text-body opacity-80">{data.body}</p>
+          {intro && (
+            <p className="text-body opacity-80">{intro}</p>
           )}
         </div>
       </ScrollReveal>
@@ -34,10 +36,10 @@ export function FeatureGrid({ data }: { data?: SectionContent }) {
               className="flex flex-col h-full p-6 md:p-8 border border-zinc-200 rounded-2xl surface-paper transition-transform hover:-translate-y-1"
             >
               <h3 className="text-lg md:text-xl font-semibold mb-3 text-ink">
-                {item.title}
+                {item.title || item.heading}
               </h3>
               <p className="opacity-80 text-sm leading-relaxed">
-                {item.description}
+                {item.description || item.body}
               </p>
             </div>
           </ScrollReveal>

@@ -43,7 +43,7 @@ export function Hero({
       }`}
     >
       <div className="container-aroneu grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
+        <div className="flex flex-col items-start justify-center z-10">
           {data.eyebrow && (
             <span
               className={`text-label uppercase tracking-widest block mb-4 ${eyebrowClass}`}
@@ -90,9 +90,9 @@ export function Hero({
               ))}
             </div>
           )}
-        
+        </div>
 
-        
+        <div className="relative z-10">
           {withTilt3D ? (
             <Tilt3D>
               {data.video ? (
@@ -150,14 +150,7 @@ export function Hero({
           ) : (
             <div className="w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl surface-sand border border-zinc-200" />
           )}
-
-          {data.video && (
-            <div className="mt-4 flex items-center gap-2 text-caption opacity-70">
-              <span aria-hidden="true">&#9654;</span>
-              <span>Autoplay. Muted. Representative overview.</span>
-            </div>
-          )}
-        
+        </div>
       </div>
     </section>
   );

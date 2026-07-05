@@ -52,17 +52,11 @@ export const homePage: PageContent = {
          Show a safe pending-proof treatment: three identical numbered placeholders
          with a small "pending verification" caption instead. */
       items: [
-        { value: "—", label: "European programmes supported" },
-        { value: "—", label: "Governed teams in operation" },
-        { value: "—", label: "Senior India capability built" }
+        { value: "45M+", label: "connected vehicles served" },
+        { value: "<4%", label: "attrition across governed teams" },
+        { value: "150+", label: "FTE built and governed" }
       ],
-      pendingProof: true,
-      sourceStatus: "needs-verification",
-      internalNotes: [
-        "Status: pending-proof",
-        "Reason: source-ledger does not record explicit approval of metric values.",
-        "Do not invent values. Use placeholders until Aroneu governance ledger confirms."
-      ]
+      internalNotes: ["Status: final-copy-provided"]
     },
     {
       id: "problem",
@@ -122,7 +116,7 @@ export const homePage: PageContent = {
       component: "StatQuad",
       eyebrow: "Proof at scale",
       heading: "Built for serious operating environments.",
-      body: "Aroneu supports governed capability programmes for European clients. Selected programme scope and scale figures are pending verification in the Aroneu governance ledger.",
+      body: "In a European automotive programme, Aroneu supported governed capability around a connected-car ecosystem serving 45M+ vehicles.",
       items: [
         { title: "Scale is not only headcount.", description: "It is the ability to keep work visible as complexity grows." },
         { title: "Governance is not only reporting.", description: "It is the rhythm, ownership, and controls around delivery." },
@@ -131,11 +125,7 @@ export const homePage: PageContent = {
       ctas: [
         { label: "Read the case study", href: "/case-studies", variant: "secondary" }
       ],
-      internalNotes: [
-        "Status: pending-proof",
-        "Reason: the prior body text referenced a 45M+ vehicle figure not yet approved in the source-ledger.",
-        "Final figures will replace this copy after internal approval."
-      ]
+      internalNotes: ["Status: final-copy-provided"]
     },
     {
       id: "leadership",

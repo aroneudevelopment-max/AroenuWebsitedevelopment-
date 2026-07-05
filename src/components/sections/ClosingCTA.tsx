@@ -41,7 +41,7 @@ export function ClosingCTA({
         {data.heading && (
           <h2 className={`text-h2 mb-6 ${headingClass}`}>{data.heading}</h2>
         )}
-        {data.body && <p className={`text-body mb-10 ${bodyClass}`}>{data.body}</p>}
+        {data.body && <p className={`text-body mb-10 mx-auto ${bodyClass}`}>{data.body}</p>}
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           {data.primaryCTA && (

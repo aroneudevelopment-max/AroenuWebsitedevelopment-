@@ -22,7 +22,7 @@ export function AboutValues({ data }: { data?: SectionContent }) {
           )}
           {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
           {data.body && (
-            <p className="text-body opacity-80">{data.body}</p>
+            <p className="text-body opacity-80 mx-auto">{data.body}</p>
           )}
         </div>
 

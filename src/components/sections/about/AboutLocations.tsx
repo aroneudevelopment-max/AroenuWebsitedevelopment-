@@ -16,7 +16,7 @@ export function AboutLocations({ data }: { data?: SectionContent }) {
  
  {(data.features as { heading: string; body: string }[])?.map((feature, i) => (
  <React.Fragment key={i}>
- <div className="flex-1 p-8 border border-zinc-200 rounded-3xl relative z-10 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+ <div className="flex-1 p-8 border border-zinc-200 rounded-3xl relative z-10 shadow-sm transition-transform hover:-translate-y-1 duration-300 surface-paper">
  <h3 className="text-2xl font-semibold mb-4 text-primary-900">{feature.heading}</h3>
  <p className="opacity-80 leading-relaxed">{feature.body}</p>
  </div>

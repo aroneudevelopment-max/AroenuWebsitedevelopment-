@@ -36,7 +36,7 @@ export const insightsIndexContent: PageContent = {
       metadata: ["Governance", "Capability Teams", "5 min read"],
       cta: "Read the insight",
       href: "/insights/talent-was-never-the-problem",
-      isPublished: false
+      isPublished: true
     },
     {
       id: "categories",

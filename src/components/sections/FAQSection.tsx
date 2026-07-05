@@ -7,13 +7,13 @@ export function FAQSection({ data }: { data?: SectionContent }) {
  <section className="section-aroneu surface-ink">
  <div className="container-aroneu max-w-4xl mx-auto">
  <div className="text-center mb-16">
- <h2 className="text-h2">Frequently Asked Questions</h2>
+ <h2 className="text-h2 text-paper">Frequently Asked Questions</h2>
  </div>
  <div className="space-y-6">
  {data.faqs.map((faq, i) => (
  <div key={i} className="border-b border-zinc-200 pb-6">
- <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
- <p className="opacity-80">{faq.answer}</p>
+ <h3 className="text-xl font-semibold mb-3 text-paper">{faq.question}</h3>
+ <p className="opacity-80 text-paper">{faq.answer}</p>
  </div>
  ))}
  </div>

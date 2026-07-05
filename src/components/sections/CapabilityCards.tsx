@@ -1,5 +1,6 @@
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Tilt3D } from "@/components/ui/Tilt3D";
 
 /**
@@ -14,45 +15,44 @@ export function CapabilityCards({ data }: { data?: SectionContent }) {
 
   return (
     <section className="section-aroneu surface-sand">
-      <div className="container-aroneu max-w-3xl mx-auto text-center mb-16">
-        {data.eyebrow && (
-          <span className="text-label uppercase tracking-widest block mb-4 text-primary-600">
-            {data.eyebrow}
-          </span>
-        )}
-        {data.heading && (
-          <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>
-        )}
-        {data.body && (
-          <p className="text-body opacity-80 mx-auto">{data.body}</p>
-        )}
-      </div>
+      <ScrollReveal>
+        <div className="container-aroneu max-w-3xl mx-auto text-center mb-16">
+          {data.eyebrow && (
+            <span className="text-label uppercase tracking-widest block mb-4 text-primary-600">
+              {data.eyebrow}
+            </span>
+          )}
+          {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
+          {data.body && (
+            <p className="text-body opacity-80">{data.body}</p>
+          )}
+        </div>
+      </ScrollReveal>
 
-      <div className="container-aroneu grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="container-aroneu grid grid-cols-1 lg:grid-cols-2 gap-8">
         {items.map((item, i) => (
-          
+          <ScrollReveal key={i} delay={i * 0.1}>
             <Tilt3D className="h-full">
-              <div className="flex flex-col h-full p-6 md:p-8 border border-zinc-200 rounded-2xl surface-paper shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <h3 className="text-xl md:text-2xl font-semibold mb-4 text-ink">
+              <div
+                className="group flex flex-col h-full p-8 md:p-12 border border-zinc-200 rounded-3xl surface-paper transition-all hover:border-zinc-300 hover:shadow-soft"
+              >
+                <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-ink">
                   {item.title}
                 </h3>
-                <p className="opacity-80 mb-8 flex-grow text-base leading-relaxed">
+                <p className="text-body opacity-80 mb-8 flex-grow">
                   {item.description}
                 </p>
-                {item.href && item.ctaLabel && (
+                {item.href && (
                   <a
                     href={item.href}
-                    className="font-medium text-ink hover:opacity-70 inline-flex items-center"
+                    className="inline-flex items-center gap-2 text-ink font-medium group-hover:opacity-80 transition-opacity"
                   >
-                    {item.ctaLabel}{" "}
-                    <span className="ml-2" aria-hidden="true">
-                      &rarr;
-                    </span>
+                    {item.ctaLabel || "Learn more"} <span aria-hidden="true">&rarr;</span>
                   </a>
                 )}
               </div>
             </Tilt3D>
-          
+          </ScrollReveal>
         ))}
       </div>
     </section>

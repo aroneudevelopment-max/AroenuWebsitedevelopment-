@@ -12,13 +12,13 @@ export function FeaturedCase({ data }: { data: any }) {
  <div className="container-aroneu">
  <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-center">
  <div className="w-full md:w-1/2 flex flex-col items-start space-y-6">
- <span className="text-sm font-medium tracking-wide uppercase text-zinc-500">
+ <span className="text-sm font-medium tracking-wide uppercase opacity-70">
  {data.label}
  </span>
  <h2 className="text-h2">
  {data.heading}
  </h2>
- <p className="text-body text-zinc-600">
+ <p className="text-body opacity-80">
  {data.body}
  </p>
  </div>
@@ -38,12 +38,12 @@ export function FeaturedCase({ data }: { data: any }) {
  )}
  <div className="p-8 flex flex-col space-y-4">
  <h3 className="text-h4 group-hover: transition-colors">{card.title}</h3>
- <p className="text-sm text-zinc-600 line-clamp-3">
+ <p className="text-sm opacity-80 line-clamp-3">
  {card.excerpt}
  </p>
  <div className="flex flex-wrap gap-2 pt-2">
  {card.metadata?.map((tag: string, i: number) => (
- <span key={i} className="text-xs px-2 py-1 rounded-md bg-zinc-200 text-zinc-700">
+ <span key={i} className="text-xs px-2 py-1 rounded-md bg-zinc-200 opacity-80">
  {tag}
  </span>
  ))}

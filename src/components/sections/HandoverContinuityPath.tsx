@@ -12,7 +12,7 @@ export function HandoverContinuityPath({ data }: { data?: SectionContent }) {
  <h2 className="heading-aroneu mb-6">{typedData.heading}</h2>
  )}
  {typedData.body && (
- <p className="body-aroneu max-w-2xl mx-auto mb-16 text-zinc-600">
+ <p className="body-aroneu max-w-2xl mx-auto mb-16 opacity-80">
  {typedData.body}
  </p>
  )}
@@ -28,7 +28,7 @@ export function HandoverContinuityPath({ data }: { data?: SectionContent }) {
  {idx + 1}
  </div>
  <h3 className="text-xl font-medium mb-3">{feature.heading}</h3>
- <p className="text-zinc-600 leading-relaxed">
+ <p className="opacity-80 leading-relaxed">
  {feature.body}
  </p>
  </div>

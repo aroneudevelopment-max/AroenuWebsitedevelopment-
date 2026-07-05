@@ -18,11 +18,11 @@ export function DiscoverPlanningCards({ data }: { data?: SectionContent }) {
  <h2 className="heading-aroneu mb-6">{typedData.heading}</h2>
  )}
  {typedData.body && (
- <p className="body-aroneu mb-8 text-zinc-600">{typedData.body}</p>
+ <p className="body-aroneu mb-8 opacity-80">{typedData.body}</p>
  )}
  {typedData.outcome && (
  <div className="p-4 rounded-lg border border-zinc-200">
- <span className="font-medium text-sm text-zinc-500 uppercase tracking-wider mb-2 block">Output</span>
+ <span className="font-medium text-sm opacity-70 uppercase tracking-wider mb-2 block">Output</span>
  <p className="font-medium">{typedData.outcome}</p>
  </div>
  )}
@@ -32,7 +32,7 @@ export function DiscoverPlanningCards({ data }: { data?: SectionContent }) {
  {typedData.features && typedData.features.map((feature: any, idx: number) => (
  <div key={idx} className="p-6 rounded-xl border border-zinc-200 shadow-sm transition-all hover:shadow-md">
  <h3 className="text-lg font-medium mb-2">{feature.heading}</h3>
- <p className="text-sm text-zinc-600 leading-relaxed">{feature.body}</p>
+ <p className="text-sm opacity-80 leading-relaxed">{feature.body}</p>
  </div>
  ))}
  </div>

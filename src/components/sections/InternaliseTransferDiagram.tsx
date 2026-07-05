@@ -8,13 +8,13 @@ export function InternaliseTransferDiagram({ data }: { data?: SectionContent }) 
     <section className="section-aroneu surface-sand border-y border-zinc-200">
       <div className="container-aroneu max-w-4xl mx-auto text-center mb-16">
         {data.eyebrow && (
-          <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+          <span className="text-label uppercase tracking-widest block mb-4 opacity-70">
             {data.eyebrow}
           </span>
         )}
         {data.heading && <h2 className="text-h2 mb-6">{data.heading}</h2>}
         {data.body && (
-          <p className="text-body text-zinc-600 mx-auto max-w-3xl">
+          <p className="text-body opacity-80 mx-auto max-w-3xl">
             {data.body}
           </p>
         )}

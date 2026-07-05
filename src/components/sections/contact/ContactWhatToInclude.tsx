@@ -24,7 +24,7 @@ export function ContactWhatToInclude({ data }: { data?: SectionContent }) {
             <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>
           )}
           {data.body && (
-            <p className="text-body text-zinc-600 mb-8 max-w-lg">
+            <p className="text-body opacity-80 mb-8 max-w-lg">
               {data.body as string}
             </p>
           )}
@@ -51,7 +51,7 @@ export function ContactWhatToInclude({ data }: { data?: SectionContent }) {
                       />
                     </svg>
                   </span>
-                  <span className="text-body text-zinc-700">
+                  <span className="text-body opacity-80">
                     {item as string}
                   </span>
                 </li>

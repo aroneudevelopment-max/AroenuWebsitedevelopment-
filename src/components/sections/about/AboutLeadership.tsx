@@ -12,13 +12,13 @@ export function AboutLeadership({ data }: { data?: SectionContent }) {
       <div className="container-aroneu grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         
           {data.label && (
-            <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+            <span className="text-label uppercase tracking-widest block mb-4 opacity-70">
               {data.label}
             </span>
           )}
           {data.heading && <h2 className="text-h2 mb-6">{data.heading}</h2>}
           {data.body && (
-            <p className="text-body text-zinc-600 mb-8 whitespace-pre-line">
+            <p className="text-body opacity-80 mb-8 whitespace-pre-line">
               {data.body}
             </p>
           )}
@@ -58,12 +58,12 @@ export function AboutLeadership({ data }: { data?: SectionContent }) {
           <div className="relative rounded-2xl overflow-hidden border border-zinc-200 surface-sand aspect-[4/3] flex items-center justify-center">
             <div className="text-center max-w-xs px-6">
               <div
-                className="text-label uppercase tracking-widest text-zinc-500 mb-3"
+                className="text-label uppercase tracking-widest opacity-70 mb-3"
                 aria-hidden="true"
               >
                 Leadership
               </div>
-              <p className="text-body text-zinc-600">
+              <p className="text-body opacity-80">
                 Named accountability, not a portrait gallery. Real leadership
                 profiles appear once approved by Aroneu.
               </p>

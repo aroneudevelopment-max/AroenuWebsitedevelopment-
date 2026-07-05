@@ -15,20 +15,20 @@ export function ProofStrip({ data }: { data?: SectionContent }) {
             <div key={i} className="flex flex-col items-center">
               <span
                 className={`text-4xl font-mono mb-2 ${
-                  pending ? "text-zinc-300" : "text-ink"
+                  pending ? "opacity-80" : "text-ink"
                 }`}
                 aria-hidden={pending ? "true" : undefined}
               >
                 {pending ? "— —" : item.value}
               </span>
-              <span className="text-sm font-medium text-zinc-500 uppercase tracking-widest">
+              <span className="text-sm font-medium opacity-70 uppercase tracking-widest">
                 {item.label}
               </span>
             </div>
           ))}
         </div>
         {pending && (
-          <p className="mt-8 text-center text-caption text-zinc-500 max-w-2xl mx-auto">
+          <p className="mt-8 text-center text-caption opacity-70 max-w-2xl mx-auto">
             Selected proof figures are pending verification in the Aroneu
             governance ledger. Final values will appear once internal approval
             is complete.

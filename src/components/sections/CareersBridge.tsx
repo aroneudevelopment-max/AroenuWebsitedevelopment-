@@ -16,7 +16,7 @@ export function CareersBridge({ data }: { data?: SectionContent }) {
     <section className="section-aroneu surface-ink text-center">
       <div className="container-aroneu max-w-3xl mx-auto">
         {data.eyebrow && (
-          <span className="text-label uppercase tracking-widest block mb-4 text-zinc-400">
+          <span className="text-label uppercase tracking-widest block mb-4 opacity-60">
             {data.eyebrow}
           </span>
         )}
@@ -24,7 +24,7 @@ export function CareersBridge({ data }: { data?: SectionContent }) {
           <h2 className="text-h2 mb-6 text-paper">{data.heading}</h2>
         )}
         {data.body && (
-          <p className="text-body text-zinc-300 mb-10">{data.body}</p>
+          <p className="text-body opacity-80 mb-10">{data.body}</p>
         )}
         {cta && (
           <a

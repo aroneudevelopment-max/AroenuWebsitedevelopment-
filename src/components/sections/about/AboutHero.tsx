@@ -10,7 +10,7 @@ export function AboutHero({ data }: { data?: SectionContent }) {
  <div className="z-10">
  {data.eyebrow && <span className="label-aroneu mb-4 text-primary-600 block">{data.eyebrow}</span>}
  {data.heading && <h1 className="text-h1 mb-6 leading-tight">{data.heading}</h1>}
- {data.subcopy && <p className="text-body text-zinc-600 mb-8 max-w-xl">{data.subcopy}</p>}
+ {data.subcopy && <p className="text-body opacity-80 mb-8 max-w-xl">{data.subcopy}</p>}
  
  <div className="flex flex-wrap gap-4">
  {data.primaryCTA && (

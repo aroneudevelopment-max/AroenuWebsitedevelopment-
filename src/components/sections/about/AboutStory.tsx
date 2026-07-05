@@ -8,7 +8,7 @@ export function AboutStory({ data }: { data?: SectionContent }) {
       <div className="container-aroneu grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div>
           {data.label && (
-            <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+            <span className="text-label uppercase tracking-widest block mb-4 opacity-70">
               {data.label}
             </span>
           )}
@@ -16,7 +16,7 @@ export function AboutStory({ data }: { data?: SectionContent }) {
             <h2 className="text-h2 mb-6">{data.heading}</h2>
           )}
           {data.body && (
-            <div className="text-body text-zinc-600 space-y-4">
+            <div className="text-body opacity-80 space-y-4">
               {String(data.body)
                 .split(/\n\n+/)
                 .map((para, i) => (
@@ -33,7 +33,7 @@ export function AboutStory({ data }: { data?: SectionContent }) {
           </div>
           <div
             aria-hidden="true"
-            className="h-6 flex justify-center items-center text-zinc-300 text-2xl leading-none"
+            className="h-6 flex justify-center items-center opacity-80 text-2xl leading-none"
           >
             &#8595;
           </div>
@@ -42,7 +42,7 @@ export function AboutStory({ data }: { data?: SectionContent }) {
           </div>
           <div
             aria-hidden="true"
-            className="h-6 flex justify-center items-center text-zinc-300 text-2xl leading-none"
+            className="h-6 flex justify-center items-center opacity-80 text-2xl leading-none"
           >
             &#8595;
           </div>

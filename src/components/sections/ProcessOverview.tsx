@@ -35,7 +35,7 @@ export function ProcessOverview({ data }: { data?: SectionContent }) {
  {typedData.steps.map((step: any, idx: number) => (
  <div key={idx} className="flex flex-col items-center text-center p-6 surface-sand rounded-2xl border border-zinc-200">
  <h3 className="text-xl font-medium mb-3">{step.label}</h3>
- <p className="text-zinc-600">{step.body}</p>
+ <p className="opacity-80">{step.body}</p>
  </div>
  ))}
  </div>

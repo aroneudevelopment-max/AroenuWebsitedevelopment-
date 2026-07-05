@@ -8,9 +8,9 @@ export function WorkspaceVisibilityPanel({ data }: { data?: SectionContent }) {
  <section className="section-aroneu">
  <div className="container-aroneu grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
  <div>
- {data.eyebrow && <span className="text-label text-zinc-500 uppercase tracking-widest block mb-4">{data.eyebrow}</span>}
+ {data.eyebrow && <span className="text-label opacity-70 uppercase tracking-widest block mb-4">{data.eyebrow}</span>}
  {data.heading && <h2 className="text-h2 mb-6">{data.heading}</h2>}
- {data.body && <p className="text-body text-zinc-600 mb-10">{data.body}</p>}
+ {data.body && <p className="text-body opacity-80 mb-10">{data.body}</p>}
  <div className="space-y-4">
  {data.items?.map((item: any, i: number) => (
  <div key={i} className="flex items-center gap-3">
@@ -24,9 +24,9 @@ export function WorkspaceVisibilityPanel({ data }: { data?: SectionContent }) {
  {panelData.image ? (
  <img src={panelData.image} alt="Workspace Visibility Panel"className="w-full h-auto object-cover max-h-[500px]"loading="lazy"/>
  ) : (
- <div className="w-full h-[400px] flex items-center justify-center text-zinc-400">Representative Visual Panel</div>
+ <div className="w-full h-[400px] flex items-center justify-center opacity-60">Representative Visual Panel</div>
  )}
- <div className="absolute bottom-3 right-3 /80 backdrop-blur-sm px-2 py-1 rounded text-[10px] text-zinc-500 tracking-wider">REPRESENTATIVE VISUAL</div>
+ <div className="absolute bottom-3 right-3 /80 backdrop-blur-sm px-2 py-1 rounded text-[10px] opacity-70 tracking-wider">REPRESENTATIVE VISUAL</div>
  </div>
  </div>
  </section>

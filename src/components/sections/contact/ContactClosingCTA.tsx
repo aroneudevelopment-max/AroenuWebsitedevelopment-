@@ -17,7 +17,7 @@ export function ContactClosingCTA({ data }: { data?: SectionContent }) {
         )}
         {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
         {data.body && (
-          <p className="text-body text-zinc-600 mb-10 max-w-2xl mx-auto">
+          <p className="text-body opacity-80 mb-10 max-w-2xl mx-auto">
             {data.body as string}
           </p>
         )}

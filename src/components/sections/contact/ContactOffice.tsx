@@ -16,9 +16,9 @@ export function ContactOffice({ data }: { data?: SectionContent }) {
           <h3 className="text-h3 mb-4 text-ink">{data.heading}</h3>
         )}
         {data.body && (
-          <p className="text-body text-zinc-600">{data.body as string}</p>
+          <p className="text-body opacity-80">{data.body as string}</p>
         )}
-        <p className="mt-4 text-caption text-zinc-500">
+        <p className="mt-4 text-caption opacity-70">
           Registered address: pending client confirmation.
         </p>
       </div>

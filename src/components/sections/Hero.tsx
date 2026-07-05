@@ -28,8 +28,8 @@ export function Hero({
   const isInk = tone === "ink";
 
   const headingClass = isInk ? "text-paper" : "text-ink";
-  const subcopyClass = isInk ? "text-zinc-300" : "text-zinc-700";
-  const eyebrowClass = isInk ? "text-zinc-400" : "text-primary-600";
+  const subcopyClass = isInk ? "opacity-80" : "opacity-80";
+  const eyebrowClass = isInk ? "opacity-60" : "text-primary-600";
   const primaryBtn =
     "inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-semibold bg-ink text-paper hover:opacity-90 transition-opacity";
   const secondaryBtn = isInk
@@ -152,7 +152,7 @@ export function Hero({
           )}
 
           {data.video && (
-            <div className="mt-4 flex items-center gap-2 text-caption text-zinc-500">
+            <div className="mt-4 flex items-center gap-2 text-caption opacity-70">
               <span aria-hidden="true">&#9654;</span>
               <span>Autoplay. Muted. Representative overview.</span>
             </div>

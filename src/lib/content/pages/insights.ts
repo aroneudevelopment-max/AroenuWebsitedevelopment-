@@ -54,32 +54,7 @@ export const insightsIndexContent: PageContent = {
         "Talent"
       ]
     },
-    {
-      id: "suggested-themes",
-      type: "suggested-themes",
-      themes: [
-        {
-          title: "What makes an India capability team governable?",
-          excerpt: "The difference between adding remote capacity and building a team that can be seen, led, and trusted."
-        },
-        {
-          title: "Visibility is not the same as reporting.",
-          excerpt: "Why status updates are not enough when the real need is operating control."
-        },
-        {
-          title: "Capability Team vs EOR model",
-          excerpt: "A practical comparison for companies deciding how much ownership, structure, and governance they need."
-        },
-        {
-          title: "How to reduce knowledge loss in distributed teams",
-          excerpt: "Why continuity depends on documentation, role depth, decision history, and working rhythm."
-        },
-        {
-          title: "Why AI should support accountability, not replace leadership",
-          excerpt: "A governed view of AI inside distributed team operations."
-        }
-      ]
-    },
+
     {
       id: "empty-state",
       type: "empty-state",

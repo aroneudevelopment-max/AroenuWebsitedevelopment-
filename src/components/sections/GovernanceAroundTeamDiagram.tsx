@@ -18,13 +18,13 @@ export function GovernanceAroundTeamDiagram({
       <div className="container-aroneu grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
           {data.eyebrow && (
-            <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+            <span className="text-label uppercase tracking-widest block mb-4 opacity-70">
               {data.eyebrow}
             </span>
           )}
           {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
           {data.body && (
-            <p className="text-body text-zinc-600 mb-10">{data.body}</p>
+            <p className="text-body opacity-80 mb-10">{data.body}</p>
           )}
 
           <div className="space-y-6">
@@ -33,7 +33,7 @@ export function GovernanceAroundTeamDiagram({
                 <h3 className="text-base font-semibold mb-2 text-ink">
                   {item.title}
                 </h3>
-                <p className="text-sm text-zinc-600">{item.description}</p>
+                <p className="text-sm opacity-80">{item.description}</p>
               </div>
             ))}
           </div>
@@ -67,7 +67,7 @@ export function GovernanceAroundTeamDiagram({
               return (
                 <span
                   key={i}
-                  className={`absolute text-[11px] font-medium text-zinc-500 px-2 py-1 rounded-md border border-zinc-200 surface-paper whitespace-nowrap ${positions[i]}`}
+                  className={`absolute text-[11px] font-medium opacity-70 px-2 py-1 rounded-md border border-zinc-200 surface-paper whitespace-nowrap ${positions[i]}`}
                 >
                   {item.title}
                 </span>

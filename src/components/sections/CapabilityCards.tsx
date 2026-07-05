@@ -24,7 +24,7 @@ export function CapabilityCards({ data }: { data?: SectionContent }) {
           <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>
         )}
         {data.body && (
-          <p className="text-body text-zinc-700">{data.body}</p>
+          <p className="text-body opacity-80">{data.body}</p>
         )}
       </div>
 
@@ -36,7 +36,7 @@ export function CapabilityCards({ data }: { data?: SectionContent }) {
                 <h3 className="text-xl md:text-2xl font-semibold mb-4 text-ink">
                   {item.title}
                 </h3>
-                <p className="text-zinc-700 mb-8 flex-grow text-base leading-relaxed">
+                <p className="opacity-80 mb-8 flex-grow text-base leading-relaxed">
                   {item.description}
                 </p>
                 {item.href && item.ctaLabel && (

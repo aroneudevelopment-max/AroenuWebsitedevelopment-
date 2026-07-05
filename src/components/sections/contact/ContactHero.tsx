@@ -25,7 +25,7 @@ export function ContactHero({ data }: { data?: SectionContent }) {
             </h1>
           )}
           {data.subcopy && (
-            <p className="text-body text-zinc-600 mb-8 max-w-xl">
+            <p className="text-body opacity-80 mb-8 max-w-xl">
               {data.subcopy}
             </p>
           )}

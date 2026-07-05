@@ -15,9 +15,9 @@ export function ClosingCTA({
   const isInk = tone === "ink";
 
   // Contrast-safe colour set for each surface
-  const eyebrowClass = isInk ? "text-zinc-400" : "text-zinc-500";
+  const eyebrowClass = isInk ? "opacity-60" : "opacity-70";
   const headingClass = isInk ? "text-paper" : "text-ink";
-  const bodyClass = isInk ? "text-zinc-300" : "text-zinc-600";
+  const bodyClass = isInk ? "opacity-80" : "opacity-80";
   const primaryBtn =
     "px-8 py-4 rounded-full text-base font-medium bg-ink text-paper hover:opacity-90 transition-opacity";
   const secondaryBtn = isInk

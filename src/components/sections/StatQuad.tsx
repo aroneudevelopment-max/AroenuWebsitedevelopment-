@@ -7,9 +7,9 @@ export function StatQuad({ data }: { data?: SectionContent }) {
  <section className="section-aroneu surface-sand border-y border-zinc-200">
  <div className="container-aroneu grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
  <div>
- {data.eyebrow && <span className="text-label text-zinc-500 uppercase tracking-widest block mb-4">{data.eyebrow}</span>}
+ {data.eyebrow && <span className="text-label opacity-70 uppercase tracking-widest block mb-4">{data.eyebrow}</span>}
  {data.heading && <h2 className="text-h2 mb-6">{data.heading}</h2>}
- {data.body && <p className="text-body text-zinc-600 mb-8">{data.body}</p>}
+ {data.body && <p className="text-body opacity-80 mb-8">{data.body}</p>}
  {data.ctas && data.ctas.length > 0 && (
  <a href={data.ctas[0].href} className="inline-block px-6 py-3 rounded-full text-sm font-medium border border-zinc-200">
  {data.ctas[0].label}
@@ -20,7 +20,7 @@ export function StatQuad({ data }: { data?: SectionContent }) {
  {data.items?.map((item: any, i: number) => (
  <div key={i} className="pl-6 border-l-2 border-zinc-300">
  <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
- <p className="text-zinc-600">{item.description}</p>
+ <p className="opacity-80">{item.description}</p>
  </div>
  ))}
  </div>

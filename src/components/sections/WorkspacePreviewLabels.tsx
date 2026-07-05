@@ -11,15 +11,15 @@ export function WorkspacePreviewLabels({ data }: { data?: SectionContent }) {
  {panelData.image ? (
  <img src={panelData.image} alt="Workspace Governance Overview"className="w-full h-auto object-cover max-h-[600px] md:max-h-[700px]"loading="lazy"/>
  ) : (
- <div className="w-full h-[500px] flex items-center justify-center text-zinc-400">Representative Workspace Overview</div>
+ <div className="w-full h-[500px] flex items-center justify-center opacity-60">Representative Workspace Overview</div>
  )}
- <div className="absolute bottom-3 right-3 /80 backdrop-blur-sm px-2 py-1 rounded text-[10px] text-zinc-500 tracking-wider">REPRESENTATIVE VISUAL</div>
+ <div className="absolute bottom-3 right-3 /80 backdrop-blur-sm px-2 py-1 rounded text-[10px] opacity-70 tracking-wider">REPRESENTATIVE VISUAL</div>
  </div>
  {/* Mobile accessible summaries for labels */}
  {panelData.labels && (
  <div className="mt-8 flex flex-wrap justify-center gap-3">
  {panelData.labels.map((label: string, i: number) => (
- <span key={i} className="px-4 py-2 bg-zinc-100 rounded-full text-xs font-semibold text-zinc-700 border border-zinc-200">
+ <span key={i} className="px-4 py-2 bg-zinc-100 rounded-full text-xs font-semibold opacity-80 border border-zinc-200">
  {label}
  </span>
  ))}

@@ -18,7 +18,7 @@ export function StepRow({ data }: { data?: SectionContent }) {
         )}
         {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
         {data.body && (
-          <p className="text-body text-zinc-700">{data.body}</p>
+          <p className="text-body opacity-80">{data.body}</p>
         )}
       </div>
 
@@ -34,7 +34,7 @@ export function StepRow({ data }: { data?: SectionContent }) {
             <h3 className="text-lg font-semibold mb-2 text-ink">
               {item.title || item.label}
             </h3>
-            <p className="text-zinc-700 text-sm leading-relaxed">
+            <p className="opacity-80 text-sm leading-relaxed">
               {item.description || item.body}
             </p>
           </div>

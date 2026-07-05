@@ -1,5 +1,83 @@
 @import "tailwindcss";
-@import "../styles/tokens.css";
+:root {
+  /* Core Colours */
+  --color-ink: #0C0C0C;
+  --color-paper: #FAFAF8;
+  --color-sand: #F4F1EA;
+  --color-slate: #6B6862;
+  --color-orange: #E07B10;
+  --color-navy: #1C3B54;
+  --color-plum: #6B4F62;
+  --gradient-signature: linear-gradient(90deg, #E07B10 0%, #1C3B54 100%);
+
+  /* Typography / Font Variables */
+  --font-sans: var(--font-maven-pro), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Locked Type Scale */
+  --text-display-size: 72px;
+  --text-display-line-height: 0.95;
+  --text-display-weight: 300;
+
+  --text-h1-size: 48px;
+  --text-h1-line-height: 1.05;
+  --text-h1-weight: 300;
+
+  --text-h2-size: 34px;
+  --text-h2-line-height: 1.1;
+  --text-h2-weight: 400;
+
+  --text-h3-size: 24px;
+  --text-h3-line-height: 1.2;
+  --text-h3-weight: 500;
+
+  --text-body-size: 17px;
+  --text-body-line-height: 1.7;
+  --text-body-weight: 400;
+
+  --text-caption-size: 13px;
+  --text-caption-line-height: 1.5;
+  --text-caption-weight: 500;
+
+  --text-label-size: 11px;
+  --text-label-letter-spacing: 0.22em;
+  --text-label-weight: 600;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 80px;
+  --space-8: 120px;
+
+  /* Radius */
+  --radius-brand: 2px;
+  --radius-ui: 8px;
+  --radius-product: 12px;
+  --radius-pill: 999px;
+
+  /* Shadow */
+  --shadow-soft: 0 18px 60px rgba(12, 12, 12, 0.08);
+
+  /* Motion */
+  --motion-standard: 220ms;
+  --motion-enter: 260ms;
+  --motion-exit: 180ms;
+  --motion-emphasis: 400ms;
+  --ease-aroneu: cubic-bezier(.2, 0, 0, 1);
+
+  /* Container & Measure */
+  --container-max: 1180px;
+  --container-padding-mobile: 24px;
+  --container-padding-desktop: 60px;
+  --measure-body: 66ch;
+  --measure-reading: 60ch;
+}
+
 
 /* Aroneu decision (Burhan 2026-07-05): light-only public site direction.
    Do not trigger dark mode publicly. Neutralize OS-level dark-mode auto switch.
@@ -87,7 +165,7 @@
 @layer base {
   html, body {
     background-color: var(--color-paper);
-    color: var(--color-ink);
+    color: inherit;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -175,13 +253,13 @@
     font-size: var(--text-h2-size);
     line-height: var(--text-h2-line-height);
     font-weight: var(--text-h2-weight);
-    color: var(--color-ink);
+    color: inherit;
   }
   .body-aroneu {
     font-size: var(--text-body-size);
     line-height: var(--text-body-line-height);
     font-weight: var(--text-body-weight);
-    color: var(--color-ink);
+    color: inherit;
   }
   .label-aroneu {
     font-size: var(--text-label-size);
@@ -189,7 +267,7 @@
     letter-spacing: var(--text-label-letter-spacing);
     font-weight: var(--text-label-weight);
     text-transform: uppercase;
-    color: var(--color-slate);
+    color: inherit; opacity: 0.8;
   }
   .btn-primary-aroneu {
     display: inline-flex;
@@ -199,7 +277,7 @@
     border-radius: 9999px;
     font-size: 1rem;
     font-weight: 500;
-    background-color: var(--color-ink);
+    background-color: inherit;
     color: var(--color-paper);
     transition: opacity 220ms cubic-bezier(.2, 0, 0, 1);
     text-decoration: none;
@@ -224,7 +302,7 @@
     font-size: 1rem;
     font-weight: 500;
     background-color: transparent;
-    color: var(--color-ink);
+    color: inherit;
     border: 1px solid var(--color-zinc-300, #d4d4d8);
     transition: background-color 220ms cubic-bezier(.2, 0, 0, 1);
     text-decoration: none;
@@ -245,7 +323,7 @@
     font-size: 0.875rem;
     font-weight: 500;
     background-color: transparent;
-    color: var(--color-ink);
+    color: inherit;
     text-decoration: underline;
     text-underline-offset: 4px;
   }
@@ -294,14 +372,14 @@
 
   .surface-paper {
     background-color: var(--color-paper);
-    color: var(--color-ink);
+    color: inherit;
   }
   .surface-sand {
     background-color: var(--color-sand);
-    color: var(--color-ink);
+    color: inherit;
   }
   .surface-ink {
-    background-color: var(--color-ink);
+    background-color: inherit;
     color: var(--color-paper);
   }
   .surface-product {

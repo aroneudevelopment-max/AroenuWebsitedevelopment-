@@ -36,7 +36,7 @@ export function CaseStudyGrid({
         {/* Filters */}
         <div className="mb-12 flex flex-col gap-6">
           <div className="flex items-baseline gap-3">
-            <span className="text-label uppercase tracking-widest text-zinc-500">
+            <span className="text-label uppercase tracking-widest opacity-70">
               {data.label}:
             </span>
           </div>
@@ -54,7 +54,7 @@ export function CaseStudyGrid({
                 className={`px-4 py-2 text-sm rounded-full transition-colors ${
                   activeFilter === filter
                     ? "bg-ink text-paper font-medium"
-                    : "text-zinc-600 border border-zinc-200 hover:border-zinc-300 surface-paper"
+                    : "opacity-80 border border-zinc-200 hover:border-zinc-300 surface-paper"
                 }`}
               >
                 {filter}
@@ -65,7 +65,7 @@ export function CaseStudyGrid({
 
         {/* Helper text */}
         {data.subcopy && (
-          <p className="text-sm text-zinc-500 mb-8">{data.subcopy}</p>
+          <p className="text-sm opacity-70 mb-8">{data.subcopy}</p>
         )}
 
         {/* Grid or empty state */}
@@ -79,13 +79,13 @@ export function CaseStudyGrid({
               >
                 <div className="p-6 md:p-8 flex flex-col h-full">
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 text-zinc-500">
+                    <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 opacity-70">
                       {caseStudy.capabilities.includes("Capability Teams") &&
                       caseStudy.capabilities.includes("AI Workspace")
                         ? "Capability Teams / AI Workspace"
                         : caseStudy.capabilities[0]}
                     </span>
-                    <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 text-zinc-500">
+                    <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 opacity-70">
                       {caseStudy.industry}
                     </span>
                   </div>
@@ -94,15 +94,15 @@ export function CaseStudyGrid({
                     {caseStudy.title}
                   </h3>
 
-                  <p className="text-sm text-zinc-600 mb-6 flex-grow">
+                  <p className="text-sm opacity-80 mb-6 flex-grow">
                     {caseStudy.excerpt}
                   </p>
 
                   <div className="py-4 border-t border-zinc-200 mb-6">
-                    <p className="text-caption uppercase tracking-widest text-zinc-500 mb-1">
+                    <p className="text-caption uppercase tracking-widest opacity-70 mb-1">
                       Proof point
                     </p>
-                    <p className="text-sm text-zinc-600">
+                    <p className="text-sm opacity-80">
                       {caseStudy.proofPoint}
                     </p>
                   </div>
@@ -125,7 +125,7 @@ export function CaseStudyGrid({
             <h3 className="text-h3 mb-4">
               {emptyState?.heading || "Case studies are being prepared."}
             </h3>
-            <p className="text-body text-zinc-600 mb-8">
+            <p className="text-body opacity-80 mb-8">
               {emptyState?.body ||
                 "Approved case studies will appear here once client names, proof points, and public wording are cleared."}
             </p>

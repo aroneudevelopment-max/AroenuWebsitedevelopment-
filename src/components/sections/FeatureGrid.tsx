@@ -22,7 +22,7 @@ export function FeatureGrid({ data }: { data?: SectionContent }) {
         )}
         {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
         {data.body && (
-          <p className="text-body text-zinc-700">{data.body}</p>
+          <p className="text-body opacity-80">{data.body}</p>
         )}
       </div>
       <div className="container-aroneu grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -34,7 +34,7 @@ export function FeatureGrid({ data }: { data?: SectionContent }) {
             <h3 className="text-lg md:text-xl font-semibold mb-3 text-ink">
               {item.title}
             </h3>
-            <p className="text-zinc-700 text-sm leading-relaxed">
+            <p className="opacity-80 text-sm leading-relaxed">
               {item.description}
             </p>
           </div>

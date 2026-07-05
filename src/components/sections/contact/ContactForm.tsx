@@ -88,7 +88,7 @@ export function ContactForm({ data }: { data?: SectionContent }) {
   };
 
   const fieldClasses =
-    "w-full px-4 py-3 rounded-lg border border-zinc-300 bg-paper text-ink text-base placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors";
+    "w-full px-4 py-3 rounded-lg border border-zinc-300 bg-paper text-ink text-base placeholder:opacity-60 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors";
 
   return (
     <section id="contact-form" className="section-aroneu surface-paper">
@@ -96,7 +96,7 @@ export function ContactForm({ data }: { data?: SectionContent }) {
         <div className="mb-12 text-center">
           {data.heading && <h2 className="text-h2 mb-4 text-ink">{data.heading}</h2>}
           {data.subcopy && (
-            <p className="text-body text-zinc-600">{data.subcopy}</p>
+            <p className="text-body opacity-80">{data.subcopy}</p>
           )}
         </div>
 
@@ -206,7 +206,7 @@ export function ContactForm({ data }: { data?: SectionContent }) {
               <div className="mt-1.5 flex items-center justify-between gap-2">
                 <p
                   id={`${field.name}-helper`}
-                  className="text-xs text-zinc-500"
+                  className="text-xs opacity-70"
                 >
                   {field.helperText}
                 </p>
@@ -251,7 +251,7 @@ export function ContactForm({ data }: { data?: SectionContent }) {
                 {getNote("Consent label")}
               </label>
             </div>
-            <p id="consent-helper" className="text-xs text-zinc-500 ml-7 mb-1">
+            <p id="consent-helper" className="text-xs opacity-70 ml-7 mb-1">
               {getNote("Consent helper")}
             </p>
             {errors["consent"] && (

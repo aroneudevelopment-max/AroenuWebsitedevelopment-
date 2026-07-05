@@ -12,7 +12,7 @@ export function InsightAnswerBlock({ heading, body }: { heading?: string, body?:
  {heading}
  </h2>
  )}
- <p className="text-body text-zinc-800">
+ <p className="text-body opacity-80">
  {body}
  </p>
  </div>

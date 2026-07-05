@@ -10,13 +10,13 @@ export function GovernanceControlsPanel({ data }: { data?: SectionContent }) {
       <div className="container-aroneu flex flex-col lg:flex-row-reverse gap-16 items-center">
         <div className="flex-1">
           {data.eyebrow && (
-            <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+            <span className="text-label uppercase tracking-widest block mb-4 opacity-70">
               {data.eyebrow}
             </span>
           )}
           {data.heading && <h2 className="text-h2 mb-6">{data.heading}</h2>}
           {data.body && (
-            <p className="text-body text-zinc-600 mb-10">{data.body}</p>
+            <p className="text-body opacity-80 mb-10">{data.body}</p>
           )}
           <div className="grid grid-cols-2 gap-4">
             {data.items?.map((item: any, i: number) => (
@@ -36,7 +36,7 @@ export function GovernanceControlsPanel({ data }: { data?: SectionContent }) {
                 className="w-full h-auto object-cover"
                 loading="lazy"
               />
-              <div className="absolute bottom-3 right-3 surface-paper/80 backdrop-blur-sm px-2 py-1 rounded text-[10px] text-zinc-500 tracking-wider">
+              <div className="absolute bottom-3 right-3 surface-paper/80 backdrop-blur-sm px-2 py-1 rounded text-[10px] opacity-70 tracking-wider">
                 REPRESENTATIVE VISUAL
               </div>
             </div>
@@ -59,7 +59,7 @@ export function GovernanceControlsPanel({ data }: { data?: SectionContent }) {
                 </span>
                 <span>Watch the explainer</span>
               </a>
-              <p className="text-caption text-zinc-500">
+              <p className="text-caption opacity-70">
                 Manual play. No sound. Representative explainer for the
                 governance layer, not a live product demo.
               </p>

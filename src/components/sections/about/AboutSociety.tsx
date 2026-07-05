@@ -20,7 +20,7 @@ export function AboutSociety({ data }: { data?: SectionContent }) {
           )}
           {data.heading && <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>}
           {data.body && (
-            <p className="text-body text-zinc-700">{data.body}</p>
+            <p className="text-body opacity-80">{data.body}</p>
           )}
         </div>
 
@@ -31,7 +31,7 @@ export function AboutSociety({ data }: { data?: SectionContent }) {
               className="flex gap-4 p-6 rounded-xl border border-zinc-200 surface-paper shadow-sm"
             >
               <div className="w-10 h-10 rounded-full surface-sand flex items-center justify-center shrink-0">
-                <span className="text-caption font-mono text-zinc-500">
+                <span className="text-caption font-mono opacity-70">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -39,7 +39,7 @@ export function AboutSociety({ data }: { data?: SectionContent }) {
                 <h3 className="font-semibold mb-1 text-ink text-base">
                   {item.heading}
                 </h3>
-                <p className="text-zinc-700 text-sm leading-relaxed">
+                <p className="opacity-80 text-sm leading-relaxed">
                   {item.body}
                 </p>
               </div>

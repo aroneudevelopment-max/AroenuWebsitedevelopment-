@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB" className="antialiased">
-      <body className={`min-h-screen flex flex-col ${mavenPro.variable} ${newsreader.variable} bg-white`}>
+      <body className={`min-h-screen flex flex-col ${mavenPro.variable} ${newsreader.variable}`}>
         <SiteShell>
           {children}
         </SiteShell>

@@ -8,13 +8,13 @@ export function ComparisonTable({ data }: { data?: SectionContent }) {
       <div className="container-aroneu max-w-5xl mx-auto">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           {data.eyebrow && (
-            <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+            <span className="text-label uppercase tracking-widest block mb-4 opacity-70">
               {data.eyebrow}
             </span>
           )}
           {data.heading && <h2 className="text-h2 mb-6">{data.heading}</h2>}
           {data.body && (
-            <p className="text-body text-zinc-600">{data.body}</p>
+            <p className="text-body opacity-80">{data.body}</p>
           )}
         </div>
 
@@ -43,13 +43,13 @@ export function ComparisonTable({ data }: { data?: SectionContent }) {
                     }`}
                   >
                     <td className="p-5 text-sm font-medium">{item.model}</td>
-                    <td className="p-5 text-sm text-zinc-600">
+                    <td className="p-5 text-sm opacity-80">
                       {item.bestFor}
                     </td>
-                    <td className="p-5 text-sm text-zinc-600">
+                    <td className="p-5 text-sm opacity-80">
                       {item.governance}
                     </td>
-                    <td className="p-5 text-sm text-zinc-600 italic">
+                    <td className="p-5 text-sm opacity-80 italic">
                       {item.aroneuView}
                     </td>
                   </tr>

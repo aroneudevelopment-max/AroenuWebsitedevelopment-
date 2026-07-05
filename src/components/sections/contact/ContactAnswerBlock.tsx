@@ -11,7 +11,7 @@ export function ContactAnswerBlock({ data }: { data?: SectionContent }) {
     <section className="section-aroneu surface-sand border-b border-zinc-200">
       <div className="container-aroneu max-w-3xl mx-auto text-center">
         {data.body && (
-          <p className="text-body text-zinc-700 mx-auto max-w-2xl">
+          <p className="text-body opacity-80 mx-auto max-w-2xl">
             {data.body as string}
           </p>
         )}

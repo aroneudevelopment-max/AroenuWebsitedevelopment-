@@ -19,7 +19,7 @@ export function ContactScheduler({ data }: { data?: SectionContent }) {
           <h2 className="text-h2 mb-6 text-ink">{data.heading}</h2>
         )}
         {data.body && (
-          <p className="text-body text-zinc-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-body opacity-80 mb-8 max-w-2xl mx-auto">
             {data.body as string}
           </p>
         )}
@@ -28,7 +28,7 @@ export function ContactScheduler({ data }: { data?: SectionContent }) {
             {data.primaryCTA.label}
           </a>
         )}
-        <p className="mt-6 text-caption text-zinc-500 max-w-xl mx-auto">
+        <p className="mt-6 text-caption opacity-70 max-w-xl mx-auto">
           Scheduler integration is intentionally pending. Until the
           approved scheduler (Cal.com or HubSpot Meetings) is connected, the
           &ldquo;Book a call&rdquo; button links to the contact form below so the

@@ -13,11 +13,11 @@ export function FeaturedInsightCard({ data }: { data: any }) {
       <div className="container-aroneu">
         <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-center">
           
-            <span className="text-label uppercase tracking-widest text-zinc-500">
+            <span className="text-label uppercase tracking-widest opacity-70">
               {data.label}
             </span>
             <h2 className="text-h2 text-ink">{data.heading}</h2>
-            <p className="text-body text-zinc-600">{data.body}</p>
+            <p className="text-body opacity-80">{data.body}</p>
           
 
           
@@ -47,7 +47,7 @@ export function FeaturedInsightCard({ data }: { data: any }) {
                   {data.metadata?.map((tag: string, i: number) => (
                     <span
                       key={i}
-                      className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 text-zinc-500"
+                      className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 opacity-70"
                     >
                       {tag}
                     </span>
@@ -63,7 +63,7 @@ export function FeaturedInsightCard({ data }: { data: any }) {
                   </span>
                 </div>
                 {isPending && (
-                  <p className="text-caption text-zinc-400">
+                  <p className="text-caption opacity-60">
                     Suggested editorial topic — not a published article.
                   </p>
                 )}

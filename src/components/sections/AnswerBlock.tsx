@@ -15,7 +15,7 @@ export function AnswerBlock(props: AnswerBlockProps) {
  <section className="section-aroneu surface-sand">
  <div className="container-aroneu max-w-4xl mx-auto text-center">
  {heading && <h2 className="heading-aroneu mb-6">{heading}</h2>}
- {body && <p className="body-aroneu text-xl text-zinc-700 font-medium">{body}</p>}
+ {body && <p className="body-aroneu text-xl opacity-80 font-medium">{body}</p>}
  </div>
  </section>
  );

@@ -8,7 +8,7 @@ export function ObjectionTable({ data }: { data?: SectionContent }) {
       <div className="container-aroneu max-w-5xl mx-auto">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           {data.eyebrow && (
-            <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+            <span className="text-label uppercase tracking-widest block mb-4 opacity-70">
               {data.eyebrow}
             </span>
           )}
@@ -22,13 +22,13 @@ export function ObjectionTable({ data }: { data?: SectionContent }) {
               className="py-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8"
             >
               <div className="md:col-span-1 font-semibold flex gap-3 text-ink">
-                <span className="text-zinc-400 shrink-0" aria-hidden="true">
+                <span className="opacity-60 shrink-0" aria-hidden="true">
                   ?
                 </span>
                 <span>{item.question}</span>
               </div>
-              <div className="md:col-span-2 text-zinc-600 flex gap-3">
-                <span className="text-zinc-400 shrink-0" aria-hidden="true">
+              <div className="md:col-span-2 opacity-80 flex gap-3">
+                <span className="opacity-60 shrink-0" aria-hidden="true">
                   &rarr;
                 </span>
                 <p>{item.answer}</p>

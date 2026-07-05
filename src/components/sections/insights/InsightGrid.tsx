@@ -34,7 +34,7 @@ export function InsightGrid({
         {/* Filters */}
         <div className="mb-12 flex flex-col gap-6">
           <div className="flex items-baseline gap-3">
-            <span className="text-label uppercase tracking-widest text-zinc-500">
+            <span className="text-label uppercase tracking-widest opacity-70">
               {filterData.label}:
             </span>
           </div>
@@ -52,7 +52,7 @@ export function InsightGrid({
                 className={`px-4 py-2 text-sm rounded-full transition-colors ${
                   activeFilter === filter
                     ? "bg-ink text-paper font-medium"
-                    : "text-zinc-600 border border-zinc-200 hover:border-zinc-300 surface-paper"
+                    : "opacity-80 border border-zinc-200 hover:border-zinc-300 surface-paper"
                 }`}
               >
                 {filter}
@@ -66,7 +66,7 @@ export function InsightGrid({
           <div className="mt-4">
             <div className="mb-8">
               <h3 className="text-h3">Suggested themes</h3>
-              <p className="text-caption text-zinc-500 mt-2">
+              <p className="text-caption opacity-70 mt-2">
                 These topics are planned editorial directions, not published
                 articles. They show what Aroneu is preparing to publish.
               </p>
@@ -81,13 +81,13 @@ export function InsightGrid({
                   key={i}
                   className="min-w-0 flex flex-col border border-zinc-200 rounded-2xl surface-paper p-6 md:p-8 transition-colors hover:border-zinc-300"
                 >
-                  <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 text-zinc-500 self-start mb-5">
+                  <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 opacity-70 self-start mb-5">
                     Suggested topic
                   </span>
                   <h4 className="text-lg md:text-xl font-semibold mb-3 text-ink">
                     {theme.title}
                   </h4>
-                  <p className="text-sm text-zinc-600 leading-relaxed mb-6 flex-grow">
+                  <p className="text-sm opacity-80 leading-relaxed mb-6 flex-grow">
                     {theme.excerpt}
                   </p>
                   <Link
@@ -120,14 +120,14 @@ export function InsightGrid({
                   </div>
                   <div className="p-6 md:p-8 flex flex-col flex-grow">
                     <div className="flex flex-wrap items-center gap-4 mb-4">
-                      <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 text-zinc-500">
+                      <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded-md bg-zinc-100 opacity-70">
                         {article.category}
                       </span>
-                      <span className="text-caption text-zinc-500">
+                      <span className="text-caption opacity-70">
                         {article.readingTime}
                       </span>
                     </div>
-                    <p className="text-sm text-zinc-600 mb-6 flex-grow">
+                    <p className="text-sm opacity-80 mb-6 flex-grow">
                       {article.excerpt}
                     </p>
                     <div className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-ink group-hover:opacity-80 transition-opacity">
@@ -151,7 +151,7 @@ export function InsightGrid({
             <h3 className="text-h3 mb-4">
               {emptyStateData?.heading || "No insights found."}
             </h3>
-            <p className="text-body text-zinc-600 mb-8">
+            <p className="text-body opacity-80 mb-8">
               {emptyStateData?.body ||
                 "Try another topic or check back as new briefs are published."}
             </p>

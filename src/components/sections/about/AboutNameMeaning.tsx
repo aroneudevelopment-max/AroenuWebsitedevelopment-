@@ -13,7 +13,7 @@ export function AboutNameMeaning({ data }: { data?: SectionContent }) {
  {(data.features as { heading: string; body: string }[])?.map((feature, i) => (
  <div key={i} className="p-8 rounded-2xl border border-zinc-200 shadow-sm relative overflow-hidden group">
  <h3 className="text-2xl font-semibold mb-4 text-primary-900 relative z-10">{feature.heading}</h3>
- <p className="text-zinc-600 leading-relaxed relative z-10">{feature.body}</p>
+ <p className="opacity-80 leading-relaxed relative z-10">{feature.body}</p>
  </div>
  ))}
  </div>

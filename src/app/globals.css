@@ -1,5 +1,17 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ink: #0C0C0C;
+  --color-paper: #FAFAF8;
+  --color-sand: #F4F1EA;
+  --color-slate: #6B6862;
+  --color-orange: #E07B10;
+  --color-navy: #1C3B54;
+  --color-plum: #6B4F62;
+}
+
 :root {
+
   /* Core Colours */
   --color-ink: #0C0C0C;
   --color-paper: #FAFAF8;
@@ -83,7 +95,19 @@
    Do not trigger dark mode publicly. Neutralize OS-level dark-mode auto switch.
    Approved dark/ink sections remain as designed (e.g. surface-ink, Closing CTA,
    careers-bridge), but no accidental dark variants are applied. */
+
+@theme {
+  --color-ink: #0C0C0C;
+  --color-paper: #FAFAF8;
+  --color-sand: #F4F1EA;
+  --color-slate: #6B6862;
+  --color-orange: #E07B10;
+  --color-navy: #1C3B54;
+  --color-plum: #6B4F62;
+}
+
 :root {
+
   color-scheme: light only;
 }
 
@@ -94,14 +118,14 @@
   --font-mono: var(--font-mono);
 
   /* Colors */
-  --color-ink: var(--color-ink);
-  --color-paper: var(--color-paper);
-  --color-sand: var(--color-sand);
-  --color-slate: var(--color-slate);
-  --color-orange: var(--color-orange);
-  --color-navy: var(--color-navy);
-  --color-plum: var(--color-plum);
-  --color-gradient-signature: var(--gradient-signature);
+  
+  
+  
+  
+  
+  
+  
+  
 
   /* Primary = brand orange (accent for eyebrows, focus rings, checkmarks).
      Aroneu tokens above are the locked design system. This alias makes
@@ -277,7 +301,7 @@
     border-radius: 9999px;
     font-size: 1rem;
     font-weight: 500;
-    background-color: inherit;
+    background-color: var(--color-ink);
     color: var(--color-paper);
     transition: opacity 220ms cubic-bezier(.2, 0, 0, 1);
     text-decoration: none;
@@ -379,7 +403,7 @@
     color: inherit;
   }
   .surface-ink {
-    background-color: inherit;
+    background-color: var(--color-ink);
     color: var(--color-paper);
   }
   .surface-product {

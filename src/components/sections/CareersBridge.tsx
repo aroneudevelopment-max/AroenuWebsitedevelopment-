@@ -24,7 +24,7 @@ export function CareersBridge({ data }: { data?: SectionContent }) {
           <h2 className="text-h2 mb-6 text-paper">{data.heading}</h2>
         )}
         {data.body && (
-          <p className="text-body opacity-80 mb-10">{data.body}</p>
+          <p className="text-body opacity-80 mb-10 mx-auto text-paper">{data.body}</p>
         )}
         {cta && (
           <a

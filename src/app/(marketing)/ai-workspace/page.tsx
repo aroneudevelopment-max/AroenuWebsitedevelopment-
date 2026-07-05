@@ -24,9 +24,8 @@ export default function AIWorkspace() {
 
   return (
     <div className="page-ai-workspace flex flex-col w-full">
-      {/* 1. Hero — flat render (no Tilt3D) per the AI Workspace motion brief:
-         panels should feel like a governed product preview, not a 3D scene. */}
-      <Hero data={sections.find((s) => s.id === "hero")} withTilt3D={false} />
+      {/* 1. Hero — enabled Tilt3D animation per user request */}
+      <Hero data={sections.find((s) => s.id === "hero")} withTilt3D={true} />
 
       {/* Workspace preview labels - anchored visual per placement doc */}
       <WorkspacePreviewLabels data={sections.find((s) => s.id === "workspace-preview-labels")} />

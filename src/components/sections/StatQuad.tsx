@@ -20,7 +20,7 @@ export function StatQuad({ data }: { data?: SectionContent }) {
         </div>
       </ScrollReveal>
       <div className="container-aroneu">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${data.items?.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-6 mb-12`}>
           {data.items?.map((item: any, i: number) => (
             <ScrollReveal key={i} delay={i * 0.1}>
               <div className="flex flex-col h-full border-t-2 border-zinc-200 pt-6">

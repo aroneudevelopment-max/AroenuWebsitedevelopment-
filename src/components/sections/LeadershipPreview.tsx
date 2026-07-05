@@ -18,14 +18,8 @@ export function LeadershipPreview({ data }: { data?: SectionContent }) {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="text-center max-w-xs px-6">
-                <div className="text-label uppercase tracking-widest opacity-70 mb-3">
-                  Leadership
-                </div>
-                <p className="text-body opacity-80">
-                  Named accountability, not a portrait gallery. Real leadership
-                  profiles appear once approved by Aroneu.
-                </p>
+              <div className="w-full h-full bg-zinc-100 flex items-center justify-center">
+                {/* Fallback clean container without text */}
               </div>
             )}
           </div>

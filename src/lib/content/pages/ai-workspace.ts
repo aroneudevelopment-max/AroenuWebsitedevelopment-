@@ -22,6 +22,8 @@ export const aiWorkspacePage: PageContent = {
       eyebrow: "AI workspace",
       heading: "Scale you can see. Work you can trust.",
       subcopy: "The governance layer around every team — the connective tissue where work, decisions and controls are made visible.",
+      image: "/images/aroneu/abstract-visual.jpeg",
+      video: "/videos/aroneu-overview.mp4",
       ctas: [
         { label: "Book a call", href: "/contact", variant: "primary" },
         { label: "Explore Capability Teams", href: "/capability-teams", variant: "secondary" }

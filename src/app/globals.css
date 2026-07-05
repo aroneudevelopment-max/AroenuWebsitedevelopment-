@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════════
+   Tailwind v4 Theme — Aroneu Design System
+   Single @theme block. All color, spacing, and typography tokens
+   registered here so that utility classes (text-paper, bg-ink, etc.)
+   generate correctly.
+   ═══════════════════════════════════════════════════════════════════ */
 @theme {
+  /* Core brand colours */
   --color-ink: #0C0C0C;
   --color-paper: #FAFAF8;
   --color-sand: #F4F1EA;
@@ -8,11 +15,33 @@
   --color-orange: #E07B10;
   --color-navy: #1C3B54;
   --color-plum: #6B4F62;
+
+  /* Primary palette (brand orange) */
+  --color-primary-50:  #FFF4E5;
+  --color-primary-100: #FBE6CC;
+  --color-primary-200: #F5CD9A;
+  --color-primary-300: #E7A35C;
+  --color-primary-400: #DC8B33;
+  --color-primary-500: #E07B10;
+  --color-primary-600: #C56800;
+  --color-primary-700: #9C5100;
+  --color-primary-800: #6F3900;
+  --color-primary-900: #4A2700;
+
+  /* Font families */
+  --font-sans: var(--font-maven-pro), system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   :root — CSS Custom Properties (non-Tailwind tokens)
+   ═══════════════════════════════════════════════════════════════════ */
 :root {
+  /* Force light-only: neutralise OS dark-mode auto switch */
+  color-scheme: light only;
 
-  /* Core Colours */
+  /* Core Colours (for CSS var() usage) */
   --color-ink: #0C0C0C;
   --color-paper: #FAFAF8;
   --color-sand: #F4F1EA;
@@ -22,7 +51,7 @@
   --color-plum: #6B4F62;
   --gradient-signature: linear-gradient(90deg, #E07B10 0%, #1C3B54 100%);
 
-  /* Typography / Font Variables */
+  /* Typography */
   --font-sans: var(--font-maven-pro), system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-newsreader), Georgia, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -91,105 +120,13 @@
 }
 
 
-/* Aroneu decision (Burhan 2026-07-05): light-only public site direction.
-   Do not trigger dark mode publicly. Neutralize OS-level dark-mode auto switch.
-   Approved dark/ink sections remain as designed (e.g. surface-ink, Closing CTA,
-   careers-bridge), but no accidental dark variants are applied. */
-
-@theme {
-  --color-ink: #0C0C0C;
-  --color-paper: #FAFAF8;
-  --color-sand: #F4F1EA;
-  --color-slate: #6B6862;
-  --color-orange: #E07B10;
-  --color-navy: #1C3B54;
-  --color-plum: #6B4F62;
-}
-
-:root {
-
-  color-scheme: light only;
-}
-
-@theme {
-  /* Fonts */
-  --font-sans: var(--font-sans);
-  --font-serif: var(--font-serif);
-  --font-mono: var(--font-mono);
-
-  /* Colors */
-  
-  
-  
-  
-  
-  
-  
-  
-
-  /* Primary = brand orange (accent for eyebrows, focus rings, checkmarks).
-     Aroneu tokens above are the locked design system. This alias makes
-     existing `primary-*` Tailwind classes resolve to the brand orange
-     instead of producing empty CSS. */
-  --color-primary-50:  #FFF4E5;
-  --color-primary-100: #FBE6CC;
-  --color-primary-200: #F5CD9A;
-  --color-primary-300: #E7A35C;
-  --color-primary-400: #DC8B33;
-  --color-primary-500: #E07B10;
-  --color-primary-600: #C56800;
-  --color-primary-700: #9C5100;
-  --color-primary-800: #6F3900;
-  --color-primary-900: #4A2700;
-
-  /* Typography / Type Scale */
-  --text-display: var(--text-display-size);
-  --text-display--line-height: var(--text-display-line-height);
-
-  --text-h1: var(--text-h1-size);
-  --text-h1--line-height: var(--text-h1-line-height);
-
-  --text-h2: var(--text-h2-size);
-  --text-h2--line-height: var(--text-h2-line-height);
-
-  --text-h3: var(--text-h3-size);
-  --text-h3--line-height: var(--text-h3-line-height);
-
-  --text-body: var(--text-body-size);
-  --text-body--line-height: var(--text-body-line-height);
-
-  --text-caption: var(--text-caption-size);
-  --text-caption--line-height: var(--text-caption-line-height);
-
-  --text-label: var(--text-label-size);
-
-  /* Spacing */
-  --spacing-1: var(--space-1);
-  --spacing-2: var(--space-2);
-  --spacing-3: var(--space-3);
-  --spacing-4: var(--space-4);
-  --spacing-5: var(--space-5);
-  --spacing-6: var(--space-6);
-  --spacing-7: var(--space-7);
-  --spacing-8: var(--space-8);
-
-  /* Radius */
-  --radius-brand: var(--radius-brand);
-  --radius-ui: var(--radius-ui);
-  --radius-product: var(--radius-product);
-  --radius-pill: var(--radius-pill);
-
-  /* Shadow */
-  --shadow-soft: var(--shadow-soft);
-
-  /* Motion */
-  --ease-aroneu: var(--ease-aroneu);
-}
-
+/* ═══════════════════════════════════════════════════════════════════
+   Base Layer — Global defaults
+   ═══════════════════════════════════════════════════════════════════ */
 @layer base {
   html, body {
     background-color: var(--color-paper);
-    color: inherit;
+    color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -201,8 +138,11 @@
     color: var(--color-paper);
   }
 
+  /* Paragraphs: constrain width AND center */
   p {
     max-width: var(--measure-body);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   body {
@@ -215,7 +155,13 @@
   }
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════
+   Utility Layer — Typography, surfaces, layout
+   ═══════════════════════════════════════════════════════════════════ */
 @layer utilities {
+
+  /* ── Type Scale ─────────────────────────────────────────────── */
   .text-display {
     font-size: var(--text-display-size);
     line-height: var(--text-display-line-height);
@@ -272,7 +218,7 @@
     font-family: var(--font-mono);
   }
 
-  /* Heading / body / label presets (explicit light-text tokens) */
+  /* ── Aroneu presets ────────────────────────────────────────── */
   .heading-aroneu {
     font-size: var(--text-h2-size);
     line-height: var(--text-h2-line-height);
@@ -291,8 +237,11 @@
     letter-spacing: var(--text-label-letter-spacing);
     font-weight: var(--text-label-weight);
     text-transform: uppercase;
-    color: inherit; opacity: 0.8;
+    color: inherit;
+    opacity: 0.8;
   }
+
+  /* ── Buttons ───────────────────────────────────────────────── */
   .btn-primary-aroneu {
     display: inline-flex;
     align-items: center;
@@ -327,12 +276,12 @@
     font-weight: 500;
     background-color: transparent;
     color: inherit;
-    border: 1px solid var(--color-zinc-300, #d4d4d8);
+    border: 1px solid #d4d4d8;
     transition: background-color 220ms cubic-bezier(.2, 0, 0, 1);
     text-decoration: none;
   }
   .btn-secondary-aroneu:hover {
-    background-color: var(--color-zinc-100, #f4f4f5);
+    background-color: #f4f4f5;
   }
   .btn-secondary-aroneu:focus-visible {
     outline: 2px solid var(--color-orange);
@@ -352,7 +301,7 @@
     text-underline-offset: 4px;
   }
 
-  /* Layout Foundation */
+  /* ── Layout Foundation ─────────────────────────────────────── */
   .container-aroneu {
     max-width: var(--container-max);
     margin-left: auto;
@@ -394,13 +343,16 @@
     }
   }
 
+  /* ── Surface system ────────────────────────────────────────── */
+  /* CRITICAL: Each surface sets BOTH background AND text color explicitly.
+     Never use "color: inherit" — that was the root cause of invisible text. */
   .surface-paper {
     background-color: var(--color-paper);
-    color: inherit;
+    color: var(--color-ink);
   }
   .surface-sand {
     background-color: var(--color-sand);
-    color: inherit;
+    color: var(--color-ink);
   }
   .surface-ink {
     background-color: var(--color-ink);
@@ -408,11 +360,15 @@
   }
   .surface-product {
     background-color: #fff;
+    color: var(--color-ink);
     border-radius: var(--radius-product);
     box-shadow: var(--shadow-soft);
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   Reduced Motion
+   ═══════════════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

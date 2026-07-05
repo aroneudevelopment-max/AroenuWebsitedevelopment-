@@ -25,7 +25,7 @@ export function FeaturedCase({ data }: { data: any }) {
  
  {card && (
  <div className="w-full md:w-1/2">
- <Link href={card.href} className="group block rounded-xl overflow-hidden border border-zinc-200 surface-sand transition-all hover:border-zinc-300 :border-zinc-700 hover:shadow-lg">
+ <Link href={card.href} className="group block rounded-xl overflow-hidden border border-zinc-200 surface-sand transition-all hover:border-zinc-300 hover:shadow-lg">
  {card.image && (
  <div className="relative w-full aspect-video bg-zinc-100 overflow-hidden">
  <Image 
@@ -37,7 +37,7 @@ export function FeaturedCase({ data }: { data: any }) {
  </div>
  )}
  <div className="p-8 flex flex-col space-y-4">
- <h3 className="text-h4 group-hover: :text-white transition-colors">{card.title}</h3>
+ <h3 className="text-h4 group-hover: transition-colors">{card.title}</h3>
  <p className="text-sm text-zinc-600 line-clamp-3">
  {card.excerpt}
  </p>

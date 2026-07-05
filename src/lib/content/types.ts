@@ -73,6 +73,8 @@ export type SectionContent = {
   image?: string;
   video?: string;
   visualSlot?: VisualSlot;
+  pendingProof?: boolean;
+  sourceStatus?: "approved" | "provided" | "needs-verification" | "pending";
   internalNotes?: string[];
   labels?: string[];
 };

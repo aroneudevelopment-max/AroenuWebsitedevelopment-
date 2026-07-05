@@ -19,13 +19,24 @@ export const capabilityTeamsPage: PageContent = {
     {
       id: "hero",
       component: "Hero",
+      /* Burhan decision 2026-07-05: do not reuse the F1 AI-workspace governance
+         panel here. Use the brand bridge / capability-team visual instead. */
       eyebrow: "Capability Teams",
       heading: "Capability Teams, run as an extension of your business.",
       subcopy: "Aroneu builds dedicated, senior India teams around your operating needs. The team works with your standards, your rhythm, and the governance needed to stay visible.",
+      image: "/images/aroneu/abstract-visual.jpeg",
       ctas: [
         { label: "Book a call", href: "/contact", variant: "primary" },
         { label: "See the workspace", href: "/ai-workspace", variant: "secondary" }
       ],
+      visualSlot: {
+        id: "capability-teams-hero",
+        purpose: "explain-model",
+        recommendedAssetType: "photo",
+        placementNote: "Capability-team system visual / Europe-India bridge motif",
+        required: true,
+        doNotUse: ["developer face grid", "hiring marketplace UI", "AI workspace panel"]
+      },
       internalNotes: ["Status: final-copy-provided"]
     },
     {
@@ -77,12 +88,18 @@ export const capabilityTeamsPage: PageContent = {
       component: "RetentionProof",
       eyebrow: "Continuity",
       heading: "Culture first, so knowledge compounds.",
-      body: "Aroneu’s model is built to keep teams stable: selective hiring, domain identity, local leadership, intercultural enablement, and meaningful connection to the work.",
+      body: "Aroneu's model is built to keep teams stable: selective hiring, domain identity, local leadership, intercultural enablement, and meaningful connection to the work.",
+      /* Burhan decision 2026-07-05: do not publish <4% attrition as proof
+         unless approved. It is not. Show a safe pending-proof treatment. */
       items: [
-        { value: "<4%", label: "attrition", description: "Governed teams have operated with <4% attrition." }
+        { value: "—", label: "attrition", description: "Governed attrition figures are pending verification in the Aroneu governance ledger." }
       ],
+      pendingProof: true,
       subcopy: "Retention matters because every departure takes context with it. Aroneu treats continuity as a design requirement, not a hope.",
-      internalNotes: ["Status: final-copy-provided"]
+      internalNotes: [
+        "Status: pending-proof",
+        "Reason: <4% attrition not explicitly approved in the source-ledger."
+      ]
     },
     {
       id: "model-comparison",

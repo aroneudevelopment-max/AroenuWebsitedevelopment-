@@ -19,32 +19,50 @@ export const homePage: PageContent = {
     {
       id: "hero",
       component: "Hero",
+      /* Burhan decision 2026-07-05: use the strongest approved governance /
+         model overview visual on the homepage. The brand-book abstract visual
+         (the brand bridge / Europe-India motif) is the homepage's master hero. */
       eyebrow: "India capability, European governance",
       heading: "Make India capability governable.",
       subcopy: "Aroneu builds dedicated, senior India teams for European companies — run as an extension of your business and supported by an AI Workspace that makes work, decisions, and controls visible.",
+      image: "/images/aroneu/abstract-visual.jpeg",
       ctas: [
-        { label: "Book a call", href: "/contact", variant: "primary" }
+        { label: "Book a call", href: "/contact", variant: "primary" },
+        { label: "See the workspace", href: "/ai-workspace", variant: "secondary" }
       ],
       visualSlot: {
-        id: "workspace-governance-preview",
+        id: "homepage-master-hero",
         purpose: "make-governance-visible",
-        recommendedAssetType: "video",
-        placementNote: "AI Workspace hero or visual split section",
+        recommendedAssetType: "photo",
+        placementNote: "Homepage master hero — preferred brand bridge / Europe-India motif",
         required: true,
-        doNotUse: ["neon AI", "robot hands", "fake dashboards"]
+        doNotUse: ["neon AI", "robot hands", "fake dashboards", "spinning globe"]
       },
       video: "/videos/aroneu-overview.mp4",
+      /* Video is offered as an optional overview CTA on the homepage, not forced
+         into the hero if it weakens layout. The poster (above image) carries
+         the hero when the video is not autoplaying. */
       internalNotes: ["Status: final-copy-provided"]
     },
     {
       id: "proof-strip",
       component: "ProofStrip",
+      /* Burhan decision 2026-07-05: do not publish 45M+ / <4% / 150+ as proof
+         claims unless explicitly approved in the source-ledger. They are not.
+         Show a safe pending-proof treatment: three identical numbered placeholders
+         with a small "pending verification" caption instead. */
       items: [
-        { value: "45M+", label: "connected vehicles served" },
-        { value: "<4%", label: "attrition across governed teams" },
-        { value: "150+", label: "FTE built and governed" }
+        { value: "—", label: "European programmes supported" },
+        { value: "—", label: "Governed teams in operation" },
+        { value: "—", label: "Senior India capability built" }
       ],
-      internalNotes: ["Status: final-copy-provided"]
+      pendingProof: true,
+      sourceStatus: "needs-verification",
+      internalNotes: [
+        "Status: pending-proof",
+        "Reason: source-ledger does not record explicit approval of metric values.",
+        "Do not invent values. Use placeholders until Aroneu governance ledger confirms."
+      ]
     },
     {
       id: "problem",
@@ -104,7 +122,7 @@ export const homePage: PageContent = {
       component: "StatQuad",
       eyebrow: "Proof at scale",
       heading: "Built for serious operating environments.",
-      body: "In a European automotive programme, Aroneu supported governed capability around a connected-car ecosystem serving 45M+ vehicles.",
+      body: "Aroneu supports governed capability programmes for European clients. Selected programme scope and scale figures are pending verification in the Aroneu governance ledger.",
       items: [
         { title: "Scale is not only headcount.", description: "It is the ability to keep work visible as complexity grows." },
         { title: "Governance is not only reporting.", description: "It is the rhythm, ownership, and controls around delivery." },
@@ -113,7 +131,11 @@ export const homePage: PageContent = {
       ctas: [
         { label: "Read the case study", href: "/case-studies", variant: "secondary" }
       ],
-      internalNotes: ["Status: final-copy-provided"]
+      internalNotes: [
+        "Status: pending-proof",
+        "Reason: the prior body text referenced a 45M+ vehicle figure not yet approved in the source-ledger.",
+        "Final figures will replace this copy after internal approval."
+      ]
     },
     {
       id: "leadership",

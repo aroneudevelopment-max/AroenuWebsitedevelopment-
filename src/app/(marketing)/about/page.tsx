@@ -31,14 +31,22 @@ export default function AboutPage() {
       <AboutSociety data={getSection("in-society")} />
       <AboutLeadership data={getSection("leadership")} />
       <AboutLocations data={getSection("locations")} />
-      
-      {/* Belief section reuses AnswerBlock for its restrained text-led style */}
-      <div className="w-full bg-white dark:bg-black pt-12 pb-24 border-t border-zinc-100 dark:border-zinc-900">
-        <AnswerBlock data={getSection("belief")} />
+
+      {/* Belief section - on light surface */}
+      <div className="w-full surface-paper pt-12 pb-24 border-t border-zinc-200">
+        <div className="container-aroneu max-w-4xl mx-auto">
+          <AnswerBlock data={getSection("belief")} />
+        </div>
       </div>
-      
+
       <ClosingCTA data={getSection("closing-cta")} />
-      <FAQSection data={getSection("about-faq")} />
+
+      {/* FAQ - on sand surface */}
+      <div className="py-16 surface-sand border-t border-zinc-200">
+        <div className="container-aroneu max-w-4xl mx-auto">
+          <FAQSection data={getSection("about-faq")} />
+        </div>
+      </div>
     </main>
   );
 }

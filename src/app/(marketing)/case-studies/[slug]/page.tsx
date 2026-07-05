@@ -34,15 +34,15 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
   }
 
   return (
-    <article className="page-case-study flex flex-col w-full bg-white dark:bg-black">
+    <article className="page-case-study flex flex-col w-full bg-white">
       {/* Hero */}
-      <section className="py-24 md:py-32 border-b border-zinc-200 dark:border-zinc-800">
+      <section className="py-24 md:py-32 border-b border-zinc-200">
         <div className="container-aroneu max-w-4xl mx-auto text-center flex flex-col items-center">
-          <span className="text-sm font-medium tracking-wide uppercase text-zinc-500 dark:text-zinc-400 mb-6">
+          <span className="text-sm font-medium tracking-wide uppercase text-zinc-500 mb-6">
             Case study
           </span>
           <h1 className="text-h1 mb-8">{caseStudy.title}</h1>
-          <p className="text-h4 text-zinc-600 dark:text-zinc-300 max-w-3xl mb-12">
+          <p className="text-h4 text-zinc-600 max-w-3xl mb-12">
             A governed India capability team built around {caseStudy.capabilities.join(', ')}, {caseStudy.industry}, and {caseStudy.context}.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -53,32 +53,32 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
       </section>
 
       {/* Summary panel */}
-      <section className="py-12 bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+      <section className="py-12 bg-zinc-50 border-b border-zinc-200">
         <div className="container-aroneu max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-12">
             <div>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Client / context</p>
-              <p className="font-medium text-black dark:text-white">{caseStudy.context}</p>
+              <p className="text-sm text-zinc-500 mb-1">Client / context</p>
+              <p className="font-medium text-black">{caseStudy.context}</p>
             </div>
             <div>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Industry</p>
-              <p className="font-medium text-black dark:text-white">{caseStudy.industry}</p>
+              <p className="text-sm text-zinc-500 mb-1">Industry</p>
+              <p className="font-medium text-black">{caseStudy.industry}</p>
             </div>
             <div>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Capability</p>
-              <p className="font-medium text-black dark:text-white">{caseStudy.capabilities.join(', ')}</p>
+              <p className="text-sm text-zinc-500 mb-1">Capability</p>
+              <p className="font-medium text-black">{caseStudy.capabilities.join(', ')}</p>
             </div>
             <div>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Team model</p>
-              <p className="font-medium text-black dark:text-white">{caseStudy.teamModel}</p>
+              <p className="text-sm text-zinc-500 mb-1">Team model</p>
+              <p className="font-medium text-black">{caseStudy.teamModel}</p>
             </div>
             <div>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Aroneu role</p>
-              <p className="font-medium text-black dark:text-white">{caseStudy.role}</p>
+              <p className="text-sm text-zinc-500 mb-1">Aroneu role</p>
+              <p className="font-medium text-black">{caseStudy.role}</p>
             </div>
             <div>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Proof</p>
-              <p className="font-medium text-black dark:text-white">{caseStudy.proofPoint}</p>
+              <p className="text-sm text-zinc-500 mb-1">Proof</p>
+              <p className="font-medium text-black">{caseStudy.proofPoint}</p>
             </div>
           </div>
         </div>
@@ -90,14 +90,14 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
           
           <section>
             <h2 className="text-h2 mb-6">The challenge</h2>
-            <div className="prose prose-zinc dark:prose-invert prose-lg max-w-none text-zinc-700 dark:text-zinc-300">
+            <div className="prose prose-zinc prose-lg max-w-none text-zinc-700">
               <p>{caseStudy.challenge}</p>
             </div>
           </section>
           
           <section>
             <h2 className="text-h2 mb-6">The team model</h2>
-            <div className="prose prose-zinc dark:prose-invert prose-lg max-w-none text-zinc-700 dark:text-zinc-300">
+            <div className="prose prose-zinc prose-lg max-w-none text-zinc-700">
               <p>{caseStudy.teamModel}</p>
             </div>
           </section>
@@ -105,31 +105,31 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
           <section>
             <h2 className="text-h2 mb-8">How the work stayed governable</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-zinc-50 dark:bg-zinc-900 p-8 rounded-xl border border-zinc-200 dark:border-zinc-800">
-                <h3 className="text-xl font-medium mb-4 text-black dark:text-white">Operating rhythm</h3>
-                <p className="text-zinc-600 dark:text-zinc-400">{caseStudy.governance.rhythm}</p>
+              <div className="bg-zinc-50 p-8 rounded-xl border border-zinc-200">
+                <h3 className="text-xl font-medium mb-4 text-black">Operating rhythm</h3>
+                <p className="text-zinc-600">{caseStudy.governance.rhythm}</p>
               </div>
-              <div className="bg-zinc-50 dark:bg-zinc-900 p-8 rounded-xl border border-zinc-200 dark:border-zinc-800">
-                <h3 className="text-xl font-medium mb-4 text-black dark:text-white">Visibility</h3>
-                <p className="text-zinc-600 dark:text-zinc-400">{caseStudy.governance.visibility}</p>
+              <div className="bg-zinc-50 p-8 rounded-xl border border-zinc-200">
+                <h3 className="text-xl font-medium mb-4 text-black">Visibility</h3>
+                <p className="text-zinc-600">{caseStudy.governance.visibility}</p>
               </div>
-              <div className="bg-zinc-50 dark:bg-zinc-900 p-8 rounded-xl border border-zinc-200 dark:border-zinc-800">
-                <h3 className="text-xl font-medium mb-4 text-black dark:text-white">Continuity</h3>
-                <p className="text-zinc-600 dark:text-zinc-400">{caseStudy.governance.continuity}</p>
+              <div className="bg-zinc-50 p-8 rounded-xl border border-zinc-200">
+                <h3 className="text-xl font-medium mb-4 text-black">Continuity</h3>
+                <p className="text-zinc-600">{caseStudy.governance.continuity}</p>
               </div>
             </div>
           </section>
 
           <section>
             <h2 className="text-h2 mb-6">The role of the AI Workspace</h2>
-            <div className="prose prose-zinc dark:prose-invert prose-lg max-w-none text-zinc-700 dark:text-zinc-300">
+            <div className="prose prose-zinc prose-lg max-w-none text-zinc-700">
               <p>{caseStudy.aiWorkspace}</p>
             </div>
           </section>
 
           <section>
             <h2 className="text-h2 mb-6">The outcome</h2>
-            <div className="prose prose-zinc dark:prose-invert prose-lg max-w-none text-zinc-700 dark:text-zinc-300">
+            <div className="prose prose-zinc prose-lg max-w-none text-zinc-700">
               <p>{caseStudy.outcome}</p>
             </div>
           </section>
@@ -139,9 +139,9 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
               <h2 className="text-h2 mb-8">Approved proof</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {caseStudy.metrics.map((metric, idx) => (
-                  <div key={idx} className="border-t-2 border-black dark:border-white pt-6">
-                    <p className="text-4xl font-medium text-black dark:text-white mb-2">{metric.value}</p>
-                    <p className="text-zinc-600 dark:text-zinc-400">{metric.label}</p>
+                  <div key={idx} className="border-t-2 border-black pt-6">
+                    <p className="text-4xl font-medium text-black mb-2">{metric.value}</p>
+                    <p className="text-zinc-600">{metric.label}</p>
                   </div>
                 ))}
               </div>
@@ -151,12 +151,12 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
           {caseStudy.quote && (
             <section>
               <h2 className="text-h2 mb-8">Client perspective</h2>
-              <figure className="bg-zinc-50 dark:bg-zinc-900 p-12 rounded-xl border border-zinc-200 dark:border-zinc-800 relative">
-                <span className="text-6xl text-zinc-200 dark:text-zinc-800 absolute top-8 left-8">"</span>
-                <blockquote className="text-2xl font-medium text-black dark:text-white mb-6 relative z-10 leading-relaxed">
+              <figure className="bg-zinc-50 p-12 rounded-xl border border-zinc-200 relative">
+                <span className="text-6xl text-zinc-200 absolute top-8 left-8">"</span>
+                <blockquote className="text-2xl font-medium text-black mb-6 relative z-10 leading-relaxed">
                   {caseStudy.quote.text}
                 </blockquote>
-                <figcaption className="text-zinc-600 dark:text-zinc-400 relative z-10">
+                <figcaption className="text-zinc-600 relative z-10">
                   — {caseStudy.quote.attribution}
                 </figcaption>
               </figure>
@@ -167,24 +167,24 @@ export default function CaseStudyDetail({ params }: { params: { slug: string } }
       </div>
 
       {/* Related capability */}
-      <section className="py-24 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-24 bg-zinc-50 border-t border-zinc-200">
         <div className="container-aroneu max-w-4xl mx-auto text-center flex flex-col items-center">
           <h2 className="text-h2 mb-6">Related capability</h2>
-          <p className="text-body text-zinc-600 dark:text-zinc-300 mb-10 max-w-2xl">
+          <p className="text-body text-zinc-600 mb-10 max-w-2xl">
             This case connects to the way Aroneu builds Capability Teams and supports them through the AI Workspace.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/capability-teams" className="btn-secondary bg-white dark:bg-black">Capability Teams</Link>
-            <Link href="/ai-workspace" className="btn-secondary bg-white dark:bg-black">AI Workspace</Link>
+            <Link href="/capability-teams" className="btn-secondary bg-white">Capability Teams</Link>
+            <Link href="/ai-workspace" className="btn-secondary bg-white">AI Workspace</Link>
           </div>
         </div>
       </section>
 
       {/* Closing CTA */}
-      <section className="py-24 border-t border-zinc-200 dark:border-zinc-800 text-center">
+      <section className="py-24 border-t border-zinc-200 text-center">
         <div className="container-aroneu max-w-3xl mx-auto flex flex-col items-center">
           <h2 className="text-h2 mb-6">Build a governed team for your own context.</h2>
-          <p className="text-body text-zinc-600 dark:text-zinc-300 mb-10">
+          <p className="text-body text-zinc-600 mb-10">
             Tell us what capability you need, what risk you need to control, and what proof would help your team evaluate the model.
           </p>
           <Link href="/contact" className="btn-primary text-lg px-8 py-4">Book a call</Link>

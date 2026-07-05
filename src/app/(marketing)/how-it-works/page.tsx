@@ -28,7 +28,7 @@ export default function HowItWorksPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between w-full">
-      <Hero data={heroData} />
+      <Hero data={heroData} withTilt3D={false} />
       <AnswerBlock data={answerBlockData} />
       <ProcessOverview data={processOverviewData} />
       <DiscoverPlanningCards data={discoverData} />

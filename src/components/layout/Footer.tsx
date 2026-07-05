@@ -1,60 +1,123 @@
-import React from 'react';
-import Link from 'next/link';
-import { footerNavigation } from '@/lib/navigation';
-import { routes } from '@/lib/routes';
-import { AroneuLogo } from '@/components/brand/AroneuLogo';
+import React from "react";
+import Link from "next/link";
+import { footerNavigation } from "@/lib/navigation";
+import { routes } from "@/lib/routes";
+import { AroneuLogo } from "@/components/brand/AroneuLogo";
+import { FooterNewsletter } from "./FooterNewsletter";
 
+/**
+ * Footer
+ * - Brand column with logo, tagline, two-places line, and a registered-address
+ *   placeholder (Burhan decision 5).
+ * - Three nav columns (Company / Capability / Knowledge).
+ * - Newsletter shell — non-submitting, pending backend (per brief, no fake success).
+ * - Legal strip with copyright and four legal links.
+ */
 export function Footer() {
   return (
-    <footer className="footer-aroneu bg-gray-50 pt-16 pb-8 border-t">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          
-          <div className="brand-col">
-            <Link href="/" className="brand-link mb-6 block" aria-label="Aroneu Home">
+    <footer className="footer-aroneu surface-sand pt-16 pb-8 border-t border-zinc-200">
+      <div className="container-aroneu">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
+          {/* Brand column */}
+          <div className="md:col-span-5">
+            <Link
+              href="/"
+              className="brand-link mb-6 inline-block"
+              aria-label="Aroneu Home"
+            >
               <AroneuLogo variant="horizontal" tone="ink" />
             </Link>
-            <p className="source-line text-sm mb-4">
-              Governable capability, made <em className="font-newsreader italic">new</em>.
+            <p className="text-base mb-3 text-ink">
+              Governable capability, made{" "}
+              <em className="font-serif italic">new</em>.
             </p>
+            <p className="text-sm text-zinc-500 mb-6">
+              Two places, one standard of work.
+            </p>
+
+            <FooterNewsletter />
           </div>
 
-          <div className="nav-col">
-            <h3 className="font-bold mb-4 uppercase text-xs tracking-wider">Company</h3>
+          {/* Nav columns */}
+          <div className="md:col-span-2">
+            <h3 className="text-label uppercase tracking-widest text-ink mb-4">
+              Company
+            </h3>
             <ul className="space-y-2">
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/careers">Careers</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
+              {footerNavigation.company.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-zinc-600 hover:text-ink transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="nav-col">
-            <h3 className="font-bold mb-4 uppercase text-xs tracking-wider">Capability</h3>
+          <div className="md:col-span-2">
+            <h3 className="text-label uppercase tracking-widest text-ink mb-4">
+              Capability
+            </h3>
             <ul className="space-y-2">
-              <li><Link href="/capability-teams">Capability Teams</Link></li>
-              <li><Link href="/ai-workspace">AI Workspace</Link></li>
-              <li><Link href="/how-it-works">How it works</Link></li>
+              {footerNavigation.capability.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-zinc-600 hover:text-ink transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="nav-col">
-            <h3 className="font-bold mb-4 uppercase text-xs tracking-wider">Knowledge</h3>
+          <div className="md:col-span-3">
+            <h3 className="text-label uppercase tracking-widest text-ink mb-4">
+              Knowledge
+            </h3>
             <ul className="space-y-2">
-              <li><Link href="/insights">Insights</Link></li>
-              <li><Link href="/case-studies">Case Studies</Link></li>
-              <li><Link href="/resources">Resources</Link></li>
+              {footerNavigation.knowledge.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-zinc-600 hover:text-ink transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          
         </div>
 
-        <div className="legal-strip border-t pt-8 flex flex-col md:flex-row justify-between text-sm text-gray-500">
-          <p className="copyright">&copy; {new Date().getFullYear()} Aroneu GmbH. All rights reserved.</p>
-          <ul className="flex flex-wrap space-x-4 mt-4 md:mt-0">
-            <li><Link href="/privacy">Privacy Policy</Link></li>
-            <li><Link href="/imprint">Imprint</Link></li>
-            <li><Link href="/terms">Terms of Service</Link></li>
-            <li><Link href="/cookie-policy">Cookie Policy</Link></li>
+        {/* Registered address placeholder + legal links */}
+        <div className="border-t border-zinc-200 pt-8 flex flex-col md:flex-row justify-between gap-6 text-caption text-zinc-500">
+          <div>
+            <p className="mb-1">
+              &copy; {new Date().getFullYear()} Aroneu GmbH. All rights reserved.
+            </p>
+            <p>
+              Registered address:{" "}
+              <span className="text-zinc-400">
+                pending client confirmation
+              </span>
+            </p>
+          </div>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {footerNavigation.legal.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="hover:text-ink transition-colors"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

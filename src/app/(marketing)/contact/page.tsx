@@ -24,7 +24,7 @@ export default function ContactPage() {
       <ContactHero data={getSection("hero")} />
       
       {/* Answer Block */}
-      <div className="w-full bg-white dark:bg-black pt-12 pb-24 border-t border-zinc-100 dark:border-zinc-900">
+      <div className="w-full bg-white pt-12 pb-24 border-t border-zinc-100">
         <AnswerBlock data={getSection("answer-block")} />
       </div>
       

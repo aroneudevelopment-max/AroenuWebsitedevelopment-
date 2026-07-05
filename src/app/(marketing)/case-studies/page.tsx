@@ -42,7 +42,7 @@ export default function CaseStudiesIndex() {
       <ClosingCTA data={sections.find(s => s.id === 'closing-cta')} />
       
       {/* 6. FAQ */}
-      <div className="bg-zinc-50 dark:bg-zinc-900 py-16 border-t border-zinc-200 dark:border-zinc-800">
+      <div className="bg-zinc-50 py-16 border-t border-zinc-200">
         <FAQSection data={sections.find(s => s.id === 'faq')} />
       </div>
     </div>

@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
+/* Aroneu decision (Burhan 2026-07-05): light-only public site direction.
+   Do not trigger dark mode publicly. Neutralize OS-level dark-mode auto switch.
+   Approved dark/ink sections remain as designed (e.g. surface-ink, Closing CTA,
+   careers-bridge), but no accidental dark variants are applied. */
+:root {
+  color-scheme: light only;
+}
+
 @theme {
   /* Fonts */
   --font-sans: var(--font-sans);

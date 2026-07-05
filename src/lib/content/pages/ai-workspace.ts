@@ -63,6 +63,9 @@ export const aiWorkspacePage: PageContent = {
       component: "GovernanceControlsPanel",
       heading: "Control what matters.",
       body: "The workspace is built to surface the controls, access, approvals, and quality gates that keep work safe.",
+      /* Burhan decision 2026-07-05: governance explainer video is shown here
+         as a manual-play button (no autoplay, no sound). The poster image
+         carries the visual weight. */
       image: "/images/aroneu/governance-controls-panel.png",
       video: "/videos/governance-explainer.mp4",
       items: [

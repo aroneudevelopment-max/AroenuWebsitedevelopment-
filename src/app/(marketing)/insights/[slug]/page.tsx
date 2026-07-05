@@ -41,7 +41,7 @@ export default function InsightArticlePage({ params }: { params: { slug: string 
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] py-24 px-6 text-center">
         <h1 className="text-h2 mb-4">This insight is being prepared.</h1>
-        <p className="text-body text-zinc-600 dark:text-zinc-400 max-w-md mb-8">
+        <p className="text-body text-zinc-600 max-w-md mb-8">
           The editorial team is preparing the detailed brief for this topic. 
         </p>
         <Link href="/insights" className="btn-primary">
@@ -62,7 +62,7 @@ export default function InsightArticlePage({ params }: { params: { slug: string 
       <div className="py-16">
         <div className="container-aroneu max-w-3xl mx-auto">
           {/* Article reading measure 60-66ch enforced via Tailwind max-w-prose or max-w-2xl */}
-          <div className="prose prose-zinc dark:prose-invert max-w-prose">
+          <div className="prose prose-zinc max-w-prose">
             
             {/* 3. Why this matters */}
             <h2 className="text-h3 mt-12 mb-6">Why this matters</h2>
@@ -77,12 +77,12 @@ export default function InsightArticlePage({ params }: { params: { slug: string 
             <p className="text-body leading-relaxed mb-10">{article.betterOperatingModel}</p>
             
             {/* 6. Practical checklist */}
-            <div className="bg-zinc-50 dark:bg-zinc-900 p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 my-12">
+            <div className="bg-zinc-50 p-8 rounded-xl border border-zinc-200 my-12">
               <h2 className="text-h3 mt-0 mb-6">A practical checklist</h2>
               <ul className="space-y-4 m-0 p-0 list-none">
                 {article.checklist.map((item, i) => (
                   <li key={i} className="flex items-start">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center mr-4 mt-0.5 text-xs">✓</span>
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-black text-white flex items-center justify-center mr-4 mt-0.5 text-xs">✓</span>
                     <span className="text-body">{item}</span>
                   </li>
                 ))}
@@ -90,7 +90,7 @@ export default function InsightArticlePage({ params }: { params: { slug: string 
             </div>
             
             {/* 7. How Aroneu applies this */}
-            <div className="border-t border-b border-zinc-200 dark:border-zinc-800 py-10 my-12">
+            <div className="border-t border-b border-zinc-200 py-10 my-12">
               <h2 className="text-h4 mb-4">How Aroneu applies this</h2>
               <p className="text-body leading-relaxed mb-0">{article.howAroneuAppliesThis}</p>
             </div>
@@ -104,10 +104,10 @@ export default function InsightArticlePage({ params }: { params: { slug: string 
                     <Link 
                       key={i} 
                       href={link.href}
-                      className="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors flex flex-col no-underline"
+                      className="group p-6 rounded-xl border border-zinc-200 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors flex flex-col no-underline"
                     >
                       <span className="text-xs font-mono uppercase text-zinc-500 mb-2">{link.type}</span>
-                      <span className="font-medium text-black dark:text-white group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
+                      <span className="font-medium text-black group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
                         {link.label}
                       </span>
                     </Link>
@@ -121,16 +121,16 @@ export default function InsightArticlePage({ params }: { params: { slug: string 
       
       {/* 9. Closing CTA */}
       {/* Reusing standard CTA structure but with custom text if required */}
-      <section className="py-24 bg-black text-white dark:bg-white dark:text-black border-t border-zinc-800 dark:border-zinc-200">
+      <section className="py-24 bg-black text-white border-t border-zinc-800">
         <div className="container-aroneu flex flex-col items-center text-center max-w-3xl mx-auto">
-          <h2 className="text-h2 mb-6 text-white dark:text-black">
+          <h2 className="text-h2 mb-6 text-white">
             Apply this to your team model.
           </h2>
-          <p className="text-body mb-10 text-zinc-300 dark:text-zinc-700">
+          <p className="text-body mb-10 text-zinc-300">
             Talk to us about the capability you need and the governance questions you are trying to answer.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="px-8 py-3 rounded-full text-sm font-medium transition-colors bg-white text-black hover:bg-zinc-200 dark:bg-black dark:text-white dark:hover:bg-zinc-800">
+            <Link href="/contact" className="px-8 py-3 rounded-full text-sm font-medium transition-colors bg-white text-black hover:bg-zinc-200 dark:hover:bg-zinc-800">
               Book a call
             </Link>
           </div>

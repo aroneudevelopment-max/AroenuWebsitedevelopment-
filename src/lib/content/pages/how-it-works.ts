@@ -9,6 +9,10 @@ export const howitworksPage: PageContent = {
       type: "hero",
       heading: "Start lean. Build with confidence.",
       subcopy: "Aroneu starts with the capability you need, then builds the team, context, rhythm, and controls around it. The goal is not only to add capacity. It is to make the capability governable.",
+      /* Burhan decision 2026-07-05: differentiate the hero visual. Use the
+         governance-gate-flow asset (the operating-path / Discover-Build-Run
+         supporting visual) instead of the F1 AI-workspace panel. */
+      image: "/images/aroneu/governance-gate-flow.jpeg",
       primaryCTA: {
         label: "Book a call",
         href: "/contact"

@@ -8,8 +8,6 @@ import { ContactForm } from "../../../components/sections/contact/ContactForm";
 import { ContactScheduler } from "../../../components/sections/contact/ContactScheduler";
 import { ContactOffice } from "../../../components/sections/contact/ContactOffice";
 import { ContactClosingCTA } from "../../../components/sections/contact/ContactClosingCTA";
-import { ClosingCTA } from "../../../components/sections/ClosingCTA";
-import { FAQSection } from "../../../components/sections/FAQSection";
 
 export const metadata: Metadata = {
   title: contactPage.seo?.metaTitle || "Book a call | Aroneu",

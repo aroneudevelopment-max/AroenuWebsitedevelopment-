@@ -3,6 +3,7 @@ export type InsightArticle = {
   isPublished: boolean;
   title: string;
   category: string;
+  image?: string;
   readingTime: string;
   excerpt: string;
   seo: {

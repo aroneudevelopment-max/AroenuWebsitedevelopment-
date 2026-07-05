@@ -35,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" className="antialiased">
-      <body className={`min-h-screen flex flex-col ${mavenPro.variable} ${newsreader.variable}`}>
+    <html lang="en-GB" className={`antialiased ${mavenPro.variable} ${newsreader.variable}`}>
+      <body className="min-h-screen flex flex-col">
         <SiteShell>
           {children}
         </SiteShell>

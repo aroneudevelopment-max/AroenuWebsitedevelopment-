@@ -171,7 +171,7 @@ export const careerApplicationFormContent = {
     cv: {
       label: "CV upload",
       placeholder: "Upload CV",
-      helper: "PDF, Word document, or common image format. Max 5MB."
+      helper: "PDF or Word document only. Max 10MB."
     },
     message: {
       label: "Cover letter/Note",

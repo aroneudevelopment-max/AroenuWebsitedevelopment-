@@ -3,12 +3,29 @@ import {
   pushHubSpotContact,
   sendWebsiteEmail,
 } from "@/lib/server/delivery";
+import { checkRateLimit, isValidEmail } from "@/lib/server/form-security";
 
 export const runtime = "nodejs";
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const data = await req.json();
+    const rateLimit = checkRateLimit(request, {
+      key: "contact",
+      maxRequests: 8,
+      windowMs: 10 * 60 * 1000,
+    });
+
+    if (rateLimit.limited) {
+      return NextResponse.json(
+        { error: "Too many contact submissions. Please try again shortly." },
+        {
+          status: 429,
+          headers: { "Retry-After": String(rateLimit.retryAfterSeconds) },
+        },
+      );
+    }
+
+    const data = await request.json();
     const { formData, turnstileToken } = data;
     const fullName = String(formData?.fullName || "").trim();
     const workEmail = String(formData?.workEmail || "").trim();
@@ -26,8 +43,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-    if (!emailRegex.test(workEmail)) {
+    if (!isValidEmail(workEmail)) {
       return NextResponse.json(
         { error: "Please enter a valid work email." },
         { status: 400 },

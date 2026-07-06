@@ -89,7 +89,7 @@ export async function pushHubSpotContact({
   const [firstname, ...lastnameParts] = fullName.split(" ").filter(Boolean);
   const lastname = lastnameParts.join(" ");
 
-  await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
+  const response = await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -109,6 +109,11 @@ export async function pushHubSpotContact({
       },
     }),
   }).catch((error) => {
-    console.error("HubSpot Error:", error);
+    console.error("HubSpot request error:", error);
+    return null;
   });
+
+  if (response && !response.ok) {
+    console.error("HubSpot response error:", response.status, response.statusText);
+  }
 }

@@ -2,24 +2,42 @@
 
 import React, { useState } from 'react';
 
-export function CareerApplicationForm({ content, roleSlug }: { content: any, roleSlug: string }) {
+type CareerFieldContent = {
+ label: string;
+ placeholder: string;
+ helper: string;
+};
+
+type CareerFormContent = {
+ fields: {
+ fullName: CareerFieldContent;
+ email: CareerFieldContent;
+ phone: CareerFieldContent;
+ linkedIn: CareerFieldContent;
+ portfolio: CareerFieldContent;
+ location: CareerFieldContent;
+ cv: CareerFieldContent;
+ message: CareerFieldContent;
+ };
+ consentText: string;
+ submitButton: string;
+ successState: string;
+ failureState: string;
+};
+
+export function CareerApplicationForm({ content, roleSlug }: { content: CareerFormContent, roleSlug: string }) {
  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
  const [file, setFile] = useState<File | null>(null);
  const [fileError, setFileError] = useState('');
  const [serverError, setServerError] = useState('');
 
- const acceptedFileTypes = '.pdf,.doc,.docx,.jpg,.jpeg,.png,.webp,.heic,.heif';
+ const acceptedFileTypes = '.pdf,.doc,.docx';
  const allowedTypes = [
  'application/pdf',
  'application/msword',
  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
- 'image/jpeg',
- 'image/png',
- 'image/webp',
- 'image/heic',
- 'image/heif',
  ];
- const allowedExtensions = ['.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png', '.webp', '.heic', '.heif'];
+ const allowedExtensions = ['.pdf', '.doc', '.docx'];
 
  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
  const selected = e.target.files?.[0];
@@ -34,13 +52,13 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  const normalizedName = selected.name.toLowerCase();
  const hasAllowedExtension = allowedExtensions.some((extension) => normalizedName.endsWith(extension));
  if (!allowedTypes.includes(selected.type) && !hasAllowedExtension) {
- setFileError('Please upload a PDF, Word document, or common image file.');
+ setFileError('Please upload a PDF or Word document.');
  setFile(null);
  return;
  }
 
- if (selected.size > 5 * 1024 * 1024) {
- setFileError('File is too large. Maximum size is 5 MB.');
+ if (selected.size > 10 * 1024 * 1024) {
+ setFileError('File is too large. Maximum size is 10 MB.');
  setFile(null);
  return;
  }

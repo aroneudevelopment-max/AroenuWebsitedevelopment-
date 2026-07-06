@@ -4,33 +4,32 @@ import {
   sendWebsiteEmail,
   type WebsiteAttachment,
 } from "@/lib/server/delivery";
+import {
+  checkRateLimit,
+  isValidEmail,
+  validateCareerCv,
+} from "@/lib/server/form-security";
 
 export const runtime = "nodejs";
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024;
-const allowedMimeTypes = new Set([
-  "application/pdf",
-  "application/msword",
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "image/heic",
-  "image/heif",
-]);
-const allowedExtensions = [".pdf", ".doc", ".docx", ".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"];
-
-function isValidEmail(value: string) {
-  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value);
-}
-
-function hasAllowedExtension(filename: string) {
-  const normalized = filename.trim().toLowerCase();
-  return allowedExtensions.some((extension) => normalized.endsWith(extension));
-}
-
 export async function POST(request: Request) {
   try {
+    const rateLimit = checkRateLimit(request, {
+      key: "careers-apply",
+      maxRequests: 6,
+      windowMs: 10 * 60 * 1000,
+    });
+
+    if (rateLimit.limited) {
+      return NextResponse.json(
+        { error: "Too many application attempts. Please try again shortly." },
+        {
+          status: 429,
+          headers: { "Retry-After": String(rateLimit.retryAfterSeconds) },
+        },
+      );
+    }
+
     const formData = await request.formData();
     const fullName = String(formData.get("fullName") || "").trim();
     const email = String(formData.get("email") || "").trim();
@@ -71,22 +70,16 @@ export async function POST(request: Request) {
       );
     }
 
-    if (cvFile.size > MAX_FILE_SIZE) {
+    const validatedCv = validateCareerCv(cvFile);
+    if (validatedCv.error) {
       return NextResponse.json(
-        { error: "CV file is too large. Maximum size is 5 MB." },
-        { status: 400 },
-      );
-    }
-
-    if (!allowedMimeTypes.has(cvFile.type) && !hasAllowedExtension(cvFile.name)) {
-      return NextResponse.json(
-        { error: "Please upload a PDF, Word document, or common image file for the CV." },
+        { error: validatedCv.error },
         { status: 400 },
       );
     }
 
     const attachment: WebsiteAttachment = {
-      filename: cvFile.name || "career-application-upload",
+      filename: validatedCv.filename || "career-application-cv.pdf",
       content: Buffer.from(await cvFile.arrayBuffer()),
       contentType: cvFile.type || undefined,
     };

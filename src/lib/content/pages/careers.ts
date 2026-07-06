@@ -74,8 +74,8 @@ export const careersIndexContent = {
   },
   emptyRolesState: {
     heading: "No open roles right now.",
-    body: "We are not listing open roles at the moment. You can still learn how Aroneu works and check back for approved opportunities.",
-    cta: { label: "Explore how we work", href: "/how-it-works" }
+    body: "We are not listing open roles at the moment. You can still join our talent network and share your CV for future approved opportunities.",
+    cta: { label: "Join our talent network", href: "#talent-network" }
   },
   applicationFlow: {
     label: "Application process",
@@ -185,31 +185,40 @@ export const careerApplicationFormContent = {
 
 export const careerGeneralInterestFormContent = {
   fields: {
-    ...careerApplicationFormContent.fields,
+    fullName: {
+      label: "Name",
+      placeholder: "Your name",
+      helper: "",
+    },
     email: {
-      label: "Work email",
-      placeholder: "you@company.com",
+      label: "Email",
+      placeholder: "you@email.com",
       helper: "Use the best email for a serious follow-up.",
     },
-    linkedIn: {
-      label: "LinkedIn",
-      placeholder: "LinkedIn URL",
-      helper: "Optional, but useful if you want us to understand your background faster.",
+    location: {
+      label: "Location",
+      placeholder: "City, country",
+      helper: "Tell us where you are based.",
     },
-    portfolio: {
-      label: "Portfolio",
-      placeholder: "Portfolio, GitHub, or relevant work",
-      helper: "Optional. Share anything that helps us review your profile.",
+    candidateRole: {
+      label: "Role",
+      placeholder: "What kind of role are you targeting?",
+      helper: "For example: engineering, cloud, quality, support, delivery, or AI operations.",
     },
-    message: {
-      label: "Short note",
-      placeholder: "Tell us what kind of work you want to be considered for.",
-      helper: "Optional context about your capability area, experience, or preferred role.",
+    experience: {
+      label: "Experience",
+      placeholder: "How many years of relevant experience do you have?",
+      helper: "Share the level of experience you want us to consider.",
+    },
+    cv: {
+      label: "Attach CV",
+      placeholder: "Upload CV",
+      helper: "PDF, DOC, or DOCX. Maximum 10 MB.",
     },
   },
   consentText:
     "I acknowledge that Aroneu may process my CV and contact details for future approved opportunities. Your details will be used to review your profile and contact you if there is a fit. See our Privacy Policy.",
-  submitButton: "Drop your CV",
+  submitButton: "Submit CV",
   successState: "Thank you. Your CV has been received.",
   failureState: "Something went wrong. Please try again.",
 };

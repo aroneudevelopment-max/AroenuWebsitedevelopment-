@@ -52,14 +52,7 @@ export async function POST(request: Request) {
 
     const turnstileSecret = process.env.TURNSTILE_SECRET_KEY?.trim();
 
-    if (turnstileSecret) {
-      if (!turnstileToken) {
-        return NextResponse.json(
-          { error: "Please complete the security check." },
-          { status: 400 },
-        );
-      }
-
+    if (turnstileSecret && turnstileToken) {
       const turnstileVerify = await fetch(
         "https://challenges.cloudflare.com/turnstile/v0/siteverify",
         {

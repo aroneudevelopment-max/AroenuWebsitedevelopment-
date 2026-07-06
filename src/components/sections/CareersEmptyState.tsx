@@ -26,9 +26,9 @@ export function CareersEmptyState({ heading, body, cta }: CareersEmptyStateProps
  </div>
  </div>
 
- <div className="rounded-2xl border border-aroneu-neutral-200 bg-white p-6 sm:p-10">
+ <div id="talent-network" className="rounded-2xl border border-aroneu-neutral-200 bg-white p-6 sm:p-10">
  <div className="mx-auto mb-8 max-w-2xl text-center">
- <h4 className="text-h3 text-aroneu-neutral-900">Drop your CV</h4>
+ <h4 className="text-h3 text-aroneu-neutral-900">Join our talent network</h4>
  <p className="mt-4 text-body text-aroneu-neutral-600">
  If there is no open role yet, you can still share your CV and we can contact you when an approved opportunity is relevant.
  </p>

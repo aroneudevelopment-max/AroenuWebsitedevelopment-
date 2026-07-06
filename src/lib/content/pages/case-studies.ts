@@ -32,29 +32,7 @@ export const caseStudiesPage: PageContent = {
       id: "answer",
       type: "answer",
       body:
-        "Aroneu case studies show how governable India capability teams are designed, run, and supported by an AI Workspace. Each case focuses on the challenge, team model, governance approach, operating rhythm, AI Workspace role, outcome, and approved proof.",
-    },
-    {
-      id: "featured-case",
-      type: "featured-case",
-      label: "Featured case",
-      heading: "A governed capability model for complex European delivery.",
-      body:
-        "A senior India capability team supported a European programme where visibility, continuity, and operating control mattered as much as delivery capacity.",
-      items: [
-        {
-          title: "European automotive programme",
-          excerpt:
-            "How a governed India team supported a connected-car ecosystem with clear operating rhythm, documentation, and accountability.",
-          metadata: ["Capability Teams", "AI Workspace", "Automotive", "Governance"],
-          cta: "Discuss relevant proof",
-          href: "/contact",
-          image: {
-            src: "/images/aroneu/ai-workspace-visibility-by-default.jpeg",
-            alt: "Governed capability model supporting complex European delivery",
-          },
-        },
-      ],
+        "Aroneu case studies show how governed capability is structured, made visible, and kept accountable without exposing client identity publicly.",
     },
     {
       id: "filters",
@@ -77,9 +55,9 @@ export const caseStudiesPage: PageContent = {
     {
       id: "empty-state",
       type: "empty-state",
-      heading: "Case studies are being prepared.",
+      heading: "Anonymous proof is available.",
       body:
-        "Approved case studies will appear here once client names, proof points, and public wording are cleared.",
+        "Aroneu uses anonymous case-study framing when public naming, logos, or metrics are not approved for the website.",
       primaryCTA: { label: "Book a call", href: "/contact" },
     },
     {

@@ -8,17 +8,20 @@ type CareerFieldContent = {
  helper: string;
 };
 
+type CareerFieldKey =
+ 'fullName' |
+ 'email' |
+ 'phone' |
+ 'linkedIn' |
+ 'portfolio' |
+ 'location' |
+ 'candidateRole' |
+ 'experience' |
+ 'cv' |
+ 'message';
+
 type CareerFormContent = {
- fields: {
- fullName: CareerFieldContent;
- email: CareerFieldContent;
- phone: CareerFieldContent;
- linkedIn: CareerFieldContent;
- portfolio: CareerFieldContent;
- location: CareerFieldContent;
- cv: CareerFieldContent;
- message: CareerFieldContent;
- };
+ fields: Partial<Record<CareerFieldKey, CareerFieldContent>>;
  consentText: string;
  submitButton: string;
  successState: string;
@@ -103,98 +106,70 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
  }
  };
 
+ const fieldClasses =
+ 'mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900';
+
+ const textFields: Array<{
+ key: CareerFieldKey;
+ type: 'text' | 'email' | 'tel' | 'url';
+ required?: boolean;
+ }> = [
+ { key: 'fullName', type: 'text', required: true },
+ { key: 'email', type: 'email', required: true },
+ { key: 'phone', type: 'tel' },
+ { key: 'linkedIn', type: 'url' },
+ { key: 'portfolio', type: 'url' },
+ { key: 'location', type: 'text', required: true },
+ { key: 'candidateRole', type: 'text', required: true },
+ { key: 'experience', type: 'text', required: true },
+ ];
+
  return (
  <form onSubmit={handleSubmit} className="space-y-8 rounded-3xl bg-aroneu-neutral-50 p-6 sm:p-10">
  <div className="space-y-6">
- <div>
- <label htmlFor="fullName"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.fullName.label}
- </label>
- <input
- id="fullName"
- name="fullName"
- type="text"
- required
- placeholder={content.fields.fullName.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.fullName.helper}</p>
- </div>
+ {(() => {
+ const renderedFields = textFields.filter((field) => content.fields[field.key]);
+ const rows: CareerFieldKey[][] = [];
 
- <div className="grid gap-6 sm:grid-cols-2">
- <div>
- <label htmlFor="email"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.email.label}
- </label>
- <input
- id="email"
- name="email"
- type="email"
- required
- placeholder={content.fields.email.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.email.helper}</p>
- </div>
- <div>
- <label htmlFor="phone"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.phone.label}
- </label>
- <input
- id="phone"
- name="phone"
- type="tel"
- placeholder={content.fields.phone.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.phone.helper}</p>
- </div>
- </div>
+ for (let index = 0; index < renderedFields.length; index += 2) {
+ rows.push(renderedFields.slice(index, index + 2).map((field) => field.key));
+ }
 
- <div className="grid gap-6 sm:grid-cols-2">
- <div>
- <label htmlFor="linkedIn"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.linkedIn.label}
- </label>
- <input
- id="linkedIn"
- name="linkedIn"
- type="url"
- placeholder={content.fields.linkedIn.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.linkedIn.helper}</p>
- </div>
- <div>
- <label htmlFor="portfolio"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.portfolio.label}
- </label>
- <input
- id="portfolio"
- name="portfolio"
- type="url"
- placeholder={content.fields.portfolio.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.portfolio.helper}</p>
- </div>
- </div>
+ return rows.map((row) => (
+ <div
+ key={row.join('-')}
+ className={row.length > 1 ? 'grid gap-6 sm:grid-cols-2' : ''}
+ >
+ {row.map((fieldKey) => {
+ const field = content.fields[fieldKey];
+ const config = textFields.find((item) => item.key === fieldKey);
 
- <div>
- <label htmlFor="location"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.location.label}
+ if (!field || !config) {
+ return null;
+ }
+
+ return (
+ <div key={fieldKey}>
+ <label htmlFor={fieldKey}className="block text-caption font-medium text-aroneu-neutral-900">
+ {field.label}
  </label>
  <input
- id="location"
- name="location"
- type="text"
- required
- placeholder={content.fields.location.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
+ id={fieldKey}
+ name={fieldKey}
+ type={config.type}
+ required={config.required}
+ placeholder={field.placeholder}
+ className={fieldClasses}
  />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.location.helper}</p>
+ <p className="mt-2 text-caption text-aroneu-neutral-500">{field.helper}</p>
  </div>
+ );
+ })}
+ </div>
+ ));
+ })()}
 
+ {content.fields.cv ? (
  <div>
  <label htmlFor="cv"className="block text-caption font-medium text-aroneu-neutral-900">
  {content.fields.cv.label}
@@ -215,7 +190,9 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
  </div>
  {fileError && <p className="mt-2 text-caption text-aroneu-error-600">{fileError}</p>}
  </div>
+ ) : null}
 
+ {content.fields.message ? (
  <div>
  <label htmlFor="message"className="block text-caption font-medium text-aroneu-neutral-900">
  {content.fields.message.label}
@@ -225,10 +202,11 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
  name="message"
  rows={4}
  placeholder={content.fields.message.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
+ className={fieldClasses}
  />
  <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.message.helper}</p>
  </div>
+ ) : null}
 
  <div className="flex items-start">
  <div className="flex h-6 items-center">

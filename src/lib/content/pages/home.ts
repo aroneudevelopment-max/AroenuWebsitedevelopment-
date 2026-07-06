@@ -189,17 +189,19 @@ export const homePage: PageContent = {
     {
       id: "leadership",
       component: "LeadershipPreview",
-      eyebrow: "Named accountability",
-      heading: "Governance needs visible ownership.",
+      eyebrow: "Governance ownership",
+      heading: "A governed model needs clear owners.",
       body:
-        "Aroneu does not leave accountability to status calls. The model is built around named leadership, local operating responsibility, shared routines, and a workspace that keeps decisions and controls visible.",
-      image: "/images/aroneu/leadership-card-system.png",
+        "Aroneu is designed around clear accountability. Clients should understand who owns governance, who leads the operating rhythm, and how decisions remain visible across the model.\n\nLeadership is built into the system through defined roles, shared routines, and workspace visibility.",
+      image: "/images/aroneu/governance-ownership-visual.jpeg",
+      imageAlt:
+        "Role-based governance ownership visual showing European governance, India operations, and delivery leadership.",
       items: [
-        { title: "Nilesh Chauhan" },
-        { title: "Mary Monika" },
-        { title: "Bapi Chakraborty" },
+        { title: "Governance" },
+        { title: "Operations" },
+        { title: "Delivery" },
       ],
-      ctas: [{ label: "About Aroneu", href: "/about", variant: "secondary" }],
+      ctas: [{ label: "Talk to the team", href: "/contact", variant: "secondary" }],
       internalNotes: ["Status: final-copy-provided"],
     },
     {

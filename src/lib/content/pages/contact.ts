@@ -85,6 +85,9 @@ export const contactPage: PageContent = {
       component: "ContactForm",
       heading: "Tell us what you are trying to build.",
       subcopy: "Share a little about the team, capability, or governance challenge you want to discuss. We will review your note and come back within one business day.",
+      image: "/images/aroneu/contact-supporting-visual.jpeg",
+      imageAlt:
+        "Abstract contact-supporting visual showing connected governance blocks and a single orange focal point.",
       features: [
         {
           name: "fullName",
@@ -147,6 +150,10 @@ export const contactPage: PageContent = {
         },
       ],
       internalNotes: [
+        "Contact email: sales@aroneu.de",
+        "Contact phone: 919959746887",
+        "Support panel heading: Prefer a direct route?",
+        "Support panel body: If you would rather contact us directly, use the approved public details below or book a call.",
         "Consent label: I acknowledge that Aroneu may process my details to respond to this enquiry.",
         "Consent helper: Your details will be used to review your enquiry and contact you about the next step. See our Privacy Policy.",
         "Missing consent error: Please acknowledge the privacy notice to continue.",
@@ -180,7 +187,8 @@ export const contactPage: PageContent = {
       component: "ContactOffice",
       heading: "Built between Europe and India.",
       body:
-        "Aroneu works with European companies building senior India capability. Exact office and legal details should match the approved company records.",
+        "Aroneu works with European companies building senior India capability. For direct contact, use the approved public details below.",
+      items: ["sales@aroneu.de", "919959746887"],
     },
     {
       id: "closing-cta",

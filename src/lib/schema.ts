@@ -21,7 +21,7 @@ export function organizationSchema() {
     "@id": `${SITE_URL}/#organization`,
     name: SITE_LEGAL_NAME,
     url: SITE_URL,
-    logo: buildAbsoluteUrl("/favicon.svg"),
+    logo: buildAbsoluteUrl("/apple-touch-icon.png"),
   });
 }
 

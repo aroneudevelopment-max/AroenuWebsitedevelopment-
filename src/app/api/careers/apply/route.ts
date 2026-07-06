@@ -37,6 +37,8 @@ export async function POST(request: Request) {
     const linkedIn = String(formData.get("linkedIn") || "").trim();
     const portfolio = String(formData.get("portfolio") || "").trim();
     const location = String(formData.get("location") || "").trim();
+    const candidateRole = String(formData.get("candidateRole") || "").trim();
+    const experience = String(formData.get("experience") || "").trim();
     const message = String(formData.get("message") || "").trim();
     const roleSlug = String(formData.get("roleSlug") || "general-interest").trim();
     const consent = String(formData.get("consent") || "").trim();
@@ -93,6 +95,8 @@ export async function POST(request: Request) {
 Email: ${email}
 Phone: ${phone || "N/A"}
 Location: ${location}
+Candidate Role: ${candidateRole || "N/A"}
+Experience: ${experience || "N/A"}
 LinkedIn: ${linkedIn || "N/A"}
 Portfolio: ${portfolio || "N/A"}
 Role Slug: ${roleSlug}
@@ -105,8 +109,8 @@ Source: Careers page`,
       email,
       fullName,
       phone,
-      role: roleSlug,
-      message: `Careers submission\nLocation: ${location}${message ? `\n\n${message}` : ""}`,
+      role: candidateRole || roleSlug,
+      message: `Careers submission\nLocation: ${location}${experience ? `\nExperience: ${experience}` : ""}${message ? `\n\n${message}` : ""}`,
       source: "Careers page",
     });
 

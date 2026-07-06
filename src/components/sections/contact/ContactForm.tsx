@@ -2,9 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { SectionContent } from "@/lib/content/types";
-import { Turnstile } from "@marsidev/react-turnstile";
-import { TURNSTILE_SITE_KEY_FALLBACK } from "@/lib/cta";
 
 type FormField = {
   name: string;
@@ -24,15 +23,11 @@ export function ContactForm({ data }: { data?: SectionContent }) {
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<Record<string, string>>({});
-  const [turnstileToken, setTurnstileToken] = useState<string>("");
-  const [turnstileRenderKey, setTurnstileRenderKey] = useState(0);
 
   if (!data) return null;
 
   const features = (data.features || []) as FormField[];
   const notes = data.internalNotes || [];
-  const turnstileSiteKey =
-    process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || TURNSTILE_SITE_KEY_FALLBACK;
 
   const getNote = (key: string) => {
     const note = notes.find((n) => n.startsWith(`${key}:`));
@@ -52,6 +47,10 @@ export function ContactForm({ data }: { data?: SectionContent }) {
     getNote("Failure body") ||
     "Your enquiry was not sent. Please check the highlighted fields and try again.";
   const retryLabel = getNote("Failure CTA") || "Try again";
+  const supportHeading = getNote("Support panel heading");
+  const supportBody = getNote("Support panel body");
+  const contactEmail = getNote("Contact email");
+  const contactPhone = getNote("Contact phone");
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -100,7 +99,6 @@ export function ContactForm({ data }: { data?: SectionContent }) {
             ...formData,
             pageSource: "Contact Form",
           },
-          turnstileToken,
         }),
       });
 
@@ -114,8 +112,6 @@ export function ContactForm({ data }: { data?: SectionContent }) {
       setStatus("success");
       setFormData({});
       setErrors({});
-      setTurnstileToken("");
-      setTurnstileRenderKey((current) => current + 1);
     } catch (error) {
       console.error(error);
       setErrors((prev) => ({
@@ -134,17 +130,67 @@ export function ContactForm({ data }: { data?: SectionContent }) {
 
   return (
     <section id="contact-form" className="section-aroneu surface-paper">
-      <div className="container-aroneu max-w-3xl mx-auto">
+      <div className="container-aroneu max-w-6xl mx-auto">
         <div className="mb-12 text-center">
           {data.heading && <h2 className="text-h2 mb-4 text-ink">{data.heading}</h2>}
           {data.subcopy && <p className="text-body opacity-80">{data.subcopy}</p>}
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          noValidate
-          className="bg-paper border border-zinc-200 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-soft relative space-y-6"
-        >
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+          <div className="space-y-6">
+            {data.image ? (
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-zinc-200 surface-sand">
+                <Image
+                  src={data.image}
+                  alt={data.imageAlt || ""}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+              </div>
+            ) : null}
+
+            <div className="rounded-[2rem] border border-zinc-200 surface-sand p-6 sm:p-8">
+              {supportHeading ? (
+                <h3 className="text-h4 mb-3 text-ink">{supportHeading}</h3>
+              ) : null}
+              {supportBody ? (
+                <p className="text-body opacity-80 mb-6">{supportBody}</p>
+              ) : null}
+
+              <div className="space-y-4">
+                {contactEmail ? (
+                  <a
+                    href={`mailto:${contactEmail}`}
+                    className="block rounded-2xl border border-zinc-200 bg-paper px-5 py-4 transition-colors hover:bg-zinc-50"
+                  >
+                    <p className="text-label uppercase tracking-widest opacity-70 mb-2">
+                      Email
+                    </p>
+                    <p className="text-base font-medium text-ink">{contactEmail}</p>
+                  </a>
+                ) : null}
+
+                {contactPhone ? (
+                  <a
+                    href={`tel:${contactPhone}`}
+                    className="block rounded-2xl border border-zinc-200 bg-paper px-5 py-4 transition-colors hover:bg-zinc-50"
+                  >
+                    <p className="text-label uppercase tracking-widest opacity-70 mb-2">
+                      Phone
+                    </p>
+                    <p className="text-base font-medium text-ink">{contactPhone}</p>
+                  </a>
+                ) : null}
+              </div>
+            </div>
+          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className="bg-paper border border-zinc-200 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-soft relative space-y-6"
+          >
           {status === "error" && Object.keys(errors).length > 0 && (
             <div
               className="mb-2 p-4 border border-red-200 rounded-xl flex items-start"
@@ -321,23 +367,6 @@ export function ContactForm({ data }: { data?: SectionContent }) {
           )}
 
           <div className="pt-2">
-            <Turnstile
-              key={turnstileRenderKey}
-              siteKey={turnstileSiteKey}
-              onSuccess={(token) => {
-                setTurnstileToken(token);
-                setErrors((prev) => ({ ...prev, turnstile: "" }));
-              }}
-              onExpire={() => setTurnstileToken("")}
-            />
-            {errors["turnstile"] && (
-              <p className="text-xs font-medium text-red-600 mt-1" role="alert">
-                {errors["turnstile"]}
-              </p>
-            )}
-          </div>
-
-          <div className="pt-2">
             <button
               type="submit"
               disabled={status === "submitting" || status === "success"}
@@ -383,7 +412,8 @@ export function ContactForm({ data }: { data?: SectionContent }) {
               <p className="text-sm">{successBody}</p>
             </div>
           )}
-        </form>
+          </form>
+        </div>
       </div>
     </section>
   );

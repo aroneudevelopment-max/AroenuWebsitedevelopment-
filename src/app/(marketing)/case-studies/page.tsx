@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import JsonLd from "@/components/seo/JsonLd";
 import { Hero } from "@/components/sections/Hero";
 import { AnswerBlock } from "@/components/sections/AnswerBlock";
-import { FeaturedCase } from "@/components/sections/case-studies/FeaturedCase";
 import { CaseStudyGrid } from "@/components/sections/CaseStudyGrid";
 import { ClosingCTA } from "@/components/sections/ClosingCTA";
 import { FAQSection } from "@/components/sections/FAQSection";
@@ -40,7 +39,6 @@ export default function CaseStudiesIndex() {
 
       <Hero data={sections.find((s) => s.id === "hero")} withTilt3D={false} />
       <AnswerBlock data={sections.find((s) => s.id === "answer")} />
-      <FeaturedCase data={sections.find((s) => s.id === "featured-case")} />
       <CaseStudyGrid
         data={sections.find((s) => s.id === "filters")}
         caseStudies={caseStudies}

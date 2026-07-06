@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { primaryNavigation } from "@/lib/navigation";
+import { AroneuLogo } from "@/components/brand/AroneuLogo";
 import { routes } from "@/lib/routes";
 
 /**
@@ -97,9 +98,14 @@ export function MobileNav() {
             className="fixed top-0 right-0 bottom-0 w-[min(85vw,360px)] surface-paper z-50 shadow-2xl flex flex-col p-6"
           >
             <div className="flex items-center justify-between mb-8">
-              <span className="text-label uppercase tracking-widest text-zinc-500">
-                Menu
-              </span>
+              <Link
+                href={routes.home}
+                onClick={() => setIsOpen(false)}
+                className="inline-flex items-center"
+                aria-label="Aroneu Home"
+              >
+                <AroneuLogo variant="horizontal" tone="ink" width={132} height={34} />
+              </Link>
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label="Close menu"

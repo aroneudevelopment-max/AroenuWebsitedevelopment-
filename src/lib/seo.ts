@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const SITE_NAME = "Aroneu";
 export const SITE_LEGAL_NAME = "Aroneu GmbH";
 export const SITE_URL = "https://aroneu.de";
-export const DEFAULT_OG_IMAGE = "/images/aroneu/abstract-visual.jpeg";
+export const DEFAULT_OG_IMAGE = "/images/aroneu/aroneu-logo-preview.png";
 
 type MetadataInput = {
   title: string;

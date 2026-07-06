@@ -16,15 +16,15 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  return;
  }
 
- const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+ const allowedTypes = ['application/pdf'];
  if (!allowedTypes.includes(selected.type)) {
- setFileError('Invalid file type. Please upload a PDF, DOC, or DOCX.');
+ setFileError('Please upload a CV in PDF format.');
  setFile(null);
  return;
  }
 
- if (selected.size > 10 * 1024 * 1024) {
- setFileError('File is too large. Maximum size is 10 MB.');
+ if (selected.size > 5 * 1024 * 1024) {
+ setFileError('File is too large. Maximum size is 5 MB.');
  setFile(null);
  return;
  }
@@ -150,7 +150,7 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  </p>
  <p className="text-caption text-aroneu-neutral-500 mt-1">{content.fields.cv.helper}</p>
  </div>
- <input id="cv"name="cv"type="file"className="sr-only"onChange={handleFileChange} accept=".pdf,.doc,.docx"/>
+ <input id="cv"name="cv"type="file"className="sr-only"onChange={handleFileChange} accept=".pdf"/>
  </label>
  </div>
  {fileError && <p className="mt-2 text-caption text-aroneu-error-600">{fileError}</p>}

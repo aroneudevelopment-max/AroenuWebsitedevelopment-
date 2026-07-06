@@ -141,12 +141,12 @@ export const careerApplicationFormContent = {
     fullName: {
       label: "Full name",
       placeholder: "Your full name",
-      helper: "Use the name shown on your CV."
+      helper: ""
     },
     email: {
       label: "Email",
-      placeholder: "you@example.com",
-      helper: "Use an email you check regularly."
+      placeholder: "you@email.com",
+      helper: ""
     },
     phone: {
       label: "Phone",
@@ -155,13 +155,13 @@ export const careerApplicationFormContent = {
     },
     linkedIn: {
       label: "LinkedIn",
-      placeholder: "Optional LinkedIn URL",
-      helper: ""
+      placeholder: "LinkedIn URL",
+      helper: "Required for senior roles."
     },
     portfolio: {
       label: "Portfolio",
-      placeholder: "Optional portfolio or GitHub URL",
-      helper: "Add work samples if relevant to the role."
+      placeholder: "GitHub or portfolio URL",
+      helper: "Include if relevant to the capability area."
     },
     location: {
       label: "Location",
@@ -171,15 +171,15 @@ export const careerApplicationFormContent = {
     cv: {
       label: "CV upload",
       placeholder: "Upload CV",
-      helper: "PDF, DOC, or DOCX. Maximum 10 MB."
+      helper: "PDF format. Max 5MB."
     },
     message: {
-      label: "Message",
-      placeholder: "Optional note",
-      helper: "Tell us what kind of work you want to own."
+      label: "Cover letter/Note",
+      placeholder: "Why this role?",
+      helper: "Optional note on what you want to own."
     }
   },
-  consentText: "By applying, you agree that Aroneu may process your application details for recruitment purposes.",
+  consentText: "I acknowledge that Aroneu may process my application details to assess my suitability for this role. Your details will be used to review your application. See our Privacy Policy.",
   submitButton: "Apply",
   successState: "Thank you. Your application has been received.",
   failureState: "Something went wrong. Please try again."

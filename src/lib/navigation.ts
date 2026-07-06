@@ -27,7 +27,7 @@ export const footerNavigation = {
   legal: [
     { label: "Privacy Policy", href: routes.privacy },
     { label: "Imprint", href: routes.imprint },
-    { label: "Terms of Service", href: routes.terms },
+    { label: "Website Terms of Use", href: routes.terms },
     { label: "Cookie Policy", href: routes.cookiePolicy },
   ]
 };

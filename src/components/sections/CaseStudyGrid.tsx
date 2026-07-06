@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { CaseStudy } from "@/lib/content/case-studies";
+import { resolveCtaHref } from "@/lib/cta";
 
 export function CaseStudyGrid({
   data,
@@ -130,7 +131,10 @@ export function CaseStudyGrid({
                 "Approved case studies will appear here once client names, proof points, and public wording are cleared."}
             </p>
             <Link
-              href={emptyState?.primaryCTA?.href || "/contact"}
+              href={resolveCtaHref(
+                emptyState?.primaryCTA?.href || "/contact",
+                emptyState?.primaryCTA?.label || "Book a call",
+              )}
               className="px-6 py-3 rounded-full text-sm font-medium bg-ink text-paper hover:opacity-90 transition-opacity"
             >
               {emptyState?.primaryCTA?.label || "Book a call"}

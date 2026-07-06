@@ -2,6 +2,7 @@
 
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
+import { resolveCtaHref } from "@/lib/cta";
 
 export function LeadershipPreview({ data }: { data?: SectionContent }) {
   if (!data) return null;
@@ -36,7 +37,7 @@ export function LeadershipPreview({ data }: { data?: SectionContent }) {
 
           {cta && (
             <a
-              href={cta.href}
+              href={resolveCtaHref(cta.href, cta.label)}
               className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-medium border border-zinc-300 text-ink hover:bg-zinc-100 transition-colors"
             >
               {cta.label}

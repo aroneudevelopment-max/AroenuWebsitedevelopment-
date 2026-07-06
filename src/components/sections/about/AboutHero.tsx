@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { SectionContent } from "@/lib/content/types";
+import { resolveCtaHref } from "@/lib/cta";
 
 export function AboutHero({ data }: { data?: SectionContent }) {
   if (!data) return null;
@@ -19,12 +20,21 @@ export function AboutHero({ data }: { data?: SectionContent }) {
 
           <div className="flex flex-wrap gap-4">
             {data.primaryCTA && (
-              <a href={data.primaryCTA.href} className="btn-primary-aroneu">
+              <a
+                href={resolveCtaHref(data.primaryCTA.href, data.primaryCTA.label)}
+                className="btn-primary-aroneu"
+              >
                 {data.primaryCTA.label}
               </a>
             )}
             {data.secondaryCTA && (
-              <a href={data.secondaryCTA.href} className="btn-secondary-aroneu">
+              <a
+                href={resolveCtaHref(
+                  data.secondaryCTA.href,
+                  data.secondaryCTA.label,
+                )}
+                className="btn-secondary-aroneu"
+              >
                 {data.secondaryCTA.label}
               </a>
             )}

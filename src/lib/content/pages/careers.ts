@@ -171,7 +171,7 @@ export const careerApplicationFormContent = {
     cv: {
       label: "CV upload",
       placeholder: "Upload CV",
-      helper: "PDF format. Max 5MB."
+      helper: "PDF, Word document, or common image format. Max 5MB."
     },
     message: {
       label: "Cover letter/Note",
@@ -183,6 +183,37 @@ export const careerApplicationFormContent = {
   submitButton: "Apply",
   successState: "Thank you. Your application has been received.",
   failureState: "Something went wrong. Please try again."
+};
+
+export const careerGeneralInterestFormContent = {
+  fields: {
+    ...careerApplicationFormContent.fields,
+    email: {
+      label: "Work email",
+      placeholder: "you@company.com",
+      helper: "Use the best email for a serious follow-up.",
+    },
+    linkedIn: {
+      label: "LinkedIn",
+      placeholder: "LinkedIn URL",
+      helper: "Optional, but useful if you want us to understand your background faster.",
+    },
+    portfolio: {
+      label: "Portfolio",
+      placeholder: "Portfolio, GitHub, or relevant work",
+      helper: "Optional. Share anything that helps us review your profile.",
+    },
+    message: {
+      label: "Short note",
+      placeholder: "Tell us what kind of work you want to be considered for.",
+      helper: "Optional context about your capability area, experience, or preferred role.",
+    },
+  },
+  consentText:
+    "I acknowledge that Aroneu may process my CV and contact details for future approved opportunities. Your details will be used to review your profile and contact you if there is a fit. See our Privacy Policy.",
+  submitButton: "Drop your CV",
+  successState: "Thank you. Your CV has been received.",
+  failureState: "Something went wrong. Please try again.",
 };
 
 export const careerFaq = {

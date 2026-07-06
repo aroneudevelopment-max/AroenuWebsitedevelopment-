@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { SectionContent } from "@/lib/content/types";
 import { Turnstile } from "@marsidev/react-turnstile";
+import { TURNSTILE_SITE_KEY_FALLBACK } from "@/lib/cta";
 
 type FormField = {
   name: string;
@@ -10,6 +11,7 @@ type FormField = {
   placeholder: string;
   helperText: string;
   requiredError: string;
+  required?: boolean;
   invalidError?: string;
   softWarning?: string;
   options?: string[];
@@ -33,11 +35,14 @@ export function ContactForm({ data }: { data?: SectionContent }) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const [turnstileRenderKey, setTurnstileRenderKey] = useState(0);
 
   if (!data) return null;
 
   const features = (data.features || []) as FormField[];
   const notes = data.internalNotes || [];
+  const turnstileSiteKey =
+    process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || TURNSTILE_SITE_KEY_FALLBACK;
 
   const getNote = (key: string) => {
     const note = notes.find((n) => n.startsWith(`${key}:`));
@@ -49,11 +54,13 @@ export function ContactForm({ data }: { data?: SectionContent }) {
     let isValid = true;
 
     features.forEach((f) => {
-      const val = formData[f.name];
-      if (!val || val.trim() === "") {
+      const val = formData[f.name]?.trim() || "";
+      const isRequired = f.required !== false;
+
+      if (isRequired && val === "") {
         newErrors[f.name] = f.requiredError;
         isValid = false;
-      } else if (f.name === "workEmail") {
+      } else if (f.name === "workEmail" && val) {
         const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
         if (!emailRegex.test(val)) {
           newErrors[f.name] = f.invalidError || f.requiredError;
@@ -78,31 +85,41 @@ export function ContactForm({ data }: { data?: SectionContent }) {
       return;
     }
 
-    if (!turnstileToken) {
-      setErrors((prev) => ({ ...prev, turnstile: "Please complete the security check." }));
-      setStatus("error");
-      return;
-    }
-
     setStatus("submitting");
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formData, turnstileToken }),
+        body: JSON.stringify({
+          formData: {
+            ...formData,
+            pageSource: "Contact Form",
+          },
+          turnstileToken,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message.");
+        const payload = await response.json().catch(() => null);
+        throw new Error(
+          payload?.error || "Something went wrong. Please try again.",
+        );
       }
 
       setStatus("success");
       setFormData({});
       setTurnstileToken("");
+      setTurnstileRenderKey((current) => current + 1);
     } catch (error) {
       console.error(error);
-      setErrors((prev) => ({ ...prev, server: "Something went wrong. Please try again or use the Book a call link." }));
+      setErrors((prev) => ({
+        ...prev,
+        server:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again or use the Book a call link.",
+      }));
       setStatus("error");
     }
   };
@@ -156,9 +173,11 @@ export function ContactForm({ data }: { data?: SectionContent }) {
                 className="text-sm font-medium text-ink mb-1.5"
               >
                 {field.label}
-                <span className="text-red-600 ml-1" aria-hidden="true">
-                  *
-                </span>
+                {field.required !== false && (
+                  <span className="text-red-600 ml-1" aria-hidden="true">
+                    *
+                  </span>
+                )}
               </label>
 
               {field.options ? (
@@ -285,11 +304,13 @@ export function ContactForm({ data }: { data?: SectionContent }) {
 
           <div className="pt-2">
             <Turnstile
-              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
+              key={turnstileRenderKey}
+              siteKey={turnstileSiteKey}
               onSuccess={(token) => {
                 setTurnstileToken(token);
                 setErrors((prev) => ({ ...prev, turnstile: "" }));
               }}
+              onExpire={() => setTurnstileToken("")}
             />
             {errors["turnstile"] && (
               <p className="text-xs font-medium text-red-600 mt-1" role="alert">

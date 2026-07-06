@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { SectionContent } from "@/lib/content/types";
+import { resolveCtaHref } from "@/lib/cta";
 
 export function ContactHero({ data }: { data?: SectionContent }) {
   if (!data) return null;
@@ -27,7 +28,7 @@ export function ContactHero({ data }: { data?: SectionContent }) {
             {data.ctas?.map((cta, index) => (
               <a
                 key={index}
-                href={cta.href}
+                href={resolveCtaHref(cta.href, cta.label)}
                 className={cta.variant === "secondary" ? secondaryBtn : primaryBtn}
               >
                 {cta.label}

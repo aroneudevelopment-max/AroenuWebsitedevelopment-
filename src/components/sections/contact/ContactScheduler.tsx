@@ -1,5 +1,6 @@
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
+import { resolveCtaHref } from "@/lib/cta";
 
 /**
  * ContactScheduler
@@ -24,7 +25,10 @@ export function ContactScheduler({ data }: { data?: SectionContent }) {
           </p>
         )}
         {data.primaryCTA && (
-          <a href={data.primaryCTA.href} className="btn-primary-aroneu">
+          <a
+            href={resolveCtaHref(data.primaryCTA.href, data.primaryCTA.label)}
+            className="btn-primary-aroneu"
+          >
             {data.primaryCTA.label}
           </a>
         )}

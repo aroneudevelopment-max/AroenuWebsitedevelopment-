@@ -6,19 +6,35 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
  const [file, setFile] = useState<File | null>(null);
  const [fileError, setFileError] = useState('');
+ const [serverError, setServerError] = useState('');
+
+ const acceptedFileTypes = '.pdf,.doc,.docx,.jpg,.jpeg,.png,.webp,.heic,.heif';
+ const allowedTypes = [
+ 'application/pdf',
+ 'application/msword',
+ 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+ 'image/jpeg',
+ 'image/png',
+ 'image/webp',
+ 'image/heic',
+ 'image/heif',
+ ];
+ const allowedExtensions = ['.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png', '.webp', '.heic', '.heif'];
 
  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
  const selected = e.target.files?.[0];
  setFileError('');
+ setServerError('');
  
  if (!selected) {
  setFile(null);
  return;
  }
 
- const allowedTypes = ['application/pdf'];
- if (!allowedTypes.includes(selected.type)) {
- setFileError('Please upload a CV in PDF format.');
+ const normalizedName = selected.name.toLowerCase();
+ const hasAllowedExtension = allowedExtensions.some((extension) => normalizedName.endsWith(extension));
+ if (!allowedTypes.includes(selected.type) && !hasAllowedExtension) {
+ setFileError('Please upload a PDF, Word document, or common image file.');
  setFile(null);
  return;
  }
@@ -34,13 +50,39 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
 
  const handleSubmit = async (e: React.FormEvent) => {
  e.preventDefault();
- setStatus('submitting');
- 
- // Safety Contract: Do not fake success if there's no backend.
- // Wait for 1 second to show submitting state, then safely fail as"backend not configured"
- setTimeout(() => {
+ if (!file) {
+ setFileError('Please attach your CV before submitting.');
  setStatus('error');
- }, 1000);
+ return;
+ }
+
+ setStatus('submitting');
+ setServerError('');
+ 
+ const formElement = e.currentTarget as HTMLFormElement;
+ const payload = new FormData(formElement);
+ payload.set('roleSlug', roleSlug);
+ payload.set('consent', payload.get('consent') ? 'true' : '');
+ payload.set('cv', file);
+
+ try {
+ const response = await fetch('/api/careers/apply', {
+ method: 'POST',
+ body: payload,
+ });
+
+ if (!response.ok) {
+ const result = await response.json().catch(() => null);
+ throw new Error(result?.error || content.failureState);
+ }
+
+ setStatus('success');
+ setFile(null);
+ formElement.reset();
+ } catch (error) {
+ setStatus('error');
+ setServerError(error instanceof Error ? error.message : content.failureState);
+ }
  };
 
  return (
@@ -150,7 +192,7 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  </p>
  <p className="text-caption text-aroneu-neutral-500 mt-1">{content.fields.cv.helper}</p>
  </div>
- <input id="cv"name="cv"type="file"className="sr-only"onChange={handleFileChange} accept=".pdf"/>
+ <input id="cv"name="cv"type="file"className="sr-only"onChange={handleFileChange} accept={acceptedFileTypes}/>
  </label>
  </div>
  {fileError && <p className="mt-2 text-caption text-aroneu-error-600">{fileError}</p>}
@@ -190,8 +232,8 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
 
  <div>
  {status === 'error' && (
- <div className="mb-6 rounded-lg bg-aroneu-error-50 p-4 text-caption text-aroneu-error-900">
- {content.failureState} (Backend not yet configured)
+ <div className="mb-6 rounded-lg bg-red-50 p-4 text-caption text-red-900">
+ {serverError || content.failureState}
  </div>
  )}
  <button
@@ -201,6 +243,11 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  >
  {status === 'submitting' ? 'Submitting...' : content.submitButton}
  </button>
+ {status === 'success' && (
+ <div className="mt-4 rounded-lg bg-green-50 p-4 text-caption text-green-900">
+ {content.successState}
+ </div>
+ )}
  </div>
  </form>
  );

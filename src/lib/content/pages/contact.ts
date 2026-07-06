@@ -103,6 +103,14 @@ export const contactPage: PageContent = {
           softWarning: "Use your work email so we can reply properly.",
         },
         {
+          name: "phone",
+          label: "Phone",
+          placeholder: "Optional",
+          helperText: "Add a callback number if you want us to follow up by phone.",
+          required: false,
+          requiredError: "",
+        },
+        {
           name: "company",
           label: "Company",
           placeholder: "Company name",

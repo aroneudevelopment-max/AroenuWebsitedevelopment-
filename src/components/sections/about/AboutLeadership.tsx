@@ -1,5 +1,6 @@
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
+import { resolveCtaHref } from "@/lib/cta";
 
 export function AboutLeadership({ data }: { data?: SectionContent }) {
   if (!data) return null;
@@ -22,7 +23,7 @@ export function AboutLeadership({ data }: { data?: SectionContent }) {
 
           {data.primaryCTA && (
             <a
-              href={data.primaryCTA.href}
+              href={resolveCtaHref(data.primaryCTA.href, data.primaryCTA.label)}
               className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-medium bg-ink text-paper hover:opacity-90 transition-opacity"
             >
               {data.primaryCTA.label}

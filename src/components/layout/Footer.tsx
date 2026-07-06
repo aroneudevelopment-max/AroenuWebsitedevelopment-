@@ -25,10 +25,7 @@ export function Footer() {
             >
               <AroneuLogo variant="horizontal" tone="ink" />
             </Link>
-            <p className="text-base mb-3 text-ink">
-              Governable capability, made{" "}
-              <em className="font-serif italic">new</em>.
-            </p>
+            <p className="text-base mb-3 text-ink">Governable capability, made new.</p>
             <p className="text-sm text-zinc-500 mb-6">
               Two places, one standard of work.
             </p>

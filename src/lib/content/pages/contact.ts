@@ -150,8 +150,15 @@ export const contactPage: PageContent = {
         "Consent label: I acknowledge that Aroneu may process my details to respond to this enquiry.",
         "Consent helper: Your details will be used to review your enquiry and contact you about the next step. See our Privacy Policy.",
         "Missing consent error: Please acknowledge the privacy notice to continue.",
+        "Privacy line: By submitting this form, you acknowledge that your data will be processed in accordance with our Privacy Policy.",
         "Submit button: Submit enquiry",
         "Loading state: Sending your enquiry.",
+        "Success button: Enquiry received.",
+        "Success heading: Enquiry received.",
+        "Success body: Thank you. We have received your note and will come back within one business day.",
+        "Failure heading: Something went wrong.",
+        "Failure body: Your enquiry was not sent. Please check the highlighted fields and try again.",
+        "Failure CTA: Try again",
         "Top-of-form error summary: Please check the highlighted fields.",
       ],
     },
@@ -163,6 +170,9 @@ export const contactPage: PageContent = {
       body:
         "Book a conversation with Aroneu and tell us what you want to discuss. We will use the call to understand your team need, governance risk, and next best step.",
       primaryCTA: { label: "Book a call", href: "#contact-form" },
+      internalNotes: [
+        "Privacy note: You will be taken to Cal.com to choose a time. Cal.com's own privacy terms may apply on its website.",
+      ],
     },
     {
       id: "office-context",

@@ -5,11 +5,9 @@ import { AroneuLogo } from "@/components/brand/AroneuLogo";
 
 /**
  * Footer
- * - Brand column with logo, tagline, two-places line, and a registered-address
- *   placeholder (Burhan decision 5).
+ * - Brand column with logo, tagline, and two-places line.
  * - Three nav columns (Company / Capability / Knowledge).
- * - Newsletter shell — non-submitting, pending backend (per brief, no fake success).
- * - Legal strip with copyright and four legal links.
+ * - Legal strip with copyright and legal links.
  */
 export function Footer() {
   return (
@@ -87,10 +85,9 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Registered address placeholder + legal links */}
         <div className="border-t border-zinc-200 pt-8 flex flex-col md:flex-row justify-between gap-6 text-caption text-zinc-500">
           <div>
-            <p>&copy; {new Date().getFullYear()} Aroneu GmbH. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Aroneu. All rights reserved.</p>
           </div>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {footerNavigation.legal.map((item) => (

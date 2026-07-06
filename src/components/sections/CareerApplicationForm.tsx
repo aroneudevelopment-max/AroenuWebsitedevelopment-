@@ -43,7 +43,7 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
  const selected = e.target.files?.[0];
  setFileError('');
  setServerError('');
- 
+
  if (!selected) {
  setFile(null);
  return;
@@ -52,13 +52,13 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
  const normalizedName = selected.name.toLowerCase();
  const hasAllowedExtension = allowedExtensions.some((extension) => normalizedName.endsWith(extension));
  if (!allowedTypes.includes(selected.type) && !hasAllowedExtension) {
- setFileError('Please upload a PDF or Word document.');
+ setFileError('Upload a PDF or Word file.');
  setFile(null);
  return;
  }
 
  if (selected.size > 10 * 1024 * 1024) {
- setFileError('File is too large. Maximum size is 10 MB.');
+ setFileError('Files must be under 10 MB.');
  setFile(null);
  return;
  }
@@ -69,14 +69,14 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
  const handleSubmit = async (e: React.FormEvent) => {
  e.preventDefault();
  if (!file) {
- setFileError('Please attach your CV before submitting.');
+ setFileError('Upload your CV.');
  setStatus('error');
  return;
  }
 
  setStatus('submitting');
  setServerError('');
- 
+
  const formElement = e.currentTarget as HTMLFormElement;
  const payload = new FormData(formElement);
  payload.set('roleSlug', roleSlug);
@@ -259,7 +259,7 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
  disabled={status === 'submitting' || !!fileError}
  className="w-full rounded-full bg-aroneu-neutral-900 px-6 py-4 text-label text-white transition-colors hover:bg-aroneu-neutral-800 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aroneu-neutral-900 focus-visible:ring-offset-2"
  >
- {status === 'submitting' ? 'Submitting...' : content.submitButton}
+ {status === 'submitting' ? 'Sending your application.' : content.submitButton}
  </button>
  {status === 'success' && (
  <div className="mt-4 rounded-lg bg-green-50 p-4 text-caption text-green-900">

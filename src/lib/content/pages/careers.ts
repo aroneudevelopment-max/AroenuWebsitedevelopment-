@@ -1,5 +1,3 @@
-import { CareerRole } from '../careers';
-
 export const careersIndexContent = {
   seo: {
     metaTitle: "Careers — serious work, taken seriously | Aroneu",
@@ -77,7 +75,7 @@ export const careersIndexContent = {
   emptyRolesState: {
     heading: "No open roles right now.",
     body: "We are not listing open roles at the moment. You can still learn how Aroneu works and check back for approved opportunities.",
-    cta: { label: "Learn about Aroneu", href: "/about" }
+    cta: { label: "Explore how we work", href: "/how-it-works" }
   },
   applicationFlow: {
     label: "Application process",
@@ -130,8 +128,8 @@ export const careerRoleTemplateContent = {
     body: "Aroneu teams work through shared rhythm, documentation, visible ownership, and governance routines. The exact setup depends on the client, capability area, and role."
   },
   applicationFlow: {
-    heading: "How to apply",
-    body: "Share your details and CV. If the role is aligned with your experience, Aroneu will review the application and follow up through the approved hiring process.",
+    heading: "Apply for this role.",
+    body: "Share your details and CV. We will use your application to review your fit for this role and manage the recruitment process.",
     cta: { label: "Apply", href: "#apply" }
   }
 };
@@ -140,7 +138,7 @@ export const careerApplicationFormContent = {
   fields: {
     fullName: {
       label: "Full name",
-      placeholder: "Your full name",
+      placeholder: "Your name",
       helper: ""
     },
     email: {
@@ -151,17 +149,17 @@ export const careerApplicationFormContent = {
     phone: {
       label: "Phone",
       placeholder: "Optional",
-      helper: "Include your number if you prefer phone contact."
+      helper: "Add this only if you are comfortable being contacted by phone."
     },
     linkedIn: {
-      label: "LinkedIn",
+      label: "LinkedIn profile",
       placeholder: "LinkedIn URL",
-      helper: "Required for senior roles."
+      helper: "Optional."
     },
     portfolio: {
-      label: "Portfolio",
-      placeholder: "GitHub or portfolio URL",
-      helper: "Include if relevant to the capability area."
+      label: "Portfolio or website",
+      placeholder: "Portfolio URL",
+      helper: "Optional."
     },
     location: {
       label: "Location",
@@ -171,18 +169,18 @@ export const careerApplicationFormContent = {
     cv: {
       label: "CV upload",
       placeholder: "Upload CV",
-      helper: "PDF or Word document only. Max 10MB."
+      helper: "PDF, DOC, or DOCX. Maximum 10 MB."
     },
     message: {
-      label: "Cover letter/Note",
-      placeholder: "Why this role?",
-      helper: "Optional note on what you want to own."
+      label: "Message",
+      placeholder: "Optional note",
+      helper: "Tell us what kind of work you want to own."
     }
   },
-  consentText: "I acknowledge that Aroneu may process my application details to assess my suitability for this role. Your details will be used to review your application. See our Privacy Policy.",
+  consentText: "I acknowledge that Aroneu may process my application details for recruitment purposes. Your application details will be used to review your fit for Aroneu roles. See our Privacy Policy.",
   submitButton: "Apply",
-  successState: "Thank you. Your application has been received.",
-  failureState: "Something went wrong. Please try again."
+  successState: "Application received. Thank you. We have received your application and will review it carefully.",
+  failureState: "Something went wrong. Your application was not sent. Please check your file and try again."
 };
 
 export const careerGeneralInterestFormContent = {

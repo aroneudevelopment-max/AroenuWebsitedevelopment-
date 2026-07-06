@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { SectionContent } from "@/lib/content/types";
 import { Turnstile } from "@marsidev/react-turnstile";
 import { TURNSTILE_SITE_KEY_FALLBACK } from "@/lib/cta";
@@ -19,17 +20,6 @@ type FormField = {
 
 type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
-/**
- * ContactForm
- *
- * Honest behaviour, per the brief:
- * - Validates client-side only.
- * - On submit, sets status to "pending" and explains that the form is
- *   not sending yet. No fake success animation or delivery claim.
- * - The submit button always reflects the current status.
- * - Form fields, labels, errors, and helper text are styled with
- *   explicit light-text tokens (no dark-on-dark anywhere).
- */
 export function ContactForm({ data }: { data?: SectionContent }) {
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -48,6 +38,20 @@ export function ContactForm({ data }: { data?: SectionContent }) {
     const note = notes.find((n) => n.startsWith(`${key}:`));
     return note ? note.replace(`${key}:`, "").trim() : "";
   };
+
+  const privacyLine = getNote("Privacy line");
+  const submitLabel = getNote("Submit button") || "Submit enquiry";
+  const loadingLabel = getNote("Loading state") || "Sending your enquiry.";
+  const successButtonLabel = getNote("Success button") || "Enquiry received.";
+  const successHeading = getNote("Success heading") || "Enquiry received.";
+  const successBody =
+    getNote("Success body") ||
+    "Thank you. We have received your note and will come back within one business day.";
+  const failureHeading = getNote("Failure heading") || "Something went wrong.";
+  const failureBody =
+    getNote("Failure body") ||
+    "Your enquiry was not sent. Please check the highlighted fields and try again.";
+  const retryLabel = getNote("Failure CTA") || "Try again";
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -109,6 +113,7 @@ export function ContactForm({ data }: { data?: SectionContent }) {
 
       setStatus("success");
       setFormData({});
+      setErrors({});
       setTurnstileToken("");
       setTurnstileRenderKey((current) => current + 1);
     } catch (error) {
@@ -256,6 +261,19 @@ export function ContactForm({ data }: { data?: SectionContent }) {
             </div>
           ))}
 
+          {privacyLine && (
+            <p className="text-xs leading-6 text-slate">
+              {privacyLine.replace("Privacy Policy.", "").trim()}{" "}
+              <Link
+                href="/privacy"
+                className="text-ink underline underline-offset-4 hover:text-slate"
+              >
+                Privacy Policy
+              </Link>
+              .
+            </p>
+          )}
+
           <div className="pt-4 border-t border-zinc-200">
             <div className="flex items-start mb-2">
               <div className="flex items-center h-5 mt-0.5">
@@ -326,12 +344,30 @@ export function ContactForm({ data }: { data?: SectionContent }) {
               className="btn-primary-aroneu w-full sm:w-auto"
             >
               {status === "submitting"
-                ? getNote("Loading state") || "Sending..."
+                ? loadingLabel
                 : status === "success"
-                ? "Message sent"
-                : getNote("Submit button") || "Submit enquiry"}
+                ? successButtonLabel
+                : status === "error"
+                ? retryLabel
+                : submitLabel}
             </button>
           </div>
+
+          {status === "error" && errors["server"] && (
+            <div
+              role="alert"
+              className="mt-2 rounded-xl border p-4"
+              style={{
+                backgroundColor: "#FEF2F2",
+                borderColor: "#FECACA",
+                color: "#991B1B",
+              }}
+            >
+              <p className="text-sm font-semibold mb-1">{failureHeading}</p>
+              <p className="text-sm">{failureBody}</p>
+              <p className="text-xs mt-2">{errors["server"]}</p>
+            </div>
+          )}
 
           {status === "success" && (
             <div
@@ -343,12 +379,8 @@ export function ContactForm({ data }: { data?: SectionContent }) {
                 color: "#166534",
               }}
             >
-              <p className="text-sm font-semibold mb-1">
-                Your message has been sent successfully.
-              </p>
-              <p className="text-sm">
-                We will review your note and get back to you within one business day.
-              </p>
+              <p className="text-sm font-semibold mb-1">{successHeading}</p>
+              <p className="text-sm">{successBody}</p>
             </div>
           )}
         </form>

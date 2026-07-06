@@ -13,4 +13,5 @@ export const routes = {
   imprint: "/imprint",
   terms: "/terms",
   cookiePolicy: "/cookie-policy",
+  dataResidency: "/data-residency",
 };

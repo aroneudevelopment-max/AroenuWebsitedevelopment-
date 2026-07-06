@@ -29,5 +29,6 @@ export const footerNavigation = {
     { label: "Imprint", href: routes.imprint },
     { label: "Website Terms of Use", href: routes.terms },
     { label: "Cookie Policy", href: routes.cookiePolicy },
+    { label: "Data Residency", href: routes.dataResidency },
   ]
 };

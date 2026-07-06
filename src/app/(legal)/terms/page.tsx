@@ -13,19 +13,19 @@ export default function TermsPage() {
     <main className="flex min-h-screen flex-col w-full surface-paper">
       <section className="pt-32 pb-24 border-b border-zinc-200">
         <div className="container-aroneu max-w-3xl mx-auto">
-          <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+          <span className="text-label uppercase tracking-widest block mb-4 opacity-80">
             Legal
           </span>
-          <h1 className="text-display mb-6 font-light">Website Terms of Use</h1>
-          <p className="text-body text-zinc-500 mb-8">
-            Last updated: [Insert date]
+          <h1 className="text-h1 mb-6 ">Website Terms of Use</h1>
+          <p className="text-body opacity-80 mb-8">
+            Last updated: 7 July 2026
           </p>
         </div>
       </section>
 
       <section className="py-16">
         <div className="container-aroneu max-w-3xl mx-auto">
-          <div className="text-zinc-800 space-y-6">
+          <div className=" space-y-6">
             <p className="text-body">
               These Website Terms of Use explain how you may use the public Aroneu website.
             </p>
@@ -36,18 +36,15 @@ export default function TermsPage() {
               By using this website, you agree to use it lawfully and in line with these terms.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">1. Who operates this website</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">1. Who operates this website</h2>
             <p className="text-body">This website is operated by:</p>
             <p className="text-body">
-              <strong>Aroneu GmbH</strong><br />
-              [Registered address]<br />
-              [Postal code, city, country]
-            </p>
+              <strong>Aroneu GmbH</strong></p>
             <p className="text-body">
               For full company and legal provider information, please see our Imprint.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">2. Purpose of this website</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">2. Purpose of this website</h2>
             <p className="text-body">This website provides information about Aroneu, including:</p>
             <ul className="list-disc pl-6 space-y-2 text-body">
               <li>Capability Teams,</li>
@@ -66,7 +63,7 @@ export default function TermsPage() {
               Any commercial engagement with Aroneu must be agreed separately in writing.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">3. No professional or legal advice</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">3. No professional or legal advice</h2>
             <p className="text-body">
               The content on this website is not legal, tax, financial, technical, procurement, compliance, or professional advice.
             </p>
@@ -77,7 +74,7 @@ export default function TermsPage() {
               You should seek appropriate professional advice before making decisions that depend on your specific circumstances.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">4. Accuracy of website content</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">4. Accuracy of website content</h2>
             <p className="text-body">
               We aim to keep the website clear, accurate, and up to date.
             </p>
@@ -91,7 +88,7 @@ export default function TermsPage() {
               Where the website refers to client work, case studies, performance indicators, roles, technology, or operational examples, the final facts may depend on separate approvals, contracts, technical documentation, or client-specific arrangements.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">5. AI Workspace visuals and representative materials</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">5. AI Workspace visuals and representative materials</h2>
             <p className="text-body">
               The website may include AI Workspace visuals, diagrams, interface previews, videos, workflow examples, or other representative materials.
             </p>
@@ -112,7 +109,7 @@ export default function TermsPage() {
               The actual scope, configuration, access model, data flows, hosting, controls, and responsibilities for any AI Workspace or client environment are defined separately in written agreements and technical documentation.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">6. Intellectual property</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">6. Intellectual property</h2>
             <p className="text-body">
               The content on this website belongs to Aroneu GmbH or the relevant rights holder.
             </p>
@@ -141,7 +138,7 @@ export default function TermsPage() {
               You may not copy, reproduce, distribute, modify, scrape, sell, publish, or commercially use website content without prior written permission from Aroneu, unless this is allowed by applicable law.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">7. Permitted use</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">7. Permitted use</h2>
             <p className="text-body">
               You may use this website for lawful business, informational, recruitment, or enquiry purposes.
             </p>
@@ -164,7 +161,7 @@ export default function TermsPage() {
               We may restrict or block access where we reasonably believe the website is being misused.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">8. Forms, enquiries, and submitted information</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">8. Forms, enquiries, and submitted information</h2>
             <p className="text-body">
               The website may allow you to submit information through contact forms, booking tools, newsletter forms, resource forms, or careers forms.
             </p>
@@ -181,7 +178,7 @@ export default function TermsPage() {
               Personal data submitted through the website is handled according to our Privacy Policy.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">9. Resources and downloads</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">9. Resources and downloads</h2>
             <p className="text-body">
               Aroneu may provide resources, guides, checklists, articles, or other downloadable materials.
             </p>
@@ -192,7 +189,7 @@ export default function TermsPage() {
               You may use downloaded resources internally for evaluation and planning. You may not resell, republish, rebrand, or distribute them commercially without written permission from Aroneu.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">10. Careers information</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">10. Careers information</h2>
             <p className="text-body">
               Careers content on this website is provided for general recruitment information.
             </p>
@@ -206,7 +203,7 @@ export default function TermsPage() {
               Applicant data is handled according to our Privacy Policy and any applicable applicant privacy notice.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">11. External links</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">11. External links</h2>
             <p className="text-body">
               This website may link to third-party websites, tools, platforms, or resources.
             </p>
@@ -217,7 +214,7 @@ export default function TermsPage() {
               You use external websites at your own risk and should review their own terms and privacy notices.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">12. Website availability</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">12. Website availability</h2>
             <p className="text-body">
               We aim to keep the website available and functioning properly.
             </p>
@@ -228,7 +225,7 @@ export default function TermsPage() {
               The website may be unavailable or limited because of maintenance, updates, technical issues, third-party provider issues, security measures, or circumstances outside our control.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">13. Limitation of liability</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">13. Limitation of liability</h2>
             <p className="text-body">
               Nothing in these terms limits liability where it cannot be limited under applicable law.
             </p>
@@ -248,7 +245,7 @@ export default function TermsPage() {
               Commercial liability, service commitments, data-processing obligations, confidentiality obligations, delivery responsibilities, and other client-specific terms are governed by separate written agreements where applicable.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">14. Privacy and cookies</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">14. Privacy and cookies</h2>
             <p className="text-body">
               Personal data processed through this website is handled according to our Privacy Policy.
             </p>
@@ -259,7 +256,7 @@ export default function TermsPage() {
               Where optional cookies or tracking technologies are used, they are managed through the website’s consent mechanism where required.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">15. Changes to these terms</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">15. Changes to these terms</h2>
             <p className="text-body">
               We may update these Website Terms of Use when the website, services, legal requirements, technology, or operating model changes.
             </p>
@@ -270,26 +267,22 @@ export default function TermsPage() {
               The date at the top of the page shows when the terms were last updated.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">16. Governing law</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">16. Governing law</h2>
             <p className="text-body">
               These Website Terms of Use are governed by the laws of Germany, unless mandatory law provides otherwise.
             </p>
             <p className="text-body">
-              Place of jurisdiction: [Insert approved court / city, if applicable]
+              Place of jurisdiction: 
             </p>
-            <p className="text-body">
-              [Final jurisdiction wording to be confirmed by legal counsel.]
-            </p>
+            
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">17. Contact</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">17. Contact</h2>
             <p className="text-body">
               For questions about these Website Terms of Use, contact:
             </p>
             <p className="text-body">
-              <strong>Aroneu GmbH</strong><br />
-              [Registered address]<br />
-              [General contact email]<br />
-              [Phone number, if applicable]
+              <strong>Aroneu GmbH</strong>
+              
             </p>
             <p className="text-body">
               For privacy-related requests, please use the contact details in the Privacy Policy.

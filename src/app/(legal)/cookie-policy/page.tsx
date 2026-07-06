@@ -13,19 +13,19 @@ export default function CookiePolicyPage() {
     <main className="flex min-h-screen flex-col w-full surface-paper">
       <section className="pt-32 pb-24 border-b border-zinc-200">
         <div className="container-aroneu max-w-3xl mx-auto">
-          <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+          <span className="text-label uppercase tracking-widest block mb-4 opacity-80">
             Legal
           </span>
-          <h1 className="text-display mb-6 font-light">Cookie Policy</h1>
-          <p className="text-body text-zinc-500 mb-8">
-            Last updated: [Insert date]
+          <h1 className="text-h1 mb-6 ">Cookie Policy</h1>
+          <p className="text-body opacity-80 mb-8">
+            Last updated: 7 July 2026
           </p>
         </div>
       </section>
 
       <section className="py-16">
         <div className="container-aroneu max-w-3xl mx-auto">
-          <div className="text-zinc-800 space-y-6">
+          <div className=" space-y-6">
             <p className="text-body">
               This Cookie Policy explains how Aroneu GmbH uses cookies and similar technologies on this website.
             </p>
@@ -33,7 +33,7 @@ export default function CookiePolicyPage() {
               It should be read together with our Privacy Policy, which explains how we process personal data more broadly.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">1. What cookies are</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">1. What cookies are</h2>
             <p className="text-body">
               Cookies are small text files that may be stored on your device when you visit a website.
             </p>
@@ -57,7 +57,7 @@ export default function CookiePolicyPage() {
               Some of these technologies are necessary for the website to work. Others are optional and are only used where required consent has been given.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">2. How Aroneu uses cookies</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">2. How Aroneu uses cookies</h2>
             <p className="text-body">We use cookies and similar technologies for four main purposes:</p>
             <ol className="list-decimal pl-6 space-y-2 text-body">
               <li>
@@ -81,7 +81,7 @@ export default function CookiePolicyPage() {
               We only use optional functional, analytics, or marketing technologies where the relevant consent has been given, unless a legal exception applies.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">3. Strictly necessary technologies</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">3. Strictly necessary technologies</h2>
             <p className="text-body">Strictly necessary technologies are required for the website to function properly.</p>
             <p className="text-body">They may be used to:</p>
             <ul className="list-disc pl-6 space-y-2 text-body">
@@ -101,7 +101,7 @@ export default function CookiePolicyPage() {
               Where applicable, the technical necessity exception under § 25 TDDDG.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">4. Functional technologies</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">4. Functional technologies</h2>
             <p className="text-body">Functional technologies support optional website features.</p>
             <p className="text-body">They may be used for:</p>
             <ul className="list-disc pl-6 space-y-2 text-body">
@@ -121,7 +121,7 @@ export default function CookiePolicyPage() {
               Legitimate interest, Art. 6(1)(f) GDPR, where applicable.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">5. Analytics technologies</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">5. Analytics technologies</h2>
             <p className="text-body">Analytics technologies help us understand how the website is used.</p>
             <p className="text-body">They may help us see:</p>
             <ul className="list-disc pl-6 space-y-2 text-body">
@@ -136,7 +136,7 @@ export default function CookiePolicyPage() {
             <p className="text-body">If Aroneu uses analytics tools that rely on cookies, identifiers, or similar technologies, those tools will only be activated where required consent has been given.</p>
             <p className="text-body">
               <strong>Analytics provider:</strong><br />
-              [Insert final analytics provider: Plausible, Google Analytics 4, or other]
+              
             </p>
             <p className="text-body">
               <strong>Legal basis:</strong><br />
@@ -144,7 +144,7 @@ export default function CookiePolicyPage() {
               Legitimate interest, Art. 6(1)(f) GDPR, where analytics are privacy-friendly, non-identifying, and permitted without consent.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">6. Marketing technologies</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">6. Marketing technologies</h2>
             <p className="text-body">Marketing technologies may help Aroneu understand interest in its website, resources, newsletter, or business communication.</p>
             <p className="text-body">They may be used to:</p>
             <ul className="list-disc pl-6 space-y-2 text-body">
@@ -164,21 +164,21 @@ export default function CookiePolicyPage() {
               Consent, Art. 6(1)(a) GDPR, where marketing cookies, pixels, or similar technologies are used.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">7. Consent management</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">7. Consent management</h2>
             <p className="text-body">We use a consent-management tool to record and manage your cookie choices.</p>
             <p className="text-body">This tool may store your consent status so the website can remember whether you accepted, rejected, or customised optional technologies.</p>
             <p className="text-body">
               <strong>Consent-management provider:</strong><br />
-              [Insert final CMP provider, for example Cookiebot or equivalent]
+              
             </p>
             <p className="text-body">You can change or withdraw your consent at any time by reopening the cookie settings.</p>
             <p className="text-body">
               Cookie settings link:<br />
-              [Insert cookie settings link or CMP widget instruction]
+              
             </p>
             <p className="text-body">Withdrawing consent does not affect processing that took place before consent was withdrawn.</p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">8. Cookie categories</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">8. Cookie categories</h2>
             <p className="text-body">The website may use the following categories.</p>
             
             <div className="overflow-x-auto my-6">
@@ -215,12 +215,12 @@ export default function CookiePolicyPage() {
               </table>
             </div>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">9. Cookie and technology table</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">9. Cookie and technology table</h2>
             <p className="text-body">The table below must reflect the final production website after a technical cookie scan.</p>
             <p className="text-body">Do not treat sample entries as final. The final table must list only technologies actually active on the website.</p>
 
             <div className="overflow-x-auto my-6">
-              <table className="w-full text-left border-collapse min-w-[800px]">
+              <table className="w-full text-left border-collapse min-w-">
                 <thead>
                   <tr className="border-b border-zinc-300">
                     <th className="py-3 px-4 font-medium align-top">Name / script</th>
@@ -236,14 +236,14 @@ export default function CookiePolicyPage() {
                 </thead>
                 <tbody>
                   <tr className="border-b border-zinc-200">
-                    <td className="py-3 px-4 align-top">[Consent cookie name]</td>
-                    <td className="py-3 px-4 align-top">[CMP provider]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Strictly necessary</td>
                     <td className="py-3 px-4 align-top">Stores cookie consent choices</td>
                     <td className="py-3 px-4 align-top">Consent status, technical identifier</td>
                     <td className="py-3 px-4 align-top">No</td>
-                    <td className="py-3 px-4 align-top">[Insert lifespan]</td>
-                    <td className="py-3 px-4 align-top">[Insert location]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Confirm before launch</td>
                   </tr>
                   <tr className="border-b border-zinc-200">
@@ -253,30 +253,30 @@ export default function CookiePolicyPage() {
                     <td className="py-3 px-4 align-top">Website delivery, security, error logs</td>
                     <td className="py-3 px-4 align-top">IP address, browser data, access logs</td>
                     <td className="py-3 px-4 align-top">No, where technically necessary</td>
-                    <td className="py-3 px-4 align-top">[Insert retention]</td>
-                    <td className="py-3 px-4 align-top">[Insert location]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Confirm before launch</td>
                   </tr>
                   <tr className="border-b border-zinc-200">
-                    <td className="py-3 px-4 align-top">[Turnstile script, if used]</td>
-                    <td className="py-3 px-4 align-top">[Cloudflare Turnstile or other provider]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Strictly necessary / security</td>
                     <td className="py-3 px-4 align-top">Spam and bot prevention on forms</td>
                     <td className="py-3 px-4 align-top">IP address, browser signals, interaction data</td>
                     <td className="py-3 px-4 align-top">No, where used as necessary security</td>
-                    <td className="py-3 px-4 align-top">[Insert lifespan]</td>
-                    <td className="py-3 px-4 align-top">[Insert location]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Use only if active</td>
                   </tr>
                   <tr className="border-b border-zinc-200">
-                    <td className="py-3 px-4 align-top">[Plausible, if used]</td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Plausible Analytics</td>
                     <td className="py-3 px-4 align-top">Analytics</td>
                     <td className="py-3 px-4 align-top">Privacy-friendly traffic measurement</td>
                     <td className="py-3 px-4 align-top">Aggregated traffic data; confirm configuration</td>
-                    <td className="py-3 px-4 align-top">[Confirm whether consent is required]</td>
-                    <td className="py-3 px-4 align-top">[Insert retention]</td>
-                    <td className="py-3 px-4 align-top">[Insert location]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Use only if active</td>
                   </tr>
                   <tr className="border-b border-zinc-200">
@@ -286,19 +286,19 @@ export default function CookiePolicyPage() {
                     <td className="py-3 px-4 align-top">Website traffic and event measurement</td>
                     <td className="py-3 px-4 align-top">IP address, client ID, device and usage data</td>
                     <td className="py-3 px-4 align-top">Yes</td>
-                    <td className="py-3 px-4 align-top">[Insert lifespan]</td>
-                    <td className="py-3 px-4 align-top">[Insert location]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Use only if active</td>
                   </tr>
                   <tr className="border-b border-zinc-200">
-                    <td className="py-3 px-4 align-top">[CRM tracking script]</td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">[HubSpot / ActiveCampaign / other]</td>
                     <td className="py-3 px-4 align-top">Marketing</td>
                     <td className="py-3 px-4 align-top">CRM attribution, campaign measurement, lead engagement</td>
                     <td className="py-3 px-4 align-top">IP address, session ID, page activity</td>
                     <td className="py-3 px-4 align-top">Yes</td>
-                    <td className="py-3 px-4 align-top">[Insert lifespan]</td>
-                    <td className="py-3 px-4 align-top">[Insert location]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Use only if active</td>
                   </tr>
                   <tr className="border-b border-zinc-200">
@@ -307,27 +307,27 @@ export default function CookiePolicyPage() {
                     <td className="py-3 px-4 align-top">Functional</td>
                     <td className="py-3 px-4 align-top">Appointment scheduling and embedded booking</td>
                     <td className="py-3 px-4 align-top">IP address, browser data, booking metadata</td>
-                    <td className="py-3 px-4 align-top">[Confirm based on implementation]</td>
-                    <td className="py-3 px-4 align-top">[Insert lifespan]</td>
-                    <td className="py-3 px-4 align-top">[Insert location]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Use only if embedded</td>
                   </tr>
                   <tr className="border-b border-zinc-200">
-                    <td className="py-3 px-4 align-top">[Newsletter tracking, if enabled]</td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">[Newsletter / CRM provider]</td>
                     <td className="py-3 px-4 align-top">Marketing</td>
                     <td className="py-3 px-4 align-top">Email engagement measurement</td>
                     <td className="py-3 px-4 align-top">Opens, clicks, email engagement data</td>
                     <td className="py-3 px-4 align-top">Yes, where required</td>
-                    <td className="py-3 px-4 align-top">[Insert lifespan]</td>
-                    <td className="py-3 px-4 align-top">[Insert location]</td>
+                    <td className="py-3 px-4 align-top"></td>
+                    <td className="py-3 px-4 align-top"></td>
                     <td className="py-3 px-4 align-top">Use only if active</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">10. Third-party tools and embedded content</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">10. Third-party tools and embedded content</h2>
             <p className="text-body">Some website features may be provided by third-party tools.</p>
             <p className="text-body">This may include:</p>
             <ul className="list-disc pl-6 space-y-2 text-body">
@@ -343,16 +343,16 @@ export default function CookiePolicyPage() {
             <p className="text-body">Where optional third-party tools require consent, they must not be activated before the relevant consent has been given.</p>
             <p className="text-body">More information about service providers and international processing is available in our Privacy Policy.</p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">11. Scheduler and booking tools</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">11. Scheduler and booking tools</h2>
             <p className="text-body">If Aroneu uses an embedded scheduling tool, the tool may set cookies or use similar technologies to load the calendar interface, manage availability, and process booking information.</p>
             <p className="text-body">
               <strong>Scheduler provider:</strong><br />
-              [Insert final scheduler provider]
+              
             </p>
             <p className="text-body">If the scheduler is embedded directly on the website and uses optional cookies or third-party scripts, it may require consent before loading.</p>
             <p className="text-body">If the scheduler opens as an external link, the provider’s own cookie and privacy rules may apply on its website.</p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">12. Newsletter and CRM tracking</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">12. Newsletter and CRM tracking</h2>
             <p className="text-body">If Aroneu uses newsletter or CRM tools, those tools may use cookies, pixels, or similar technologies to understand engagement with Aroneu communication.</p>
             <p className="text-body">This may include:</p>
             <ul className="list-disc pl-6 space-y-2 text-body">
@@ -364,26 +364,26 @@ export default function CookiePolicyPage() {
             <p className="text-body">Where these technologies are optional or used for marketing, they require consent where required by law.</p>
             <p className="text-body">
               <strong>Newsletter / CRM provider:</strong><br />
-              [Insert final provider]
+              
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">13. Security technologies</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">13. Security technologies</h2>
             <p className="text-body">We may use security technologies to protect forms and the website from misuse, spam, automated requests, or malicious activity.</p>
             <p className="text-body">These tools may process technical signals such as IP address, browser information, device data, interaction patterns, or security tokens.</p>
             <p className="text-body">
               <strong>Security provider:</strong><br />
-              [Insert final security provider, for example Cloudflare Turnstile or other]
+              
             </p>
             <p className="text-body">Where the security technology is necessary to protect the website and forms, it may be used without consent on the basis of legitimate interest and technical necessity.</p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">14. How to change your cookie choices</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">14. How to change your cookie choices</h2>
             <p className="text-body">You can change or withdraw your cookie preferences at any time.</p>
             <p className="text-body">Use the cookie settings link or icon available on the website:</p>
-            <p className="text-body">[Insert cookie settings link or instruction]</p>
+            
             <p className="text-body">You can also change cookie settings in your browser. Most browsers allow you to block, delete, or restrict cookies.</p>
             <p className="text-body">Browser-level restrictions may affect how some website features work.</p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">15. Browser controls</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">15. Browser controls</h2>
             <p className="text-body">You can manage cookies through your browser settings.</p>
             <p className="text-body">Depending on your browser, you may be able to:</p>
             <ul className="list-disc pl-6 space-y-2 text-body">
@@ -396,7 +396,7 @@ export default function CookiePolicyPage() {
             </ul>
             <p className="text-body">For details, check your browser’s help section.</p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">16. Consent records</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">16. Consent records</h2>
             <p className="text-body">Where required, our consent-management tool may store a record of your consent choices.</p>
             <p className="text-body">This may include:</p>
             <ul className="list-disc pl-6 space-y-2 text-body">
@@ -408,17 +408,15 @@ export default function CookiePolicyPage() {
             </ul>
             <p className="text-body">This helps us respect your choices and demonstrate that optional technologies were used only where consent was given.</p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">17. Changes to this Cookie Policy</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">17. Changes to this Cookie Policy</h2>
             <p className="text-body">We may update this Cookie Policy when the website, cookie setup, technology providers, analytics tools, CRM tools, or legal requirements change.</p>
             <p className="text-body">The latest version will always be published on this page.</p>
             <p className="text-body">The date at the top of the page shows when this policy was last updated.</p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">18. Contact</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">18. Contact</h2>
             <p className="text-body">For questions about this Cookie Policy, contact:</p>
             <p className="text-body">
-              <strong>Aroneu GmbH</strong><br />
-              [Registered address]<br />
-              [Privacy contact email]
+              <strong>Aroneu GmbH</strong>
             </p>
             <p className="text-body">For more information about how we process personal data, please see our Privacy Policy.</p>
           </div>

@@ -13,28 +13,27 @@ export default function ImprintPage() {
     <main className="flex min-h-screen flex-col w-full surface-paper">
       <section className="pt-32 pb-24 border-b border-zinc-200">
         <div className="container-aroneu max-w-3xl mx-auto">
-          <span className="text-label uppercase tracking-widest block mb-4 text-zinc-500">
+          <span className="text-label uppercase tracking-widest block mb-4 opacity-80">
             Legal
           </span>
-          <h1 className="text-display mb-6 font-light">Imprint</h1>
-          <p className="text-body text-zinc-500 mb-8">
-            Last updated: [Insert date]
+          <h1 className="text-h1 mb-6 ">Imprint</h1>
+          <p className="text-body opacity-80 mb-8">
+            Last updated: 7 July 2026
           </p>
         </div>
       </section>
 
       <section className="py-16">
         <div className="container-aroneu max-w-3xl mx-auto">
-          <div className="text-zinc-800 space-y-6">
+          <div className=" space-y-6">
             <p className="text-body">
               This page contains the legal provider information for the Aroneu website.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">Information according to § 5 DDG</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">Information according to § 5 DDG</h2>
             <p className="text-body">
-              <strong>Aroneu GmbH</strong><br />
-              [Registered street address]<br />
-              [Postal code, city]<br />
+              <strong>Aroneu GmbH</strong>
+              <br />
               Germany
             </p>
             <p className="text-body">
@@ -42,47 +41,41 @@ export default function ImprintPage() {
               [Managing director(s) / Geschäftsführer]
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">Contact</h2>
-            <p className="text-body">
-              Email: [general contact email]<br />
-              Phone: [phone number]
-            </p>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">Contact</h2>
+            
             <p className="text-body">
               For privacy-related requests, please use:<br />
-              [privacy contact email]
+              
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">Commercial register</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">Commercial register</h2>
             <p className="text-body">
               Registered with: [Register court / Amtsgericht]<br />
-              Commercial register number: [HRB number]
+              Commercial register number: 
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">VAT identification number</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">VAT identification number</h2>
             <p className="text-body">
               VAT ID according to § 27a German VAT Act:<br />
-              [VAT ID, if applicable]
+              
             </p>
-            <p className="text-body">
-              [If Aroneu does not yet have or does not use a VAT ID publicly, insert approved legal wording here.]
-            </p>
+            
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">Responsible for website content</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">Responsible for website content</h2>
             <p className="text-body">
               Responsible for the content of this website:
             </p>
             <p className="text-body">
-              <strong>Aroneu GmbH</strong><br />
-              [Registered street address]<br />
-              [Postal code, city]<br />
+              <strong>Aroneu GmbH</strong>
+              <br />
               Germany
             </p>
             <p className="text-body">
               Represented by:<br />
-              [Managing director(s)]
+              
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">Nature of this website</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">Nature of this website</h2>
             <p className="text-body">
               This website provides information about Aroneu, its Capability Teams, the AI Workspace, related insights, careers, and contact options.
             </p>
@@ -90,19 +83,17 @@ export default function ImprintPage() {
               The information on this website is intended for general business information only. It does not create a client relationship, service agreement, employment relationship, or other binding commercial relationship unless separately agreed in writing.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">Dispute resolution</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">Dispute resolution</h2>
             <p className="text-body">
               The European Commission provides an online dispute resolution platform at:<br />
-              [Insert official ODR link if required by legal counsel]
+              
             </p>
             <p className="text-body">
               Aroneu is not obliged and does not undertake to participate in dispute resolution proceedings before a consumer arbitration board, unless legally required.
             </p>
-            <p className="text-body">
-              [Confirm final wording with legal counsel, especially because Aroneu operates in a B2B context.]
-            </p>
+            
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">External links</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">External links</h2>
             <p className="text-body">
               This website may link to external websites.
             </p>
@@ -113,7 +104,7 @@ export default function ImprintPage() {
               If we become aware of unlawful external content, we will review and remove the relevant link where appropriate.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">Copyright and intellectual property</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">Copyright and intellectual property</h2>
             <p className="text-body">
               The content, structure, copy, visuals, brand elements, and design of this website are protected by applicable intellectual property laws.
             </p>
@@ -124,7 +115,7 @@ export default function ImprintPage() {
               Content from this website may not be copied, reproduced, modified, distributed, or used commercially without prior written permission from Aroneu GmbH.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">AI Workspace visuals and representative materials</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">AI Workspace visuals and representative materials</h2>
             <p className="text-body">
               The website may include AI Workspace visuals, diagrams, interface previews, or other representative materials.
             </p>
@@ -135,7 +126,7 @@ export default function ImprintPage() {
               Client-specific systems, data flows, access controls, and governance arrangements are defined separately in written agreements and technical documentation.
             </p>
 
-            <h2 className="text-h2 mt-16 mb-6 font-light text-ink">Legal notices</h2>
+            <h2 className="text-h2 mt-16 mb-6  text-ink">Legal notices</h2>
             <p className="text-body">
               This Imprint is provided for the public Aroneu website.
             </p>

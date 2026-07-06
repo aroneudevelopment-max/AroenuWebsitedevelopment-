@@ -14,4 +14,5 @@ export const routes = {
   terms: "/terms",
   cookiePolicy: "/cookie-policy",
   dataResidency: "/data-residency",
+  bookACall: "/book-a-call",
 };

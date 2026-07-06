@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { SectionContent } from "@/lib/content/types";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 type FormField = {
   name: string;
@@ -14,7 +15,7 @@ type FormField = {
   options?: string[];
 };
 
-type SubmitStatus = "idle" | "submitting" | "pending" | "error";
+type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
 /**
  * ContactForm
@@ -31,6 +32,7 @@ export function ContactForm({ data }: { data?: SectionContent }) {
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<Record<string, string>>({});
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   if (!data) return null;
 
@@ -69,16 +71,40 @@ export function ContactForm({ data }: { data?: SectionContent }) {
     return isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) {
       setStatus("error");
       return;
     }
+
+    if (!turnstileToken) {
+      setErrors((prev) => ({ ...prev, turnstile: "Please complete the security check." }));
+      setStatus("error");
+      return;
+    }
+
     setStatus("submitting");
-    setTimeout(() => {
-      setStatus("pending");
-    }, 600);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formData, turnstileToken }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message.");
+      }
+
+      setStatus("success");
+      setFormData({});
+      setTurnstileToken("");
+    } catch (error) {
+      console.error(error);
+      setErrors((prev) => ({ ...prev, server: "Something went wrong. Please try again or use the Book a call link." }));
+      setStatus("error");
+    }
   };
 
   const fieldClasses =
@@ -251,35 +277,56 @@ export function ContactForm({ data }: { data?: SectionContent }) {
             )}
           </div>
 
+          {errors["server"] && (
+            <p className="text-sm font-medium text-red-600 mt-2" role="alert">
+              {errors["server"]}
+            </p>
+          )}
+
+          <div className="pt-2">
+            <Turnstile
+              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
+              onSuccess={(token) => {
+                setTurnstileToken(token);
+                setErrors((prev) => ({ ...prev, turnstile: "" }));
+              }}
+            />
+            {errors["turnstile"] && (
+              <p className="text-xs font-medium text-red-600 mt-1" role="alert">
+                {errors["turnstile"]}
+              </p>
+            )}
+          </div>
+
           <div className="pt-2">
             <button
               type="submit"
-              disabled={status === "submitting"}
+              disabled={status === "submitting" || status === "success"}
               className="btn-primary-aroneu w-full sm:w-auto"
             >
               {status === "submitting"
                 ? getNote("Loading state") || "Sending..."
+                : status === "success"
+                ? "Message sent"
                 : getNote("Submit button") || "Submit enquiry"}
             </button>
           </div>
 
-          {status === "pending" && (
+          {status === "success" && (
             <div
               role="status"
               className="mt-2 p-4 border rounded-xl"
               style={{
-                backgroundColor: "#FFFBEB",
-                borderColor: "#FCD34D",
-                color: "#92400E",
+                backgroundColor: "#F0FDF4",
+                borderColor: "#86EFAC",
+                color: "#166534",
               }}
             >
               <p className="text-sm font-semibold mb-1">
-                Enquiry sending is not active yet.
+                Your message has been sent successfully.
               </p>
               <p className="text-sm">
-                This form is not submitting to a live inbox yet. Please use
-                the Book a call option on this page to continue the
-                conversation safely.
+                We will review your note and get back to you within one business day.
               </p>
             </div>
           )}

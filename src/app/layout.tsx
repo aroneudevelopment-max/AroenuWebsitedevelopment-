@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Maven_Pro, Newsreader } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SiteShell } from "@/components/layout/SiteShell";
 import JsonLd from "@/components/seo/JsonLd";
@@ -46,6 +47,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-GB" className={`antialiased ${mavenPro.variable} ${newsreader.variable}`}>
+      <head>
+        <Script
+          async
+          src="https://plausible.io/js/pa-gXSYT7tKA5FZ9kdhMx2yS.js"
+          strategy="afterInteractive"
+        />
+        <Script id="plausible-init" strategy="afterInteractive">
+          {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init();`}
+        </Script>
+      </head>
       <body className="min-h-screen flex flex-col">
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <SiteShell>

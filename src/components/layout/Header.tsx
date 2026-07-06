@@ -42,7 +42,7 @@ export function Header() {
 
       <div className="header-actions hidden md:flex shrink-0">
         <Link
-          href={routes.contact}
+          href={routes.bookACall}
           className="px-5 py-2.5 rounded-full text-sm font-medium bg-ink text-paper hover:opacity-90 transition-opacity"
         >
           Book a call

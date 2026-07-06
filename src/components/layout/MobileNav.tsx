@@ -139,7 +139,7 @@ export function MobileNav() {
             </nav>
 
             <Link
-              href={routes.contact}
+              href={routes.bookACall}
               onClick={() => setIsOpen(false)}
               className="mt-6 px-5 py-3 rounded-full text-base font-medium text-center bg-ink text-paper hover:opacity-90 transition-opacity"
             >

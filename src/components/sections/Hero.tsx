@@ -128,18 +128,11 @@ export function Hero({
             <Tilt3D>
               <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
                 {shouldRenderVideo ? (
-                  <video
-                    src={data.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="metadata"
-                    poster={poster}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `<video src="${data.video}" autoplay loop muted playsinline preload="metadata" ${poster ? `poster="${poster}"` : ""} class="w-full h-full ${videoFitClass}" aria-label="${data.videoAlt || data.heading || 'Hero overview video'}"></video>`
+                    }}
                     className={`w-full h-full ${videoFitClass}`}
-                    aria-label={
-                      data.videoAlt || data.heading || "Hero overview video"
-                    }
                   />
                 ) : posterImage ? (
                   <Image
@@ -155,16 +148,11 @@ export function Hero({
             </Tilt3D>
           ) : shouldRenderVideo ? (
             <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
-              <video
-                src={data.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster={poster}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `<video src="${data.video}" autoplay loop muted playsinline preload="metadata" ${poster ? `poster="${poster}"` : ""} class="w-full h-full ${videoFitClass}" aria-label="${data.videoAlt || data.heading || 'Hero overview video'}"></video>`
+                }}
                 className={`w-full h-full ${videoFitClass}`}
-                aria-label={data.videoAlt || data.heading || "Hero overview video"}
               />
             </div>
           ) : posterImage ? (

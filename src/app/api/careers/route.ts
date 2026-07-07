@@ -14,15 +14,16 @@ export async function POST(req: Request) {
     const message = formData.get("message") as string;
     const cvFile = formData.get("cv") as File | null;
 
-    let attachments = [];
-    if (cvFile && cvFile.size > 0) {
-      const buffer = Buffer.from(await cvFile.arrayBuffer());
-      attachments.push({
-        filename: cvFile.name,
-        content: buffer,
-        contentType: cvFile.type,
-      });
-    }
+    const attachments =
+      cvFile && cvFile.size > 0
+        ? [
+            {
+              filename: cvFile.name,
+              content: Buffer.from(await cvFile.arrayBuffer()),
+              contentType: cvFile.type,
+            },
+          ]
+        : [];
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || "smtp.gmail.com",

@@ -1,9 +1,7 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { insights, InsightArticle } from '@/lib/content/insights';
+import { insights } from '@/lib/content/insights';
 import { Hero } from '@/components/sections/Hero';
 import { InsightAnswerBlock } from '@/components/sections/insights/InsightAnswerBlock';
-import { ClosingCTA } from '@/components/sections/ClosingCTA';
 import Link from 'next/link';
 import { routes } from '@/lib/routes';
 import { resolveCtaHref } from '@/lib/cta';
@@ -15,8 +13,13 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const article = insights.find(a => a.slug === params.slug && a.isPublished);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = insights.find(a => a.slug === slug && a.isPublished);
   
   if (!article) {
     return {
@@ -35,8 +38,13 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function InsightArticlePage({ params }: { params: { slug: string } }) {
-  const article = insights.find(a => a.slug === params.slug);
+export default async function InsightArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const article = insights.find(a => a.slug === slug);
 
   if (!article || !article.isPublished) {
     // Return safe fallback as required by visual placement rules

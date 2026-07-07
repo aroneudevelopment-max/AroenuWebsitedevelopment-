@@ -19,8 +19,8 @@ export function getReceiverEmail() {
 }
 
 export function createMailerTransport() {
-  const smtpUser = getTrimmedEnv("SMTP_USER") || getReceiverEmail() || "Aroneudevelopment@gmail.com";
-  const smtpPass = getTrimmedEnv("SMTP_PASS") || "pryd eeas chuv fdvo";
+  const smtpUser = getTrimmedEnv("SMTP_USER") || getReceiverEmail();
+  const smtpPass = getTrimmedEnv("SMTP_PASS");
 
   if (!smtpPass) {
     throw new Error("SMTP_PASS is not configured.");
@@ -80,7 +80,7 @@ export async function pushHubSpotContact({
   message?: string;
   source?: string;
 }) {
-  const hubspotPat = getTrimmedEnv("HUBSPOT_PAT") || "Pat-na2-61935c4e-1cf4-4c69-96ff-e0ad5a046d15";
+  const hubspotPat = getTrimmedEnv("HUBSPOT_PAT");
 
   if (!hubspotPat) {
     return;

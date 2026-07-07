@@ -50,9 +50,16 @@ export async function POST(request: Request) {
       );
     }
 
-    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY?.trim() || "0x4AAAAAADwKl6H9ElahjtxG33vn5QWKs_o";
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY?.trim();
 
-    if (turnstileSecret && turnstileToken) {
+    if (turnstileSecret) {
+      if (!turnstileToken) {
+        return NextResponse.json(
+          { error: "Please complete the security check." },
+          { status: 400 },
+        );
+      }
+
       const turnstileVerify = await fetch(
         "https://challenges.cloudflare.com/turnstile/v0/siteverify",
         {

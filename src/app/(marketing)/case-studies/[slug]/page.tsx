@@ -1,25 +1,26 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCaseStudyBySlug } from "@/lib/content/case-studies";
+import { caseStudies, getCaseStudyBySlug } from "@/lib/content/case-studies";
 import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return [];
+  return caseStudies.map((caseStudy) => ({ slug: caseStudy.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const caseStudy = getCaseStudyBySlug(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const caseStudy = getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
     return buildPageMetadata({
       title: "Case study | Aroneu",
       description: "Approved case study details are shared during qualified conversations.",
-      path: `/case-studies/${params.slug}`,
+      path: `/case-studies/${slug}`,
       noIndex: true,
     });
   }
@@ -28,17 +29,18 @@ export function generateMetadata({
     title: `${caseStudy.title} | Aroneu`,
     description:
       "Approved case study details are shared during qualified conversations.",
-    path: `/case-studies/${params.slug}`,
+    path: `/case-studies/${slug}`,
     noIndex: true,
   });
 }
 
-export default function CaseStudyDetail({
+export default async function CaseStudyDetail({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const caseStudy = getCaseStudyBySlug(params.slug);
+  const { slug } = await params;
+  const caseStudy = getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
     notFound();

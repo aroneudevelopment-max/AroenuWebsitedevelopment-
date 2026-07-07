@@ -14,20 +14,21 @@ export function generateStaticParams() {
     }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
   const role = approvedCareers.find(
-    (r) => r.slug === params.slug && r.isApprovedForPublic,
+    (r) => r.slug === slug && r.isApprovedForPublic,
   );
 
   if (!role) {
     return buildPageMetadata({
       title: "Careers | Aroneu",
       description: careersIndexFallbackDescription,
-      path: `/careers/${params.slug}`,
+      path: `/careers/${slug}`,
       noIndex: true,
     });
   }
@@ -39,7 +40,7 @@ export function generateMetadata({
     description:
       role.seo?.metaDescription ||
       careerRoleTemplateContent.seo.metaDescription.replace("[role title]", role.title),
-    path: `/careers/${params.slug}`,
+    path: `/careers/${slug}`,
     ogTitle:
       role.seo?.ogTitle ||
       careerRoleTemplateContent.seo.ogTitle.replace("[Role title]", role.title),
@@ -51,13 +52,14 @@ export function generateMetadata({
 const careersIndexFallbackDescription =
   "Approved role details are published only when a live opening is ready for public release.";
 
-export default function CareerRolePage({
+export default async function CareerRolePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const role = approvedCareers.find(
-    (r) => r.slug === params.slug && r.isApprovedForPublic,
+    (r) => r.slug === slug && r.isApprovedForPublic,
   );
 
   if (!role) {

@@ -1,12 +1,25 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { SectionContent } from "@/lib/content/types";
 
-export function FeaturedInsightCard({ data }: { data: any }) {
+type FeaturedInsightCardData = {
+  label?: string;
+  heading: string;
+  body: string;
+  href?: string;
+  cta?: string;
+  image?: string;
+  isPublished?: boolean;
+  metadata?: string[];
+};
+
+export function FeaturedInsightCard({ data }: { data?: SectionContent }) {
   if (!data) return null;
 
-  const href = data.isPublished ? data.href : "/contact";
-  const isPending = !data.isPublished;
+  const featuredCard = data as SectionContent & FeaturedInsightCardData;
+  const href = featuredCard.isPublished ? featuredCard.href || "/contact" : "/contact";
+  const isPending = !featuredCard.isPublished;
 
   return (
     <section className="py-24 border-y border-zinc-200 surface-paper">
@@ -26,14 +39,14 @@ export function FeaturedInsightCard({ data }: { data: any }) {
               className="group min-w-0 block rounded-[2rem] overflow-hidden border border-zinc-200 surface-sand transition-all hover:border-zinc-300 hover:shadow-soft"
               aria-label={
                 isPending
-                  ? `Discuss the suggested topic: ${data.heading}`
-                  : `Read the insight: ${data.heading}`
+                  ? `Discuss the suggested topic: ${featuredCard.heading}`
+                  : `Read the insight: ${featuredCard.heading}`
               }
             >
               <div className="relative w-full aspect-[16/10] bg-zinc-100 overflow-hidden">
-                {data.image && (
+                {featuredCard.image && (
                   <Image
-                    src={data.image}
+                    src={featuredCard.image}
                     alt=""
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -43,7 +56,7 @@ export function FeaturedInsightCard({ data }: { data: any }) {
               </div>
               <div className="p-8 md:p-10 flex flex-col space-y-5 surface-paper">
                 <div className="flex flex-wrap gap-2">
-                  {data.metadata?.map((tag: string, i: number) => (
+                  {featuredCard.metadata?.map((tag, i: number) => (
                     <span
                       key={i}
                       className="text-[10px] font-mono uppercase tracking-widest px-3 py-1.5 rounded-full bg-zinc-100 opacity-80"
@@ -52,10 +65,10 @@ export function FeaturedInsightCard({ data }: { data: any }) {
                     </span>
                   ))}
                 </div>
-                <h3 className="text-h3 text-ink leading-tight">{data.heading}</h3>
-                <p className="text-body opacity-80">{data.body}</p>
+                <h3 className="text-h3 text-ink leading-tight">{featuredCard.heading}</h3>
+                <p className="text-body opacity-80">{featuredCard.body}</p>
                 <div className="pt-2 inline-flex items-center gap-1 text-sm font-medium text-ink group-hover:opacity-80 transition-opacity">
-                  {isPending ? "Discuss this topic" : data.cta}{" "}
+                  {isPending ? "Discuss this topic" : featuredCard.cta}{" "}
                   <span
                     aria-hidden="true"
                     className="group-hover:translate-x-1 transition-transform"

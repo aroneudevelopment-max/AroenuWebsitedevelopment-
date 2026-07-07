@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { ClosingCTA } from "@/components/sections/ClosingCTA";
 import { resourcesPage } from "@/lib/content/pages/resources";
+import { SectionContent } from "@/lib/content/types";
 import { buildPageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
 import { resolveCtaHref } from "@/lib/cta";
@@ -16,10 +17,11 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function ResourcesPage() {
   const sections = resourcesPage.sections;
-  const hero = sections.find((s) => s.id === "hero") as any;
-  const emptyState = sections.find((s) => s.id === "empty-state") as any;
-  const cta = sections.find((s) => s.id === "closing-cta") as any;
-  const faq = sections.find((s) => s.id === "faq") as any;
+  const getSection = (id: string) => sections.find((section: SectionContent) => section.id === id);
+  const hero = getSection("hero");
+  const emptyState = getSection("empty-state");
+  const cta = getSection("closing-cta");
+  const faq = getSection("faq");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between w-full">

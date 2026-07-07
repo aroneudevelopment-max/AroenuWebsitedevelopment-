@@ -1,10 +1,11 @@
 import React from 'react';
+import { SectionContent } from "@/lib/content/types";
 
 export interface AnswerBlockProps {
  eyebrow?: string;
  heading?: string;
  subcopy?: string;
- data?: any;
+ data?: SectionContent;
 }
 
 export function AnswerBlock(props: AnswerBlockProps) {

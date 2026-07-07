@@ -51,8 +51,10 @@ export function DataResponsibilityDiagram({
 
         <div className="z-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-2 relative">
           {diagramSteps.map((step, i) => (
-            
-              <div className="flex flex-col items-center p-4 rounded-xl border border-zinc-200 surface-paper shadow-sm transition-transform hover:-translate-y-px">
+              <div
+                key={step.id}
+                className="flex flex-col items-center p-4 rounded-xl border border-zinc-200 surface-paper shadow-sm transition-transform hover:-translate-y-px"
+              >
                 <span className="text-[11px] font-mono uppercase tracking-widest opacity-70 mb-1">
                   0{i + 1}
                 </span>
@@ -60,7 +62,6 @@ export function DataResponsibilityDiagram({
                   {step.label}
                 </span>
               </div>
-            
           ))}
         </div>
       </div>

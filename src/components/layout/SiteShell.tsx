@@ -1,9 +1,16 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { SkipLink } from "./SkipLink";
-import { CookieConsentShell } from "./CookieConsentShell";
-import { BackToTopButton } from "./BackToTopButton";
+
+const CookieConsentShell = dynamic(
+  () => import("./CookieConsentShell").then((mod) => mod.CookieConsentShell),
+);
+
+const BackToTopButton = dynamic(
+  () => import("./BackToTopButton").then((mod) => mod.BackToTopButton),
+);
 
 /**
  * SiteShell

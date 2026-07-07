@@ -41,9 +41,9 @@ export default function RootLayout({
         <Script
           async
           src="https://plausible.io/js/pa-gXSYT7tKA5FZ9kdhMx2yS.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="plausible-init" strategy="afterInteractive">
+        <Script id="plausible-init" strategy="lazyOnload">
           {`window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init();`}
         </Script>
       </head>

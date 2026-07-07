@@ -35,7 +35,11 @@ export default function Home() {
         })}
       />
 
-      <Hero data={sections.find((s) => s.id === "hero")} />
+      <Hero
+        data={sections.find((s) => s.id === "hero")}
+        withTilt3D={false}
+        videoMode="poster"
+      />
       <ProofStrip data={sections.find((s) => s.id === "proof-strip")} />
       <ProblemList data={sections.find((s) => s.id === "problem")} />
       <CapabilityCards data={sections.find((s) => s.id === "two-capabilities")} />

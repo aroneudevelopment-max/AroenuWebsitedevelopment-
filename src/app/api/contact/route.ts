@@ -3,7 +3,10 @@ import {
   pushHubSpotContact,
   sendWebsiteEmail,
 } from "@/lib/server/delivery";
-import { checkRateLimit, isValidEmail } from "@/lib/server/form-security";
+import {
+  checkRateLimit,
+  validateContactSubmissionInput,
+} from "@/lib/server/form-security";
 
 export const runtime = "nodejs";
 
@@ -36,16 +39,17 @@ export async function POST(request: Request) {
     const message = String(formData?.message || "").trim();
     const pageSource = String(formData?.pageSource || "Contact Form").trim();
 
-    if (!fullName || !workEmail || !company || !role || !teamNeed || !message) {
+    const contactValidationError = validateContactSubmissionInput({
+      fullName,
+      workEmail,
+      company,
+      role,
+      teamNeed,
+      message,
+    });
+    if (contactValidationError) {
       return NextResponse.json(
-        { error: "Please complete the required contact fields." },
-        { status: 400 },
-      );
-    }
-
-    if (!isValidEmail(workEmail)) {
-      return NextResponse.json(
-        { error: "Please enter a valid work email." },
+        { error: contactValidationError },
         { status: 400 },
       );
     }

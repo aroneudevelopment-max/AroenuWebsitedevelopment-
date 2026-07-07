@@ -14,6 +14,58 @@ export function isValidEmail(value: string) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value);
 }
 
+export function validateContactSubmissionInput({
+  fullName,
+  workEmail,
+  company,
+  role,
+  teamNeed,
+  message,
+}: {
+  fullName: string;
+  workEmail: string;
+  company: string;
+  role: string;
+  teamNeed: string;
+  message: string;
+}) {
+  if (!fullName || !workEmail || !company || !role || !teamNeed || !message) {
+    return "Please complete the required contact fields.";
+  }
+
+  if (!isValidEmail(workEmail)) {
+    return "Please enter a valid work email.";
+  }
+
+  return null;
+}
+
+export function validateCareerApplicationInput({
+  fullName,
+  email,
+  location,
+  consent,
+}: {
+  fullName: string;
+  email: string;
+  location: string;
+  consent: string;
+}) {
+  if (!fullName || !email || !location) {
+    return "Please complete the required application fields.";
+  }
+
+  if (!isValidEmail(email)) {
+    return "Please enter a valid email address.";
+  }
+
+  if (consent !== "true") {
+    return "Please confirm the application consent checkbox.";
+  }
+
+  return null;
+}
+
 export function getClientIdentifier(request: Request) {
   const forwardedFor = request.headers.get("x-forwarded-for");
   const forwardedIp = forwardedFor?.split(",")[0]?.trim();

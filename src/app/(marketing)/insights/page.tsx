@@ -8,6 +8,7 @@ import { FAQSection } from "@/components/sections/FAQSection";
 import { ClosingCTA } from "@/components/sections/ClosingCTA";
 import { insightsIndexContent } from "@/lib/content/pages/insights";
 import { insights } from "@/lib/content/insights";
+import { SectionContent } from "@/lib/content/types";
 import { buildPageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
 
@@ -21,6 +22,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function InsightsIndex() {
   const sections = insightsIndexContent.sections;
+  const getSection = (id: string) => sections.find((section: SectionContent) => section.id === id);
 
   return (
     <div className="page-insights flex flex-col w-full">
@@ -38,24 +40,24 @@ export default function InsightsIndex() {
         ]}
       />
 
-      <Hero data={sections.find((s: any) => s.id === "hero")} withTilt3D={false} />
-      <AnswerBlock data={sections.find((s: any) => s.id === "answer")} />
-      <FeaturedInsightCard data={sections.find((s: any) => s.id === "featured-article")} />
+      <Hero data={getSection("hero")} withTilt3D={false} />
+      <AnswerBlock data={getSection("answer")} />
+      <FeaturedInsightCard data={getSection("featured-article")} />
       <InsightGrid
-        filterData={sections.find((s: any) => s.id === "categories")}
+        filterData={getSection("categories")}
         articles={insights}
-        suggestedThemesData={sections.find((s: any) => s.id === "suggested-themes")}
-        emptyStateData={sections.find((s: any) => s.id === "empty-state")}
+        suggestedThemesData={getSection("suggested-themes")}
+        emptyStateData={getSection("empty-state")}
       />
 
       <div className="py-16 surface-sand border-t border-zinc-200">
         <div className="container-aroneu max-w-4xl mx-auto">
-          <FAQSection data={sections.find((s: any) => s.id === "faq")} />
+          <FAQSection data={getSection("faq")} />
         </div>
       </div>
 
       <div className="py-16 surface-paper">
-        <ClosingCTA data={sections.find((s: any) => s.id === "closing-cta")} />
+        <ClosingCTA data={getSection("closing-cta")} />
       </div>
     </div>
   );

@@ -2,7 +2,22 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { InsightArticle } from "@/lib/content/insights";
+import { SectionContent } from "@/lib/content/types";
+
+type SuggestedTheme = {
+  title: string;
+  excerpt: string;
+};
+
+type EmptyStateData = {
+  heading?: string;
+  body?: string;
+  primaryCTA?: {
+    label?: string;
+  };
+};
 
 export function InsightGrid({
   filterData,
@@ -10,16 +25,18 @@ export function InsightGrid({
   suggestedThemesData,
   emptyStateData,
 }: {
-  filterData: any;
+  filterData?: SectionContent;
   articles: InsightArticle[];
-  suggestedThemesData: any;
-  emptyStateData: any;
+  suggestedThemesData?: SectionContent;
+  emptyStateData?: SectionContent;
 }) {
   const [activeFilter, setActiveFilter] = useState("All");
 
   if (!filterData) return null;
 
-  const filters: string[] = filterData.items || [];
+  const filters = (filterData.items as string[] | undefined) || [];
+  const themes = (suggestedThemesData?.themes as SuggestedTheme[] | undefined) || [];
+  const emptyState = emptyStateData as EmptyStateData | undefined;
 
   const filteredArticles =
     activeFilter === "All"
@@ -76,7 +93,7 @@ export function InsightGrid({
                 min-w-0 ensures the card can shrink without forcing text
                 vertical-wrapping. */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {suggestedThemesData.themes?.map((theme: any, i: number) => (
+              {themes.map((theme, i) => (
                 <div
                   key={i}
                   className="min-w-0 flex flex-col border border-zinc-200 rounded-2xl surface-paper p-6 md:p-8 transition-colors hover:border-zinc-300"
@@ -115,9 +132,11 @@ export function InsightGrid({
                 >
                   <div className="relative w-full aspect-video bg-zinc-100 overflow-hidden p-6 flex justify-center items-center text-center">
                     {article.image && (
-                      <img
+                      <Image
                         src={article.image}
                         alt={article.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     )}
@@ -159,17 +178,17 @@ export function InsightGrid({
         {hasPublishedArticles && filteredArticles.length === 0 && (
           <div className="py-16 text-center flex flex-col items-center max-w-lg mx-auto">
             <h3 className="text-h3 mb-4">
-              {emptyStateData?.heading || "No insights found."}
+              {emptyState?.heading || "No insights found."}
             </h3>
             <p className="text-body opacity-80 mb-8">
-              {emptyStateData?.body ||
+              {emptyState?.body ||
                 "Try another topic or check back as new briefs are published."}
             </p>
             <button
               onClick={() => setActiveFilter("All")}
               className="px-6 py-3 rounded-full text-sm font-medium bg-ink text-paper hover:opacity-90 transition-opacity"
             >
-              {emptyStateData?.primaryCTA?.label || "Clear filters"}
+              {emptyState?.primaryCTA?.label || "Clear filters"}
             </button>
           </div>
         )}

@@ -6,7 +6,7 @@ import {
 } from "@/lib/server/delivery";
 import {
   checkRateLimit,
-  isValidEmail,
+  validateCareerApplicationInput,
   validateCareerCv,
 } from "@/lib/server/form-security";
 
@@ -44,23 +44,15 @@ export async function POST(request: Request) {
     const consent = String(formData.get("consent") || "").trim();
     const cvFile = formData.get("cv");
 
-    if (!fullName || !email || !location) {
+    const applicationValidationError = validateCareerApplicationInput({
+      fullName,
+      email,
+      location,
+      consent,
+    });
+    if (applicationValidationError) {
       return NextResponse.json(
-        { error: "Please complete the required application fields." },
-        { status: 400 },
-      );
-    }
-
-    if (!isValidEmail(email)) {
-      return NextResponse.json(
-        { error: "Please enter a valid email address." },
-        { status: 400 },
-      );
-    }
-
-    if (consent !== "true") {
-      return NextResponse.json(
-        { error: "Please confirm the application consent checkbox." },
+        { error: applicationValidationError },
         { status: 400 },
       );
     }

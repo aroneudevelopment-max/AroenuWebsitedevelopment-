@@ -1,11 +1,24 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { SectionContent } from "@/lib/content/types";
 
-export function FeaturedCase({ data }: { data: any }) {
+type FeaturedCaseCard = {
+  href: string;
+  title: string;
+  excerpt: string;
+  cta: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
+  metadata?: string[];
+};
+
+export function FeaturedCase({ data }: { data?: SectionContent }) {
   if (!data) return null;
 
-  const card = data.items?.[0];
+  const card = data.items?.[0] as FeaturedCaseCard | undefined;
 
   return (
     <section className="py-24 border-y border-zinc-200">

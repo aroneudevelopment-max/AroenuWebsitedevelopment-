@@ -9,6 +9,7 @@ import { RunGovernanceRhythm } from "@/components/sections/RunGovernanceRhythm";
 import { HandoverContinuityPath } from "@/components/sections/HandoverContinuityPath";
 import { ClosingCTA } from "@/components/sections/ClosingCTA";
 import { howitworksPage } from "@/lib/content/pages/how-it-works";
+import { SectionContent } from "@/lib/content/types";
 import { buildPageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 
@@ -21,15 +22,17 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function HowItWorksPage() {
   const { sections } = howitworksPage;
+  const getSectionByType = (type: string) =>
+    sections.find((section: SectionContent) => section.type === type);
 
-  const heroData = sections.find((s: any) => s.type === "hero");
-  const answerBlockData = sections.find((s: any) => s.type === "answerBlock");
-  const processOverviewData = sections.find((s: any) => s.type === "processOverview");
-  const discoverData = sections.find((s: any) => s.type === "discover");
-  const buildData = sections.find((s: any) => s.type === "build");
-  const runData = sections.find((s: any) => s.type === "run");
-  const continuityData = sections.find((s: any) => s.type === "continuity");
-  const closingCTAData = sections.find((s: any) => s.type === "closingCTA");
+  const heroData = getSectionByType("hero");
+  const answerBlockData = getSectionByType("answerBlock");
+  const processOverviewData = getSectionByType("processOverview");
+  const discoverData = getSectionByType("discover");
+  const buildData = getSectionByType("build");
+  const runData = getSectionByType("run");
+  const continuityData = getSectionByType("continuity");
+  const closingCTAData = getSectionByType("closingCTA");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between w-full">

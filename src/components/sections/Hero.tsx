@@ -20,23 +20,27 @@ export function Hero({
   data,
   tone = "light",
   withTilt3D = true,
+  videoMode = "autoplay",
 }: {
   data?: SectionContent;
   tone?: Tone;
   withTilt3D?: boolean;
+  videoMode?: "autoplay" | "poster";
 }) {
   if (!data) return null;
   const isInk = tone === "ink";
   const subcopy =
     data.subcopy ?? (typeof data.body === "string" ? data.body : undefined);
-  const hasVisual = Boolean(data.image || data.video);
+  const hasVisual = Boolean(data.image || data.video || data.videoPoster);
   const imageFitClass =
     data.imageFit === "contain" ? "object-contain p-4 md:p-6" : "object-cover";
   const videoFitClass =
     data.videoFit === "contain" ? "object-contain p-4 md:p-6" : "object-cover";
+  const shouldRenderVideo = Boolean(data.video) && videoMode === "autoplay";
   const visualAlt =
-    data.imageAlt ?? (data.video ? "" : data.heading || "Hero visual");
+    data.imageAlt ?? (shouldRenderVideo ? "" : data.heading || "Hero visual");
   const poster = data.videoPoster || data.image || undefined;
+  const posterImage = poster || data.image;
 
   const headingClass = isInk ? "text-paper" : "text-ink";
   const subcopyClass = isInk ? "opacity-80" : "opacity-80";
@@ -123,33 +127,33 @@ export function Hero({
           {withTilt3D ? (
             <Tilt3D>
               <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
-                {data.video ? (
+                {shouldRenderVideo ? (
                   <video
                     src={data.video}
                     autoPlay
                     loop
                     muted
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     poster={poster}
                     className={`w-full h-full ${videoFitClass}`}
                     aria-label={
                       data.videoAlt || data.heading || "Hero overview video"
                     }
                   />
-                ) : (
+                ) : posterImage ? (
                   <Image
-                    src={data.image!}
+                    src={posterImage}
                     alt={visualAlt}
                     fill
                     className={imageFitClass}
                     priority
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                )}
+                ) : null}
               </div>
             </Tilt3D>
-          ) : data.video ? (
+          ) : shouldRenderVideo ? (
             <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
               <video
                 src={data.video}
@@ -157,16 +161,16 @@ export function Hero({
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 poster={poster}
                 className={`w-full h-full ${videoFitClass}`}
                 aria-label={data.videoAlt || data.heading || "Hero overview video"}
               />
             </div>
-          ) : (
+          ) : posterImage ? (
             <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
               <Image
-                src={data.image!}
+                src={posterImage}
                 alt={visualAlt}
                 fill
                 className={imageFitClass}
@@ -174,7 +178,7 @@ export function Hero({
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-          )}
+          ) : null}
         </div>}
       </div>
     </section>

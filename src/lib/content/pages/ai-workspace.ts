@@ -8,7 +8,7 @@ export const aiWorkspacePage: PageContent = {
   beliefShift:
     "Offshore is a black box -> I can see the work, the decisions, and the health of the team.",
   primaryCta: { label: "See the workspace", href: "/contact", variant: "primary" },
-  secondaryCta: { label: "Book a call", href: "/contact", variant: "secondary" },
+  secondaryCta: { label: "Book a call", href: "/book-a-call", variant: "secondary" },
   seo: {
     metaTitle: "AI Workspace - scale you can see | Aroneu",
     metaDescription:
@@ -32,7 +32,7 @@ export const aiWorkspacePage: PageContent = {
       videoPoster: "/images/aroneu/ai-workspace-hero-poster.jpg",
       videoAlt: "AI Workspace preview showing team health, governance controls, decisions, and AI-supported insight",
       ctas: [
-        { label: "Book a call", href: "/contact", variant: "primary" },
+        { label: "Book a call", href: "/book-a-call", variant: "primary" },
         {
           label: "Explore Capability Teams",
           href: "/capability-teams",
@@ -147,7 +147,7 @@ export const aiWorkspacePage: PageContent = {
       body:
         "Talk to us about the team you want to build, the controls you need, and what your leaders must be able to see.",
       ctas: [
-        { label: "Book a call", href: "/contact", variant: "primary" },
+        { label: "Book a call", href: "/book-a-call", variant: "primary" },
         {
           label: "Explore Capability Teams",
           href: "/capability-teams",

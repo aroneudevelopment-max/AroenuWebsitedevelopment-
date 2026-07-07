@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function CookiePolicyPage() {
   return (
-    <main className="flex min-h-screen flex-col w-full surface-paper">
+    <main className="flex min-h-screen flex-col w-full surface-paper font-sans">
       <section className="pt-32 pb-24 border-b border-zinc-200">
         <div className="container-aroneu max-w-3xl mx-auto">
           <span className="text-label uppercase tracking-widest block mb-4 opacity-80">
@@ -157,7 +157,7 @@ export default function CookiePolicyPage() {
             <p className="text-body">Marketing technologies are optional and require consent where they use cookies, pixels, or similar identifiers.</p>
             <p className="text-body">
               <strong>Marketing / CRM provider:</strong><br />
-              [Insert final provider: HubSpot, ActiveCampaign, or other]
+              HubSpot
             </p>
             <p className="text-body">
               <strong>Legal basis:</strong><br />
@@ -247,8 +247,8 @@ export default function CookiePolicyPage() {
                     <td className="py-3 px-4 align-top">Confirm before launch</td>
                   </tr>
                   <tr className="border-b border-zinc-200">
-                    <td className="py-3 px-4 align-top">[Hosting / security logs]</td>
-                    <td className="py-3 px-4 align-top">[Vercel / Netlify / hosting provider]</td>
+                    <td className="py-3 px-4 align-top">Hosting / security logs</td>
+                    <td className="py-3 px-4 align-top">Vercel</td>
                     <td className="py-3 px-4 align-top">Strictly necessary</td>
                     <td className="py-3 px-4 align-top">Website delivery, security, error logs</td>
                     <td className="py-3 px-4 align-top">IP address, browser data, access logs</td>
@@ -292,7 +292,7 @@ export default function CookiePolicyPage() {
                   </tr>
                   <tr className="border-b border-zinc-200">
                     <td className="py-3 px-4 align-top"></td>
-                    <td className="py-3 px-4 align-top">[HubSpot / ActiveCampaign / other]</td>
+                    <td className="py-3 px-4 align-top">HubSpot</td>
                     <td className="py-3 px-4 align-top">Marketing</td>
                     <td className="py-3 px-4 align-top">CRM attribution, campaign measurement, lead engagement</td>
                     <td className="py-3 px-4 align-top">IP address, session ID, page activity</td>
@@ -302,8 +302,8 @@ export default function CookiePolicyPage() {
                     <td className="py-3 px-4 align-top">Use only if active</td>
                   </tr>
                   <tr className="border-b border-zinc-200">
-                    <td className="py-3 px-4 align-top">[Scheduler cookies/scripts]</td>
-                    <td className="py-3 px-4 align-top">[Cal.com / Calendly / meetergo / other]</td>
+                    <td className="py-3 px-4 align-top">Scheduler cookies/scripts</td>
+                    <td className="py-3 px-4 align-top">Cal.com</td>
                     <td className="py-3 px-4 align-top">Functional</td>
                     <td className="py-3 px-4 align-top">Appointment scheduling and embedded booking</td>
                     <td className="py-3 px-4 align-top">IP address, browser data, booking metadata</td>
@@ -314,7 +314,7 @@ export default function CookiePolicyPage() {
                   </tr>
                   <tr className="border-b border-zinc-200">
                     <td className="py-3 px-4 align-top"></td>
-                    <td className="py-3 px-4 align-top">[Newsletter / CRM provider]</td>
+                    <td className="py-3 px-4 align-top">HubSpot</td>
                     <td className="py-3 px-4 align-top">Marketing</td>
                     <td className="py-3 px-4 align-top">Email engagement measurement</td>
                     <td className="py-3 px-4 align-top">Opens, clicks, email engagement data</td>

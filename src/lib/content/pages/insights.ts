@@ -29,7 +29,7 @@ export const insightsIndexContent: PageContent = {
           href: "/insights/talent-was-never-the-problem",
           variant: "primary",
         },
-        { label: "Book a call", href: "/contact", variant: "secondary" },
+        { label: "Book a call", href: "/book-a-call", variant: "secondary" },
       ],
     },
     {
@@ -80,7 +80,7 @@ export const insightsIndexContent: PageContent = {
       heading: "Have a question about governable capability?",
       body:
         "Tell us what you are trying to build. We can help you think through the team model, governance need, and right next step.",
-      ctas: [{ label: "Book a call", href: "/contact", variant: "primary" }],
+      ctas: [{ label: "Book a call", href: "/book-a-call", variant: "primary" }],
     },
     {
       id: "faq",

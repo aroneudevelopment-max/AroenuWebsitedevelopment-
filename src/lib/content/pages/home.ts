@@ -6,7 +6,7 @@ export const homePage: PageContent = {
   pageJob: "Explain Aroneu and make the model believable fast.",
   audience: ["CTO", "VP Engineering", "COO", "CFO", "delivery leader"],
   beliefShift: "India teams are risky -> India capability can be governed.",
-  primaryCta: { label: "Book a call", href: "/contact", variant: "primary" },
+  primaryCta: { label: "Book a call", href: "/book-a-call", variant: "primary" },
   secondaryCta: {
     label: "See the workspace",
     href: "/ai-workspace",
@@ -32,7 +32,7 @@ export const homePage: PageContent = {
       image: "/images/aroneu/home-governable-capability-poster.jpg",
       imageAlt: "AI Workspace governance preview showing visible controls and governed output",
       ctas: [
-        { label: "Book a call", href: "/contact", variant: "primary" },
+        { label: "Book a call", href: "/book-a-call", variant: "primary" },
         {
           label: "See the workspace",
           href: "/ai-workspace",
@@ -219,7 +219,7 @@ export const homePage: PageContent = {
       body:
         "Tell us what capability you need, where governance matters, and what level of ownership you want to preserve.",
       ctas: [
-        { label: "Book a call", href: "/contact", variant: "primary" },
+        { label: "Book a call", href: "/book-a-call", variant: "primary" },
         {
           label: "See how it works",
           href: "/how-it-works",

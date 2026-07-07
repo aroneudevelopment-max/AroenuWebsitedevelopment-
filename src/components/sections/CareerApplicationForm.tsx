@@ -32,16 +32,34 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  setFile(selected);
  };
 
- const handleSubmit = async (e: React.FormEvent) => {
- e.preventDefault();
- setStatus('submitting');
- 
- // Safety Contract: Do not fake success if there's no backend.
- // Wait for 1 second to show submitting state, then safely fail as"backend not configured"
- setTimeout(() => {
- setStatus('error');
- }, 1000);
- };
+ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setStatus('submitting');
+  
+  try {
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
+    
+    // We already keep track of file in state, but FormData automatically 
+    // includes the file input since it has name="cv"
+    
+    const response = await fetch('/api/careers', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Submission failed');
+    }
+
+    setStatus('success');
+    formElement.reset();
+    setFile(null);
+  } catch (error) {
+    console.error(error);
+    setStatus('error');
+  }
+  };
 
  return (
  <form onSubmit={handleSubmit} className="space-y-8 rounded-3xl bg-aroneu-neutral-50 p-6 sm:p-10">
@@ -189,11 +207,16 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  </div>
 
  <div>
- {status === 'error' && (
- <div className="mb-6 rounded-lg bg-aroneu-error-50 p-4 text-caption text-aroneu-error-900">
- {content.failureState} (Backend not yet configured)
- </div>
- )}
+  {status === 'error' && (
+  <div className="mb-6 rounded-lg bg-aroneu-error-50 p-4 text-caption text-aroneu-error-900">
+  {content.failureState || 'Failed to submit application. Please try again.'}
+  </div>
+  )}
+  {status === 'success' && (
+  <div className="mb-6 rounded-lg bg-aroneu-success-50 p-4 text-caption text-aroneu-success-900">
+  {content.successState || 'Application submitted successfully. We will be in touch.'}
+  </div>
+  )}
  <button
  type="submit"
  disabled={status === 'submitting' || !!fileError}

@@ -15,8 +15,7 @@ export const howitworksPage: PageContent = {
       image: "/images/aroneu/governance-gate-flow.jpeg",
       imageFit: "contain",
       primaryCTA: {
-        label: "Book a call",
-        href: "/contact"
+        label: "Book a call", href: "/book-a-call"
       },
       secondaryCTA: {
         label: "Explore Capability Teams",
@@ -148,8 +147,7 @@ export const howitworksPage: PageContent = {
       heading: "Build the capability you can govern.",
       body: "Let us know what capability you need, and we will show you how to structure it safely.",
       primaryCTA: {
-        label: "Book a call",
-        href: "/contact"
+        label: "Book a call", href: "/book-a-call"
       },
       secondaryCTA: {
         label: "Explore Capability Teams",

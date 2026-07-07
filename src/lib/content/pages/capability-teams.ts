@@ -7,7 +7,7 @@ export const capabilityTeamsPage: PageContent = {
   audience: ["CTO", "VP Engineering", "delivery leader", "economic buyer"],
   beliefShift:
     "A remote team becomes a vendor I chase -> This is a governed extension of my business.",
-  primaryCta: { label: "Book a call", href: "/contact", variant: "primary" },
+  primaryCta: { label: "Book a call", href: "/book-a-call", variant: "primary" },
   secondaryCta: {
     label: "See the AI Workspace",
     href: "/ai-workspace",
@@ -32,7 +32,7 @@ export const capabilityTeamsPage: PageContent = {
         "Aroneu builds dedicated, senior India teams around your operating needs. The team works with your standards, your rhythm, and the governance needed to stay visible.",
       image: "/images/aroneu/abstract-visual.jpeg",
       ctas: [
-        { label: "Book a call", href: "/contact", variant: "primary" },
+        { label: "Book a call", href: "/book-a-call", variant: "primary" },
         {
           label: "See the workspace",
           href: "/ai-workspace",
@@ -264,7 +264,7 @@ export const capabilityTeamsPage: PageContent = {
       body:
         "Tell us the capability you need, the risks you need controlled, and what kind of team ownership matters to your business.",
       ctas: [
-        { label: "Book a call", href: "/contact", variant: "primary" },
+        { label: "Book a call", href: "/book-a-call", variant: "primary" },
         {
           label: "See the AI Workspace",
           href: "/ai-workspace",

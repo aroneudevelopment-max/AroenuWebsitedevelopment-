@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function ImprintPage() {
   return (
-    <main className="flex min-h-screen flex-col w-full surface-paper">
+    <main className="flex min-h-screen flex-col w-full surface-paper font-sans">
       <section className="pt-32 pb-24 border-b border-zinc-200">
         <div className="container-aroneu max-w-3xl mx-auto">
           <span className="text-label uppercase tracking-widest block mb-4 opacity-80">
@@ -38,7 +38,7 @@ export default function ImprintPage() {
             </p>
             <p className="text-body">
               Represented by:<br />
-              [Managing director(s) / Geschäftsführer]
+              Burhan Haider
             </p>
 
             <h2 className="text-h2 mt-16 mb-6  text-ink">Contact</h2>
@@ -50,7 +50,7 @@ export default function ImprintPage() {
 
             <h2 className="text-h2 mt-16 mb-6  text-ink">Commercial register</h2>
             <p className="text-body">
-              Registered with: [Register court / Amtsgericht]<br />
+              Registered with: Pending<br />
               Commercial register number: 
             </p>
 

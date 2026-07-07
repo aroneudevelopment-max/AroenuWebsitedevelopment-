@@ -51,7 +51,7 @@ export const insights: InsightArticle[] = [
       h1: "Talent was never the problem. Governance was.",
       subcopy:
         "Why offshore models often fail at the operating layer - and what changes when team design, visibility, leadership, and controls are built as one system.",
-      primaryCta: { label: "Book a call", href: "/contact" },
+      primaryCta: { label: "Book a call", href: "/book-a-call" },
       secondaryCta: { label: "Back to insights", href: "/insights" },
     },
     directAnswer:
@@ -74,7 +74,7 @@ export const insights: InsightArticle[] = [
     relatedReading: [
       { label: "How it works", href: "/how-it-works", type: "page" },
       { label: "Capability Teams", href: "/capability-teams", type: "page" },
-      { label: "Book a call", href: "/contact", type: "page" },
+      { label: "Book a call", href: "/book-a-call", type: "page" },
     ],
   },
 ];

@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function DataResidencyPage() {
   return (
-    <main className="flex min-h-screen flex-col w-full surface-paper">
+    <main className="flex min-h-screen flex-col w-full surface-paper font-sans">
       <section className="pt-32 pb-24 border-b border-zinc-200">
         <div className="container-aroneu max-w-3xl mx-auto">
           <span className="text-label uppercase tracking-widest block mb-4 opacity-80">

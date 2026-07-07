@@ -20,7 +20,7 @@ export const aboutPage: PageContent = {
       heading: "Two places, one standard of work.",
       subcopy:
         "Aroneu exists to make India capability governable for European companies. We build senior teams with the structure, leadership, rhythm, and AI Workspace needed to keep work visible and accountable.",
-      primaryCTA: { label: "Book a call", href: "/contact" },
+      primaryCTA: { label: "Book a call", href: "/book-a-call" },
       secondaryCTA: { label: "Explore the model", href: "/how-it-works" },
       image: "/images/aroneu/about-hero-lines.jpeg",
       imageAlt: "Abstract Aroneu about-page composition with layered linework and a centered orange focal point.",
@@ -161,7 +161,7 @@ export const aboutPage: PageContent = {
       heading: "Build with the same standard, across both places.",
       body:
         "Talk to us about the capability you need, the controls you cannot compromise, and the team model that would make distance easier to govern.",
-      primaryCTA: { label: "Book a call", href: "/contact" },
+      primaryCTA: { label: "Book a call", href: "/book-a-call" },
       secondaryCTA: { label: "See how it works", href: "/how-it-works" },
     },
     {

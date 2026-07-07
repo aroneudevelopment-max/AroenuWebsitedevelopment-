@@ -23,7 +23,7 @@ export const contactPage: PageContent = {
       subcopy:
         "Tell us what you are trying to build, where capability is constrained, and what level of governance your leaders need.",
       ctas: [
-        { label: "Book a call", href: "#scheduler" },
+        { label: "Book a call", href: "/book-a-call" },
         { label: "Submit enquiry", href: "#contact-form", variant: "secondary" },
       ],
       image: "/images/aroneu/contact-hero-concept.jpeg",
@@ -154,7 +154,7 @@ export const contactPage: PageContent = {
       heading: "Prefer to choose a time?",
       body:
         "Book a conversation with Aroneu and tell us what you want to discuss. We will use the call to understand your team need, governance risk, and next best step.",
-      primaryCTA: { label: "Book a call", href: "#contact-form" },
+      primaryCTA: { label: "Book a call", href: "/book-a-call" },
     },
     {
       id: "office-context",
@@ -171,7 +171,7 @@ export const contactPage: PageContent = {
       heading: "Start with the governance question.",
       body:
         "Tell us what your team needs to do, what your leaders need to see, and what you cannot afford to lose control of.",
-      primaryCTA: { label: "Book a call", href: "#scheduler" },
+      primaryCTA: { label: "Book a call", href: "/book-a-call" },
       secondaryCTA: { label: "Submit enquiry", href: "#contact-form", variant: "secondary" },
     },
   ],

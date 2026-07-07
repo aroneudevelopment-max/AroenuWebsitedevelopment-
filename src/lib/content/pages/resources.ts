@@ -20,7 +20,7 @@ export const resourcesPage: PageContent = {
         "Resources for leaders who need senior India capability without losing governance, visibility, or continuity. New resources will appear here once they are approved.",
       image: "/images/aroneu/ai-workspace-control-what-matters.jpeg",
       imageAlt: "",
-      primaryCTA: { label: "Book a call", href: "/contact" },
+      primaryCTA: { label: "Book a call", href: "/book-a-call" },
       secondaryCTA: { label: "Read insights", href: "/insights" },
     },
     {
@@ -37,7 +37,7 @@ export const resourcesPage: PageContent = {
       heading: "Need a specific resource now?",
       body:
         "If you are working through a particular governance or capability question, contact Aroneu. We can help shape the right brief for your team.",
-      primaryCTA: { label: "Book a call", href: "/contact" },
+      primaryCTA: { label: "Book a call", href: "/book-a-call" },
       secondaryCTA: { label: "See how it works", href: "/how-it-works" },
     },
     {

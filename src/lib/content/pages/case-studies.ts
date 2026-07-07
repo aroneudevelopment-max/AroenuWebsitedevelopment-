@@ -25,7 +25,7 @@ export const caseStudiesPage: PageContent = {
       imageAlt: "Governed capability model supporting complex European delivery",
       ctas: [
         { label: "Discuss relevant proof", href: "/contact", variant: "primary" },
-        { label: "Book a call", href: "/contact", variant: "secondary" },
+        { label: "Book a call", href: "/book-a-call", variant: "secondary" },
       ],
     },
     {
@@ -80,7 +80,7 @@ export const caseStudiesPage: PageContent = {
       heading: "Case studies are being prepared.",
       body:
         "Approved case studies will appear here once client names, proof points, and public wording are cleared.",
-      primaryCTA: { label: "Book a call", href: "/contact" },
+      primaryCTA: { label: "Book a call", href: "/book-a-call" },
     },
     {
       id: "faq",
@@ -116,7 +116,7 @@ export const caseStudiesPage: PageContent = {
       body:
         "Tell us the capability you are considering and the governance risks you need to control. We can share the most relevant approved proof during the conversation.",
       ctas: [
-        { label: "Book a call", href: "/contact", variant: "primary" },
+        { label: "Book a call", href: "/book-a-call", variant: "primary" },
         { label: "See how it works", href: "/how-it-works", variant: "secondary" },
       ],
     },

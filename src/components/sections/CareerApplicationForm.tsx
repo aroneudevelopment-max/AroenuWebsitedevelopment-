@@ -112,14 +112,19 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
     });
 
     if (!response.ok) {
+      const data = await response.json().catch(() => null);
+      if (data && data.error) {
+        throw new Error(data.error);
+      }
       throw new Error('Submission failed');
     }
 
     setStatus('success');
     formElement.reset();
     setFile(null);
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
+    setServerError(error.message !== 'Submission failed' ? error.message : '');
     setStatus('error');
   }
   };
@@ -144,6 +149,7 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
 
  return (
  <form onSubmit={handleSubmit} className="space-y-8 rounded-3xl bg-aroneu-neutral-50 p-6 sm:p-10">
+ <input type="hidden" name="roleSlug" value={roleSlug} />
  <div className="space-y-6">
  {(() => {
  const renderedFields = textFields.filter((field) => content.fields[field.key]);
@@ -243,6 +249,7 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
  id="consent"
  name="consent"
  type="checkbox"
+ value="true"
  required
  className="h-5 w-5 rounded border-aroneu-neutral-300 text-aroneu-neutral-900 focus:ring-aroneu-neutral-900 cursor-pointer"
  />
@@ -258,7 +265,7 @@ export function CareerApplicationForm({ content, roleSlug }: { content: CareerFo
  <div>
   {status === 'error' && (
   <div className="mb-6 rounded-lg bg-red-50 p-4 text-caption text-red-900">
-  {content.failureState || 'Failed to submit application. Please try again.'}
+  {serverError || content.failureState || 'Failed to submit application. Please try again.'}
   </div>
   )}
   {status === 'success' && (

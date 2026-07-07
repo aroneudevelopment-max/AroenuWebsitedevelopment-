@@ -6,12 +6,7 @@ import Link from 'next/link';
 import { routes } from '@/lib/routes';
 import { resolveCtaHref } from '@/lib/cta';
 
-export function generateStaticParams() {
-  // Only generate routes for published articles
-  return insights.filter(article => article.isPublished).map((article) => ({
-    slug: article.slug,
-  }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

@@ -1,12 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { caseStudies, getCaseStudyBySlug } from "@/lib/content/case-studies";
+import { getCaseStudyBySlug } from "@/lib/content/case-studies";
 import { buildPageMetadata } from "@/lib/seo";
 
-export function generateStaticParams() {
-  return caseStudies.map((caseStudy) => ({ slug: caseStudy.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

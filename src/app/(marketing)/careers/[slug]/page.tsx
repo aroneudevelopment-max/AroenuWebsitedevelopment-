@@ -6,13 +6,7 @@ import { approvedCareers } from "@/lib/content/careers";
 import { CareerApplicationForm } from "@/components/sections/CareerApplicationForm";
 import { buildPageMetadata } from "@/lib/seo";
 
-export function generateStaticParams() {
-  return approvedCareers
-    .filter((role) => role.isApprovedForPublic)
-    .map((role) => ({
-      slug: role.slug,
-    }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

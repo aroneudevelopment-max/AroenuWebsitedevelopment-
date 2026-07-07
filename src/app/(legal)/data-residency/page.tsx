@@ -12,19 +12,12 @@ export const metadata = {
 
 export default function DataResidencyPage() {
   return (
-    <main className="flex min-h-screen flex-col w-full surface-paper font-sans">
-      <section className="pt-32 pb-24 border-b border-zinc-200">
-        <div className="container-aroneu max-w-3xl mx-auto">
-          <span className="text-label uppercase tracking-widest block mb-4 opacity-80">
-            Legal
-          </span>
-          <h1 className="text-h1 mb-6 ">Data Residency and AI Workspace Compliance Note</h1>
-          <p className="text-body opacity-80 mb-8">
-            Last updated: 7 July 2026
-          </p>
-        </div>
-      </section>
-
+    <LegalShell
+      eyebrow="Legal"
+      heading="Data Residency and AI Workspace Compliance Note"
+      updatedNote="Last updated: 7 July 2026"
+      path="/data-residency"
+    >
       <section>
         <h2>1. Data residency and data access</h2>
         <p>Data residency and data access are not the same thing.</p>

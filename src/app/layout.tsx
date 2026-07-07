@@ -28,15 +28,6 @@ export const metadata: Metadata = {
     ogDescription:
       "Aroneu builds senior India capability teams for European companies, with the governance, visibility, and accountability needed to trust work at distance.",
   }),
-  icons: {
-    icon: [
-      { url: "/favicon-32.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon-16.png", type: "image/png", sizes: "16x16" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-  },
 };
 
 export default function RootLayout({

@@ -12,19 +12,12 @@ export const metadata = {
 
 export default function CookiePolicyPage() {
   return (
-    <main className="flex min-h-screen flex-col w-full surface-paper font-sans">
-      <section className="pt-32 pb-24 border-b border-zinc-200">
-        <div className="container-aroneu max-w-3xl mx-auto">
-          <span className="text-label uppercase tracking-widest block mb-4 opacity-80">
-            Legal
-          </span>
-          <h1 className="text-h1 mb-6 ">Cookie Policy</h1>
-          <p className="text-body opacity-80 mb-8">
-            Last updated: 7 July 2026
-          </p>
-        </div>
-      </section>
-
+    <LegalShell
+      eyebrow="Legal"
+      heading="Cookie Policy"
+      updatedNote="Last updated: 7 July 2026"
+      path="/cookie-policy"
+    >
       <section className="py-16">
         <div className="container-aroneu max-w-3xl mx-auto">
           <div className=" space-y-6">

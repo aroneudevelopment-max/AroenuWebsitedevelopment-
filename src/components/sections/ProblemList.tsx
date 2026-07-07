@@ -2,8 +2,14 @@ import React from 'react';
 import { SectionContent } from '@/lib/content/types';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
+type ProblemListItem = {
+ title?: string;
+ description?: string;
+};
+
 export function ProblemList({ data }: { data?: SectionContent }) {
  if (!data) return null;
+ const items = (data.items as ProblemListItem[] | undefined) || [];
  return (
  <section className="section-aroneu surface-sand">
  <ScrollReveal>
@@ -15,7 +21,7 @@ export function ProblemList({ data }: { data?: SectionContent }) {
  </ScrollReveal>
  <div className="container-aroneu max-w-4xl mx-auto">
  <div className="space-y-6">
- {data.items?.map((item: any, i: number) => (
+ {items.map((item, i) => (
  <ScrollReveal key={i} delay={i * 0.1}>
  <div className="p-6 border border-zinc-200 rounded-xl surface-paper transition-transform hover:-translate-y-1 shadow-sm">
  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>

@@ -2,8 +2,14 @@ import React from 'react';
 import { SectionContent } from '@/lib/content/types';
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
+type StatQuadItem = {
+ title?: string;
+ description?: string;
+};
+
 export function StatQuad({ data }: { data?: SectionContent }) {
  if (!data) return null;
+ const items = (data.items as StatQuadItem[] | undefined) || [];
  return (
  <section className="section-aroneu surface-sand border-y border-zinc-200">
       <ScrollReveal>
@@ -20,8 +26,8 @@ export function StatQuad({ data }: { data?: SectionContent }) {
         </div>
       </ScrollReveal>
       <div className="container-aroneu">
-        <div className={`grid grid-cols-1 md:grid-cols-2 ${data.items?.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-6 mb-12`}>
-          {data.items?.map((item: any, i: number) => (
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${items.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4"} gap-6 mb-12`}>
+          {items.map((item, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
               <div className="flex flex-col h-full border-t-2 border-zinc-200 pt-6">
                 <h3 className="text-lg font-semibold mb-3 text-ink">

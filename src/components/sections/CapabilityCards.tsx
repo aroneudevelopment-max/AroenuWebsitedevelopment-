@@ -1,7 +1,20 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import { SectionContent } from "@/lib/content/types";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { Tilt3D } from "@/components/ui/Tilt3D";
+
+const Tilt3D = dynamic(() =>
+  import("@/components/ui/Tilt3D").then((mod) => mod.Tilt3D),
+);
+
+type CapabilityCardItem = {
+  title?: string;
+  heading?: string;
+  description?: string;
+  body?: string;
+  href?: string;
+  ctaLabel?: string;
+};
 
 /**
  * CapabilityCards
@@ -9,9 +22,15 @@ import { Tilt3D } from "@/components/ui/Tilt3D";
  * - Cards use surface-paper on a surface-sand section, with explicit
  *   ink-coloured headings and zinc-700 body so contrast is high.
  */
-export function CapabilityCards({ data }: { data?: SectionContent }) {
+export function CapabilityCards({
+  data,
+  withTilt3D = true,
+}: {
+  data?: SectionContent;
+  withTilt3D?: boolean;
+}) {
   if (!data) return null;
-  const items = (data.items as any[]) || [];
+  const items = (data.items as CapabilityCardItem[] | undefined) || [];
   const intro =
     data.body ?? (typeof data.subcopy === "string" ? data.subcopy : undefined);
 
@@ -34,7 +53,28 @@ export function CapabilityCards({ data }: { data?: SectionContent }) {
       <div className="container-aroneu grid grid-cols-1 lg:grid-cols-2 gap-8">
         {items.map((item, i) => (
           <ScrollReveal key={i} delay={i * 0.1}>
-            <Tilt3D className="h-full">
+            {withTilt3D ? (
+              <Tilt3D className="h-full">
+                <div
+                  className="group flex flex-col h-full p-8 md:p-12 border border-zinc-200 rounded-3xl surface-paper transition-all hover:border-zinc-300 hover:shadow-soft"
+                >
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-ink">
+                    {item.title || item.heading}
+                  </h3>
+                  <p className="text-body opacity-80 mb-8 flex-grow">
+                    {item.description || item.body}
+                  </p>
+                  {item.href && (
+                    <a
+                      href={item.href}
+                      className="inline-flex items-center gap-2 text-ink font-medium group-hover:opacity-80 transition-opacity"
+                    >
+                      {item.ctaLabel || "Learn more"} <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  )}
+                </div>
+              </Tilt3D>
+            ) : (
               <div
                 className="group flex flex-col h-full p-8 md:p-12 border border-zinc-200 rounded-3xl surface-paper transition-all hover:border-zinc-300 hover:shadow-soft"
               >
@@ -53,7 +93,7 @@ export function CapabilityCards({ data }: { data?: SectionContent }) {
                   </a>
                 )}
               </div>
-            </Tilt3D>
+            )}
           </ScrollReveal>
         ))}
       </div>

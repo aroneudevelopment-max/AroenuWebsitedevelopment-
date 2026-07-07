@@ -42,7 +42,10 @@ export default function Home() {
       />
       <ProofStrip data={sections.find((s) => s.id === "proof-strip")} />
       <ProblemList data={sections.find((s) => s.id === "problem")} />
-      <CapabilityCards data={sections.find((s) => s.id === "two-capabilities")} />
+      <CapabilityCards
+        data={sections.find((s) => s.id === "two-capabilities")}
+        withTilt3D={false}
+      />
       <StepRow data={sections.find((s) => s.id === "how-it-works-preview")} />
       <StatQuad data={sections.find((s) => s.id === "proof-at-scale")} />
       <LeadershipPreview data={sections.find((s) => s.id === "leadership")} />

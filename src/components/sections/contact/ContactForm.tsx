@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { SectionContent } from "@/lib/content/types";
-import { Turnstile } from "@marsidev/react-turnstile";
 
 type FormField = {
   name: string;
@@ -10,6 +11,7 @@ type FormField = {
   placeholder: string;
   helperText: string;
   requiredError: string;
+  required?: boolean;
   invalidError?: string;
   softWarning?: string;
   options?: string[];
@@ -17,22 +19,10 @@ type FormField = {
 
 type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
-/**
- * ContactForm
- *
- * Honest behaviour, per the brief:
- * - Validates client-side only.
- * - On submit, sets status to "pending" and explains that the form is
- *   not sending yet. No fake success animation or delivery claim.
- * - The submit button always reflects the current status.
- * - Form fields, labels, errors, and helper text are styled with
- *   explicit light-text tokens (no dark-on-dark anywhere).
- */
 export function ContactForm({ data }: { data?: SectionContent }) {
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formData, setFormData] = useState<Record<string, string>>({});
-  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   if (!data) return null;
 
@@ -44,16 +34,36 @@ export function ContactForm({ data }: { data?: SectionContent }) {
     return note ? note.replace(`${key}:`, "").trim() : "";
   };
 
+  const privacyLine = getNote("Privacy line");
+  const submitLabel = getNote("Submit button") || "Submit enquiry";
+  const loadingLabel = getNote("Loading state") || "Sending your enquiry.";
+  const successButtonLabel = getNote("Success button") || "Enquiry received.";
+  const successHeading = getNote("Success heading") || "Enquiry received.";
+  const successBody =
+    getNote("Success body") ||
+    "Thank you. We have received your note and will come back within one business day.";
+  const failureHeading = getNote("Failure heading") || "Something went wrong.";
+  const failureBody =
+    getNote("Failure body") ||
+    "Your enquiry was not sent. Please check the highlighted fields and try again.";
+  const retryLabel = getNote("Failure CTA") || "Try again";
+  const supportHeading = getNote("Support panel heading");
+  const supportBody = getNote("Support panel body");
+  const contactEmail = getNote("Contact email");
+  const contactPhone = getNote("Contact phone");
+
   const validate = () => {
     const newErrors: Record<string, string> = {};
     let isValid = true;
 
     features.forEach((f) => {
-      const val = formData[f.name];
-      if (!val || val.trim() === "") {
+      const val = formData[f.name]?.trim() || "";
+      const isRequired = f.required !== false;
+
+      if (isRequired && val === "") {
         newErrors[f.name] = f.requiredError;
         isValid = false;
-      } else if (f.name === "workEmail") {
+      } else if (f.name === "workEmail" && val) {
         const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
         if (!emailRegex.test(val)) {
           newErrors[f.name] = f.invalidError || f.requiredError;
@@ -78,31 +88,39 @@ export function ContactForm({ data }: { data?: SectionContent }) {
       return;
     }
 
-    if (!turnstileToken) {
-      setErrors((prev) => ({ ...prev, turnstile: "Please complete the security check." }));
-      setStatus("error");
-      return;
-    }
-
     setStatus("submitting");
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formData, turnstileToken }),
+        body: JSON.stringify({
+          formData: {
+            ...formData,
+            pageSource: "Contact Form",
+          },
+        }),
       });
 
       if (!response.ok) {
-        throw new Error("Failed to send message.");
+        const payload = await response.json().catch(() => null);
+        throw new Error(
+          payload?.error || "Something went wrong. Please try again.",
+        );
       }
 
       setStatus("success");
       setFormData({});
-      setTurnstileToken("");
+      setErrors({});
     } catch (error) {
       console.error(error);
-      setErrors((prev) => ({ ...prev, server: "Something went wrong. Please try again or use the Book a call link." }));
+      setErrors((prev) => ({
+        ...prev,
+        server:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again or use the Book a call link.",
+      }));
       setStatus("error");
     }
   };
@@ -112,17 +130,67 @@ export function ContactForm({ data }: { data?: SectionContent }) {
 
   return (
     <section id="contact-form" className="section-aroneu surface-paper">
-      <div className="container-aroneu max-w-3xl mx-auto">
+      <div className="container-aroneu max-w-6xl mx-auto">
         <div className="mb-12 text-center">
           {data.heading && <h2 className="text-h2 mb-4 text-ink">{data.heading}</h2>}
           {data.subcopy && <p className="text-body opacity-80">{data.subcopy}</p>}
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          noValidate
-          className="bg-paper border border-zinc-200 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-soft relative space-y-6"
-        >
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+          <div className="space-y-6">
+            {data.image ? (
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-zinc-200 surface-sand">
+                <Image
+                  src={data.image}
+                  alt={data.imageAlt || ""}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+              </div>
+            ) : null}
+
+            <div className="rounded-[2rem] border border-zinc-200 surface-sand p-6 sm:p-8">
+              {supportHeading ? (
+                <h3 className="text-h4 mb-3 text-ink">{supportHeading}</h3>
+              ) : null}
+              {supportBody ? (
+                <p className="text-body opacity-80 mb-6">{supportBody}</p>
+              ) : null}
+
+              <div className="space-y-4">
+                {contactEmail ? (
+                  <a
+                    href={`mailto:${contactEmail}`}
+                    className="block rounded-2xl border border-zinc-200 bg-paper px-5 py-4 transition-colors hover:bg-zinc-50"
+                  >
+                    <p className="text-label uppercase tracking-widest opacity-70 mb-2">
+                      Email
+                    </p>
+                    <p className="text-base font-medium text-ink">{contactEmail}</p>
+                  </a>
+                ) : null}
+
+                {contactPhone ? (
+                  <a
+                    href={`tel:${contactPhone}`}
+                    className="block rounded-2xl border border-zinc-200 bg-paper px-5 py-4 transition-colors hover:bg-zinc-50"
+                  >
+                    <p className="text-label uppercase tracking-widest opacity-70 mb-2">
+                      Phone
+                    </p>
+                    <p className="text-base font-medium text-ink">{contactPhone}</p>
+                  </a>
+                ) : null}
+              </div>
+            </div>
+          </div>
+
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className="bg-paper border border-zinc-200 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-soft relative space-y-6"
+          >
           {status === "error" && Object.keys(errors).length > 0 && (
             <div
               className="mb-2 p-4 border border-red-200 rounded-xl flex items-start"
@@ -156,9 +224,11 @@ export function ContactForm({ data }: { data?: SectionContent }) {
                 className="text-sm font-medium text-ink mb-1.5"
               >
                 {field.label}
-                <span className="text-red-600 ml-1" aria-hidden="true">
-                  *
-                </span>
+                {field.required !== false && (
+                  <span className="text-red-600 ml-1" aria-hidden="true">
+                    *
+                  </span>
+                )}
               </label>
 
               {field.options ? (
@@ -237,6 +307,19 @@ export function ContactForm({ data }: { data?: SectionContent }) {
             </div>
           ))}
 
+          {privacyLine && (
+            <p className="text-xs leading-6 text-slate">
+              {privacyLine.replace("Privacy Policy.", "").trim()}{" "}
+              <Link
+                href="/privacy"
+                className="text-ink underline underline-offset-4 hover:text-slate"
+              >
+                Privacy Policy
+              </Link>
+              .
+            </p>
+          )}
+
           <div className="pt-4 border-t border-zinc-200">
             <div className="flex items-start mb-2">
               <div className="flex items-center h-5 mt-0.5">
@@ -284,33 +367,36 @@ export function ContactForm({ data }: { data?: SectionContent }) {
           )}
 
           <div className="pt-2">
-            <Turnstile
-              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"}
-              onSuccess={(token) => {
-                setTurnstileToken(token);
-                setErrors((prev) => ({ ...prev, turnstile: "" }));
-              }}
-            />
-            {errors["turnstile"] && (
-              <p className="text-xs font-medium text-red-600 mt-1" role="alert">
-                {errors["turnstile"]}
-              </p>
-            )}
-          </div>
-
-          <div className="pt-2">
             <button
               type="submit"
               disabled={status === "submitting" || status === "success"}
               className="btn-primary-aroneu w-full sm:w-auto"
             >
               {status === "submitting"
-                ? getNote("Loading state") || "Sending..."
+                ? loadingLabel
                 : status === "success"
-                ? "Message sent"
-                : getNote("Submit button") || "Submit enquiry"}
+                ? successButtonLabel
+                : status === "error"
+                ? retryLabel
+                : submitLabel}
             </button>
           </div>
+
+          {status === "error" && errors["server"] && (
+            <div
+              role="alert"
+              className="mt-2 rounded-xl border p-4"
+              style={{
+                backgroundColor: "#FEF2F2",
+                borderColor: "#FECACA",
+                color: "#991B1B",
+              }}
+            >
+              <p className="text-sm font-semibold mb-1">{failureHeading}</p>
+              <p className="text-sm">{failureBody}</p>
+              <p className="text-xs mt-2">{errors["server"]}</p>
+            </div>
+          )}
 
           {status === "success" && (
             <div
@@ -322,15 +408,12 @@ export function ContactForm({ data }: { data?: SectionContent }) {
                 color: "#166534",
               }}
             >
-              <p className="text-sm font-semibold mb-1">
-                Your message has been sent successfully.
-              </p>
-              <p className="text-sm">
-                We will review your note and get back to you within one business day.
-              </p>
+              <p className="text-sm font-semibold mb-1">{successHeading}</p>
+              <p className="text-sm">{successBody}</p>
             </div>
           )}
-        </form>
+          </form>
+        </div>
       </div>
     </section>
   );

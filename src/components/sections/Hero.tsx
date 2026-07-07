@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { SectionContent } from "@/lib/content/types";
 import { Tilt3D } from "@/components/ui/Tilt3D";
+import { resolveCtaHref } from "@/lib/cta";
 
 type Tone = "light" | "ink";
 
@@ -77,12 +78,24 @@ export function Hero({
           {(data.primaryCTA || data.secondaryCTA) && (
             <div className="flex flex-col sm:flex-row gap-4">
               {data.primaryCTA && (
-                <a href={data.primaryCTA.href} className={primaryBtn}>
+                <a
+                  href={resolveCtaHref(
+                    data.primaryCTA.href,
+                    data.primaryCTA.label,
+                  )}
+                  className={primaryBtn}
+                >
                   {data.primaryCTA.label}
                 </a>
               )}
               {data.secondaryCTA && (
-                <a href={data.secondaryCTA.href} className={secondaryBtn}>
+                <a
+                  href={resolveCtaHref(
+                    data.secondaryCTA.href,
+                    data.secondaryCTA.label,
+                  )}
+                  className={secondaryBtn}
+                >
                   {data.secondaryCTA.label}
                 </a>
               )}
@@ -94,7 +107,7 @@ export function Hero({
               {data.ctas.map((cta, i) => (
                 <a
                   key={i}
-                  href={cta.href}
+                  href={resolveCtaHref(cta.href, cta.label)}
                   className={
                     cta.variant === "primary" ? primaryBtn : secondaryBtn
                   }

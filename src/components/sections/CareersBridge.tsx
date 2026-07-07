@@ -1,5 +1,6 @@
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
+import { resolveCtaHref } from "@/lib/cta";
 
 /**
  * CareersBridge
@@ -28,7 +29,7 @@ export function CareersBridge({ data }: { data?: SectionContent }) {
         )}
         {cta && (
           <a
-            href={cta.href}
+            href={resolveCtaHref(cta.href, cta.label)}
             className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-semibold border-2 border-paper text-paper hover:bg-paper hover:text-ink transition-colors"
           >
             {cta.label}

@@ -5,6 +5,8 @@ import { Hero } from '@/components/sections/Hero';
 import { InsightAnswerBlock } from '@/components/sections/insights/InsightAnswerBlock';
 import { ClosingCTA } from '@/components/sections/ClosingCTA';
 import Link from 'next/link';
+import { routes } from '@/lib/routes';
+import { resolveCtaHref } from '@/lib/cta';
 
 export function generateStaticParams() {
   // Only generate routes for published articles
@@ -103,7 +105,7 @@ export default function InsightArticlePage({ params }: { params: { slug: string 
                   {article.relatedReading.map((link, i) => (
                     <Link 
                       key={i} 
-                      href={link.href}
+                      href={resolveCtaHref(link.href, link.label)}
                       className="group p-6 rounded-xl border border-zinc-200 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors flex flex-col no-underline"
                     >
                       <span className="text-xs font-mono uppercase text-zinc-500 mb-2">{link.type}</span>
@@ -130,7 +132,7 @@ export default function InsightArticlePage({ params }: { params: { slug: string 
             Talk to us about the capability you need and the governance questions you are trying to answer.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="px-8 py-3 rounded-full text-sm font-medium transition-colors bg-white text-black hover:bg-zinc-200 dark:hover:bg-zinc-800">
+            <Link href={routes.bookACall} className="px-8 py-3 rounded-full text-sm font-medium transition-colors bg-white text-black hover:bg-zinc-200 dark:hover:bg-zinc-800">
               Book a call
             </Link>
           </div>

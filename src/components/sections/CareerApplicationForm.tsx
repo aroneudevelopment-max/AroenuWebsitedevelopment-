@@ -2,29 +2,66 @@
 
 import React, { useState } from 'react';
 
-export function CareerApplicationForm({ content, roleSlug }: { content: any, roleSlug: string }) {
+type CareerFieldContent = {
+ label: string;
+ placeholder: string;
+ helper: string;
+};
+
+type CareerFieldKey =
+ 'fullName' |
+ 'email' |
+ 'phone' |
+ 'linkedIn' |
+ 'portfolio' |
+ 'location' |
+ 'candidateRole' |
+ 'experience' |
+ 'cv' |
+ 'message';
+
+type CareerFormContent = {
+ fields: Partial<Record<CareerFieldKey, CareerFieldContent>>;
+ consentText: string;
+ submitButton: string;
+ successState: string;
+ failureState: string;
+};
+
+export function CareerApplicationForm({ content, roleSlug }: { content: CareerFormContent, roleSlug: string }) {
  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
  const [file, setFile] = useState<File | null>(null);
  const [fileError, setFileError] = useState('');
+ const [serverError, setServerError] = useState('');
+
+ const acceptedFileTypes = '.pdf,.doc,.docx';
+ const allowedTypes = [
+ 'application/pdf',
+ 'application/msword',
+ 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+ ];
+ const allowedExtensions = ['.pdf', '.doc', '.docx'];
 
  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
  const selected = e.target.files?.[0];
  setFileError('');
- 
+ setServerError('');
+
  if (!selected) {
  setFile(null);
  return;
  }
 
- const allowedTypes = ['application/pdf'];
- if (!allowedTypes.includes(selected.type)) {
- setFileError('Please upload a CV in PDF format.');
+ const normalizedName = selected.name.toLowerCase();
+ const hasAllowedExtension = allowedExtensions.some((extension) => normalizedName.endsWith(extension));
+ if (!allowedTypes.includes(selected.type) && !hasAllowedExtension) {
+ setFileError('Upload a PDF or Word file.');
  setFile(null);
  return;
  }
 
- if (selected.size > 5 * 1024 * 1024) {
- setFileError('File is too large. Maximum size is 5 MB.');
+ if (selected.size > 10 * 1024 * 1024) {
+ setFileError('Files must be under 10 MB.');
  setFile(null);
  return;
  }
@@ -61,98 +98,70 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
   }
   };
 
+ const fieldClasses =
+ 'mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900';
+
+ const textFields: Array<{
+ key: CareerFieldKey;
+ type: 'text' | 'email' | 'tel' | 'url';
+ required?: boolean;
+ }> = [
+ { key: 'fullName', type: 'text', required: true },
+ { key: 'email', type: 'email', required: true },
+ { key: 'phone', type: 'tel' },
+ { key: 'linkedIn', type: 'url' },
+ { key: 'portfolio', type: 'url' },
+ { key: 'location', type: 'text', required: true },
+ { key: 'candidateRole', type: 'text', required: true },
+ { key: 'experience', type: 'text', required: true },
+ ];
+
  return (
  <form onSubmit={handleSubmit} className="space-y-8 rounded-3xl bg-aroneu-neutral-50 p-6 sm:p-10">
  <div className="space-y-6">
- <div>
- <label htmlFor="fullName"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.fullName.label}
- </label>
- <input
- id="fullName"
- name="fullName"
- type="text"
- required
- placeholder={content.fields.fullName.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.fullName.helper}</p>
- </div>
+ {(() => {
+ const renderedFields = textFields.filter((field) => content.fields[field.key]);
+ const rows: CareerFieldKey[][] = [];
 
- <div className="grid gap-6 sm:grid-cols-2">
- <div>
- <label htmlFor="email"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.email.label}
- </label>
- <input
- id="email"
- name="email"
- type="email"
- required
- placeholder={content.fields.email.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.email.helper}</p>
- </div>
- <div>
- <label htmlFor="phone"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.phone.label}
- </label>
- <input
- id="phone"
- name="phone"
- type="tel"
- placeholder={content.fields.phone.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.phone.helper}</p>
- </div>
- </div>
+ for (let index = 0; index < renderedFields.length; index += 2) {
+ rows.push(renderedFields.slice(index, index + 2).map((field) => field.key));
+ }
 
- <div className="grid gap-6 sm:grid-cols-2">
- <div>
- <label htmlFor="linkedIn"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.linkedIn.label}
- </label>
- <input
- id="linkedIn"
- name="linkedIn"
- type="url"
- placeholder={content.fields.linkedIn.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.linkedIn.helper}</p>
- </div>
- <div>
- <label htmlFor="portfolio"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.portfolio.label}
- </label>
- <input
- id="portfolio"
- name="portfolio"
- type="url"
- placeholder={content.fields.portfolio.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
- />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.portfolio.helper}</p>
- </div>
- </div>
+ return rows.map((row) => (
+ <div
+ key={row.join('-')}
+ className={row.length > 1 ? 'grid gap-6 sm:grid-cols-2' : ''}
+ >
+ {row.map((fieldKey) => {
+ const field = content.fields[fieldKey];
+ const config = textFields.find((item) => item.key === fieldKey);
 
- <div>
- <label htmlFor="location"className="block text-caption font-medium text-aroneu-neutral-900">
- {content.fields.location.label}
+ if (!field || !config) {
+ return null;
+ }
+
+ return (
+ <div key={fieldKey}>
+ <label htmlFor={fieldKey}className="block text-caption font-medium text-aroneu-neutral-900">
+ {field.label}
  </label>
  <input
- id="location"
- name="location"
- type="text"
- required
- placeholder={content.fields.location.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
+ id={fieldKey}
+ name={fieldKey}
+ type={config.type}
+ required={config.required}
+ placeholder={field.placeholder}
+ className={fieldClasses}
  />
- <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.location.helper}</p>
+ <p className="mt-2 text-caption text-aroneu-neutral-500">{field.helper}</p>
  </div>
+ );
+ })}
+ </div>
+ ));
+ })()}
 
+ {content.fields.cv ? (
  <div>
  <label htmlFor="cv"className="block text-caption font-medium text-aroneu-neutral-900">
  {content.fields.cv.label}
@@ -168,12 +177,14 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  </p>
  <p className="text-caption text-aroneu-neutral-500 mt-1">{content.fields.cv.helper}</p>
  </div>
- <input id="cv"name="cv"type="file"className="sr-only"onChange={handleFileChange} accept=".pdf"/>
+ <input id="cv"name="cv"type="file"className="sr-only"onChange={handleFileChange} accept={acceptedFileTypes}/>
  </label>
  </div>
  {fileError && <p className="mt-2 text-caption text-aroneu-error-600">{fileError}</p>}
  </div>
+ ) : null}
 
+ {content.fields.message ? (
  <div>
  <label htmlFor="message"className="block text-caption font-medium text-aroneu-neutral-900">
  {content.fields.message.label}
@@ -183,10 +194,11 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  name="message"
  rows={4}
  placeholder={content.fields.message.placeholder}
- className="mt-2 block w-full rounded-lg border border-aroneu-neutral-300 px-4 py-3 text-body transition-colors focus:border-aroneu-neutral-900 focus:outline-none focus:ring-1 focus:ring-aroneu-neutral-900"
+ className={fieldClasses}
  />
  <p className="mt-2 text-caption text-aroneu-neutral-500">{content.fields.message.helper}</p>
  </div>
+ ) : null}
 
  <div className="flex items-start">
  <div className="flex h-6 items-center">
@@ -222,8 +234,13 @@ export function CareerApplicationForm({ content, roleSlug }: { content: any, rol
  disabled={status === 'submitting' || !!fileError}
  className="w-full rounded-full bg-aroneu-neutral-900 px-6 py-4 text-label text-white transition-colors hover:bg-aroneu-neutral-800 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aroneu-neutral-900 focus-visible:ring-offset-2"
  >
- {status === 'submitting' ? 'Submitting...' : content.submitButton}
+ {status === 'submitting' ? 'Sending your application.' : content.submitButton}
  </button>
+ {status === 'success' && (
+ <div className="mt-4 rounded-lg bg-green-50 p-4 text-caption text-green-900">
+ {content.successState}
+ </div>
+ )}
  </div>
  </form>
  );

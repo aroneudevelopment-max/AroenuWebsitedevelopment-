@@ -85,6 +85,9 @@ export const contactPage: PageContent = {
       component: "ContactForm",
       heading: "Tell us what you are trying to build.",
       subcopy: "Share a little about the team, capability, or governance challenge you want to discuss. We will review your note and come back within one business day.",
+      image: "/images/aroneu/contact-supporting-visual.jpeg",
+      imageAlt:
+        "Abstract contact-supporting visual showing connected governance blocks and a single orange focal point.",
       features: [
         {
           name: "fullName",
@@ -101,6 +104,14 @@ export const contactPage: PageContent = {
           requiredError: "Enter a valid work email.",
           invalidError: "Enter a valid work email.",
           softWarning: "Use your work email so we can reply properly.",
+        },
+        {
+          name: "phone",
+          label: "Phone",
+          placeholder: "Optional",
+          helperText: "Add a callback number if you want us to follow up by phone.",
+          required: false,
+          requiredError: "",
         },
         {
           name: "company",
@@ -139,11 +150,22 @@ export const contactPage: PageContent = {
         },
       ],
       internalNotes: [
+        "Contact email: sales@aroneu.de",
+        "Contact phone: 919959746887",
+        "Support panel heading: Prefer a direct route?",
+        "Support panel body: If you would rather contact us directly, use the approved public details below or book a call.",
         "Consent label: I acknowledge that Aroneu may process my details to respond to this enquiry.",
         "Consent helper: Your details will be used to review your enquiry and contact you about the next step. See our Privacy Policy.",
         "Missing consent error: Please acknowledge the privacy notice to continue.",
+        "Privacy line: By submitting this form, you acknowledge that your data will be processed in accordance with our Privacy Policy.",
         "Submit button: Submit enquiry",
         "Loading state: Sending your enquiry.",
+        "Success button: Enquiry received.",
+        "Success heading: Enquiry received.",
+        "Success body: Thank you. We have received your note and will come back within one business day.",
+        "Failure heading: Something went wrong.",
+        "Failure body: Your enquiry was not sent. Please check the highlighted fields and try again.",
+        "Failure CTA: Try again",
         "Top-of-form error summary: Please check the highlighted fields.",
       ],
     },
@@ -162,7 +184,8 @@ export const contactPage: PageContent = {
       component: "ContactOffice",
       heading: "Built between Europe and India.",
       body:
-        "Aroneu works with European companies building senior India capability. Exact office and legal details should match the approved company records.",
+        "Aroneu works with European companies building senior India capability. For direct contact, use the approved public details below.",
+      items: ["sales@aroneu.de", "919959746887"],
     },
     {
       id: "closing-cta",

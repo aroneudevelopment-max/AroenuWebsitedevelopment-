@@ -1,14 +1,14 @@
 import React from "react";
 import { SectionContent } from "@/lib/content/types";
+import { resolveCtaHref } from "@/lib/cta";
 
-/**
- * ContactScheduler
- * - "Prefer to choose a time?" section.
- * - No fake scheduler. Book a call CTA links to /contact#contact-form
- *   so the user lands on the form without an unverified scheduler.
- */
 export function ContactScheduler({ data }: { data?: SectionContent }) {
   if (!data) return null;
+  const note = (data.internalNotes || [])
+    .find((entry) => entry.startsWith("Privacy note:"))
+    ?.replace("Privacy note:", "")
+    .trim();
+
   return (
     <section
       id="scheduler"
@@ -24,9 +24,15 @@ export function ContactScheduler({ data }: { data?: SectionContent }) {
           </p>
         )}
         {data.primaryCTA && (
-          <a href={data.primaryCTA.href} className="btn-primary-aroneu">
+          <a
+            href={resolveCtaHref(data.primaryCTA.href, data.primaryCTA.label)}
+            className="btn-primary-aroneu"
+          >
             {data.primaryCTA.label}
           </a>
+        )}
+        {note && (
+          <p className="mt-4 text-caption text-slate max-w-xl mx-auto">{note}</p>
         )}
       </div>
     </section>

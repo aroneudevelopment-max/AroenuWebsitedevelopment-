@@ -26,8 +26,9 @@ export function AroneuLogo({
     resolvedTone = 'ink';
     console.warn("Gradient tone is only available for horizontal logo variant. Falling back to ink.");
   }
-  
-  const src = (aroneuBrandAssets.logos[variant] as any)[resolvedTone];
+
+  const variantAssets = aroneuBrandAssets.logos[variant] as Record<string, string>;
+  const src = variantAssets[resolvedTone];
 
   if (!src) {
     return null;

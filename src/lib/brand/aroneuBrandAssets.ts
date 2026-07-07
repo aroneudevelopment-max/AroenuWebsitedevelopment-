@@ -1,9 +1,9 @@
 export const aroneuBrandAssets = {
   logos: {
     horizontal: {
-      ink: '/brand/logos/aroneu-logo-horizontal-ink.svg',
-      paper: '/brand/logos/aroneu-logo-horizontal-paper.svg',
-      gradient: '/brand/logos/aroneu-logo-horizontal-reversed-gradient-lockup.svg',
+      ink: '/brand/logos/aroneu-logo-horizontal-ink.png',
+      paper: '/brand/logos/aroneu-logo-horizontal-paper.png',
+      gradient: '/brand/logos/aroneu-logo-horizontal-paper.png',
     },
     stacked: {
       ink: '/brand/logos/aroneu-logo-stacked-ink.svg',

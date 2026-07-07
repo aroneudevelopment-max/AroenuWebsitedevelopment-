@@ -6,6 +6,7 @@ import { ClosingCTA } from "@/components/sections/ClosingCTA";
 import { resourcesPage } from "@/lib/content/pages/resources";
 import { buildPageMetadata } from "@/lib/seo";
 import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
+import { resolveCtaHref } from "@/lib/cta";
 
 export const metadata: Metadata = buildPageMetadata({
   title: resourcesPage.seo?.metaTitle || "Resources - governable capability guides | Aroneu",
@@ -80,7 +81,10 @@ export default function ResourcesPage() {
           </p>
           {emptyState?.primaryCTA && (
             <a
-              href={emptyState.primaryCTA.href}
+              href={resolveCtaHref(
+                emptyState.primaryCTA.href,
+                emptyState.primaryCTA.label,
+              )}
               className="inline-block px-8 py-4 rounded-full text-base font-medium bg-ink text-paper hover:opacity-90 transition-opacity"
             >
               {emptyState.primaryCTA.label || "Read insights"}

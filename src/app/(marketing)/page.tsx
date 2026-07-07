@@ -38,7 +38,7 @@ export default function Home() {
       <Hero
         data={sections.find((s) => s.id === "hero")}
         withTilt3D={false}
-        videoMode="poster"
+        videoMode="autoplay"
       />
       <ProofStrip data={sections.find((s) => s.id === "proof-strip")} />
       <ProblemList data={sections.find((s) => s.id === "problem")} />

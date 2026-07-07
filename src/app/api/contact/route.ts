@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY?.trim();
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY?.trim() || "0x4AAAAAADwKl6H9ElahjtxG33vn5QWKs_o";
 
     if (turnstileSecret && turnstileToken) {
       const turnstileVerify = await fetch(

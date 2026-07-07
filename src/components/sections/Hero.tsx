@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { SectionContent } from "@/lib/content/types";
 import { Tilt3D } from "@/components/ui/Tilt3D";
+import { HeroVideo } from "@/components/sections/HeroVideo";
 import { resolveCtaHref } from "@/lib/cta";
 
 type Tone = "light" | "ink";
@@ -128,11 +129,13 @@ export function Hero({
             <Tilt3D>
               <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
                 {shouldRenderVideo ? (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: `<video src="${data.video}" autoplay loop muted playsinline preload="metadata" ${poster ? `poster="${poster}"` : ""} class="w-full h-full ${videoFitClass}" aria-label="${data.videoAlt || data.heading || 'Hero overview video'}"></video>`
-                    }}
+                  <HeroVideo
+                    src={data.video!}
+                    poster={poster}
                     className={`w-full h-full ${videoFitClass}`}
+                    ariaLabel={
+                      data.videoAlt || data.heading || "Hero overview video"
+                    }
                   />
                 ) : posterImage ? (
                   <Image
@@ -148,11 +151,13 @@ export function Hero({
             </Tilt3D>
           ) : shouldRenderVideo ? (
             <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] rounded-2xl overflow-hidden border border-zinc-200 shadow-soft surface-sand">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: `<video src="${data.video}" autoplay loop muted playsinline preload="metadata" ${poster ? `poster="${poster}"` : ""} class="w-full h-full ${videoFitClass}" aria-label="${data.videoAlt || data.heading || 'Hero overview video'}"></video>`
-                }}
+              <HeroVideo
+                src={data.video!}
+                poster={poster}
                 className={`w-full h-full ${videoFitClass}`}
+                ariaLabel={
+                  data.videoAlt || data.heading || "Hero overview video"
+                }
               />
             </div>
           ) : posterImage ? (
